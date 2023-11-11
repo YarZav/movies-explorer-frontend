@@ -1,0 +1,6 @@
+.intro__text {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    row-gap: 36px;
+}

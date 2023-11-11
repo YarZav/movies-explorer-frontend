@@ -1,0 +1,13 @@
+.intro__more {
+    padding: 0;
+    margin: 0;
+    width: 129px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    background: none;
+    color: #fff;
+    font-weight: 500;
+    line-height: 16px;
+    font-size: 12px;
+}
