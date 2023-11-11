@@ -1,4 +1,4 @@
-.header__signin {
+.header__auth__signin {
     margin: 0;
     padding: 0;
     width: 76px;
@@ -8,4 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #000;
+    font-weight: 500;
+    line-height: 16px;
+    font-size: 12px;
 }

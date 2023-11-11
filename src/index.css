@@ -16,29 +16,32 @@
 @import url('./blocks/header/header.css');
 @import url('./blocks/header/__logo/header__logo.css');
 @import url('./blocks/header/__auth/header__auth.css');
-@import url('./blocks/header/__signin/header__signin.css');
-@import url('./blocks/header/__signin/__text/header__signin__text.css');
-@import url('./blocks/header/__signup/header__signup.css');
+@import url('./blocks/header/__auth/__signin/header__auth__signin.css');
+@import url('./blocks/header/__auth/__signup/header__auth__signup.css');
+
+/* Common */
+@import url('./blocks/section/section.css');
+@import url('./blocks/section/_intro/section_intro.css');
+@import url('./blocks/section/_about/section_about.css');
+@import url('./blocks/section/__container/section__container.css');
+@import url('./blocks/section/__container/_intro/section__container_intro.css');
+@import url('./blocks/section/__container/_about/section__container_about.css');
+@import url('./blocks/section/__header/section__header.css');
+@import url('./blocks/section/__header/__text/section__header__text.css');
+@import url('./blocks/section/__header/__line/section__header__line.css');
 
 /* Intro */
-@import url('./blocks/intro/intro.css');
-@import url('./blocks/intro/__container/intro__container.css');
 @import url('./blocks/intro/__info/intro__info.css');
 @import url('./blocks/intro/__text/intro__text.css');
 @import url('./blocks/intro/__title/intro__title.css');
 @import url('./blocks/intro/__subtitle/intro__subtitle.css');
-@import url('./blocks/intro/__logo/intro__logo.css');
+@import url('./blocks/intro/__image/intro__image.css');
 @import url('./blocks/intro/__more/intro__more.css');
 
 /* About */
-@import url('./blocks/about/about.css');
-@import url('./blocks/about/__container/about__container.css');
-@import url('./blocks/about/__header/about__header.css');
-@import url('./blocks/about/__description/about__description.css');
-@import url('./blocks/about/__line/about__line.css');
 @import url('./blocks/about/__info/about__info.css');
-@import url('./blocks/about/__text/about__text.css');
-@import url('./blocks/about/__title/about__title.css');
-@import url('./blocks/about/__subtitle/about__subtitle.css');
+@import url('./blocks/about/__description/about__description.css');
+@import url('./blocks/about/__description/__title/about__description__title.css');
+@import url('./blocks/about/__description/__subtitle/about__description__subtitle.css');
 @import url('./blocks/about/__technologies/about__technologies.css');
 @import url('./blocks/about/__technology/about__technology.css');

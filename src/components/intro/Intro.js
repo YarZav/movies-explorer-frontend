@@ -1,11 +1,11 @@
 import React from 'react';
 
-import introLogo from '../../images/intro__logo.svg';
+import Section from '../section/Section'
+import IntroImage from './IntroImage';
 
 function Intro() {
     return (
-        <div className='intro'>
-            <div className='intro__container'>
+        <Section type ={'intro'}>
                 <div className='intro__info'>
                     <div className='intro__text'>
                         <h1 className='intro__title'>Учебный проект студента<br />факультета<br />Веб-разработки.</h1>
@@ -13,9 +13,8 @@ function Intro() {
                     </div>
                     <button className='intro__more'>Узнать больше</button>
                 </div>
-                <img className='intro__logo' src={introLogo} alt='Intro logo'></img>
-            </div>
-        </div>
+                <IntroImage />
+        </Section>
     )
 }
 
