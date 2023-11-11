@@ -4,7 +4,7 @@ import Tag from './Tag';
 
 function Tags(porps) {
     return (
-        <div className='about__technologies'>
+        <div className='tags'>
             { porps.tags.map(tag => { return <Tag tag={tag}/> }) }
         </div>
     )

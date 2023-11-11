@@ -2,7 +2,7 @@ import React from 'react';
 
 function Tag(props) {
     return (
-        <div className='about__technology'>{props.tag}</div>
+        <div className='tag'>{props.tag}</div>
     )
 }
 

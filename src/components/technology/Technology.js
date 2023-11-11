@@ -2,15 +2,15 @@ import React from 'react';
 
 import Section from '../section/Section'
 import SectionHeader from '../section/SectionHeader'
-import AboutInfo from './AboutInfo';
+import TechnologyInfo from './TechnologyInfo';
 
-function About() {
+function Technology() {
     return (
-        <Section type ={'about'}>
+        <Section type ={'technology'}>
             <SectionHeader text={'Технологии'}/>
-            <AboutInfo />
+            <TechnologyInfo />
         </Section>
     )
 }
 
-export default About;
+export default Technology;
