@@ -1,0 +1,6 @@
+.about__timeline {
+    margin: 110px 0 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
