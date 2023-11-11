@@ -4,7 +4,7 @@ import Page from '../page/Page';
 
 function Body() {
     return (
-        <div className="body">
+        <div className='body'>
             <Page/>
         </div>
     )

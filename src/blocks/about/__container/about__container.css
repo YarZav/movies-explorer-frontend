@@ -1,0 +1,8 @@
+.about__container {
+    padding: 0;
+    margin: 100px 0 100px 0;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column;
+    row-gap: 90px;
+}
