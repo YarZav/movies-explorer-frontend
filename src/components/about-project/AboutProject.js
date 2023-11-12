@@ -2,15 +2,15 @@ import React from 'react';
 
 import Section from '../section/Section'
 import SectionHeader from '../section/SectionHeader'
-import AboutInfo from './AboutInfo';
+import AboutContainer from './AboutContainer';
 
-function About() {
+function AboutProject() {
     return (
-        <Section type ={'about'}>
+        <Section type ={'about text-white'}>
             <SectionHeader text={'О проекте'}/>
-            <AboutInfo />
+            <AboutContainer />
         </Section>
     )
 }
 
-export default About;
+export default AboutProject;

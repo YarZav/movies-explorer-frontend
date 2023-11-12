@@ -1,5 +1,3 @@
 .about__timeblock__container {
-    display: flex;
-    flex-direction: column;
     row-gap: 14px;
 }

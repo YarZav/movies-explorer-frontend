@@ -4,7 +4,7 @@ import AboutSection from './AboutSection';
 
 function AboutDescription() {
     return (
-        <div className='about__description'>
+        <div className='about__description grid'>
             <AboutSection 
                 title='Дипломный проект включал 5 этапов' 
                 subtitle='Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.' 

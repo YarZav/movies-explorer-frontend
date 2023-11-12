@@ -17,20 +17,36 @@
 @import url('./blocks/header/__logo/header__logo.css');
 @import url('./blocks/header/__auth/header__auth.css');
 @import url('./blocks/header/__auth/__signin/header__auth__signin.css');
-@import url('./blocks/header/__auth/__signup/header__auth__signup.css');
 
 /* Common */
 @import url('./blocks/section/section.css');
 @import url('./blocks/section/_intro/section_intro.css');
 @import url('./blocks/section/_about/section_about.css');
 @import url('./blocks/section/_technology/section_technology.css');
+@import url('./blocks/section/_portfolio/section_portfolio.css');
 @import url('./blocks/section/__container/section__container.css');
 @import url('./blocks/section/__container/_intro/section__container_intro.css');
 @import url('./blocks/section/__container/_about/section__container_about.css');
 @import url('./blocks/section/__container/_technology/section__container_technology.css');
+@import url('./blocks/section/__container/_portfolio/section__container_portfolio.css');
 @import url('./blocks/section/__header/section__header.css');
 @import url('./blocks/section/__header/__text/section__header__text.css');
 @import url('./blocks/section/__header/__line/section__header__line.css');
+
+/* Fonts */
+@import url('./blocks/fonts/fonts.css');
+
+/* Colors */
+@import url('./blocks/colors/colors.css');
+
+/* Displays */
+@import url('./blocks/displays/displays.css');
+
+/* Positions */
+@import url('./blocks/positions/positions.css');
+
+/* Directions */
+@import url('./blocks/directions/directions.css');
 
 /* Tags */
 @import url('./blocks/tags/tags.css');
@@ -45,20 +61,17 @@
 @import url('./blocks/intro/__more/intro__more.css');
 
 /* About */
-@import url('./blocks/about/__info/about__info.css');
+@import url('./blocks/about/__container/about__container.css');
 @import url('./blocks/about/__description/about__description.css');
 @import url('./blocks/about/__text/about__text.css');
-@import url('./blocks/about/__title/about__title.css');
-@import url('./blocks/about/__subtitle/about__subtitle.css');
 @import url('./blocks/about/__timeline/about__timeline.css');
 @import url('./blocks/about/__timeblock/about__timeblock.css');
-@import url('./blocks/about/__timeblock/_backend/about__timeblock_backend.css');
-@import url('./blocks/about/__timeblock/_frontend/about__timeblock_frontend.css');
-@import url('./blocks/about/__timeblock/__text/about__timeblock__text.css');
 @import url('./blocks/about/__timeblock/__container/about__timeblock__container.css');
 
 /* Technology */
 @import url('./blocks/technology/__info/technology__info.css');
 @import url('./blocks/technology/__description/technology__description.css');
 @import url('./blocks/technology/__description/__title/technology__description__title.css');
-@import url('./blocks/technology/__description/__subtitle/technology__description__subtitle.css');
+
+/* Portfolio */
+@import url('./blocks/portfolio/__info/portfolio__info.css');

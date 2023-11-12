@@ -1,0 +1,19 @@
+.text-black {
+    color: #000;
+}
+
+.text-grey {
+    color: #8b8b8b;
+}
+
+.text-white {
+    color: #fff;
+}
+
+.bg-green {
+    background-color: #3DDC84;
+}
+
+.bg-grey {
+    background-color: #303030;
+}
