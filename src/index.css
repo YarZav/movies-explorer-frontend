@@ -20,15 +20,18 @@
 
 /* Common */
 @import url('./blocks/section/section.css');
+
 @import url('./blocks/section/_intro/section_intro.css');
-@import url('./blocks/section/_about/section_about.css');
+@import url('./blocks/section/_about-project/section_about.css');
 @import url('./blocks/section/_technology/section_technology.css');
 @import url('./blocks/section/_portfolio/section_portfolio.css');
+
 @import url('./blocks/section/__container/section__container.css');
 @import url('./blocks/section/__container/_intro/section__container_intro.css');
 @import url('./blocks/section/__container/_about/section__container_about.css');
 @import url('./blocks/section/__container/_technology/section__container_technology.css');
 @import url('./blocks/section/__container/_portfolio/section__container_portfolio.css');
+
 @import url('./blocks/section/__header/section__header.css');
 @import url('./blocks/section/__header/__text/section__header__text.css');
 @import url('./blocks/section/__header/__line/section__header__line.css');
