@@ -3,13 +3,13 @@ import React from 'react';
 import AboutDescription from './AboutDescription';
 import AboutTimeLine from './AboutTimeLine';
 
-function AboutContainer() {
+function AboutProjectContainer() {
     return (
-        <div className='about__container'>
+        <div className='about-project__container'>
             <AboutDescription />
             <AboutTimeLine />
         </div>
     )
 }
 
-export default AboutContainer;
+export default AboutProjectContainer;
