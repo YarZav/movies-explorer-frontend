@@ -6,7 +6,7 @@ import AboutContainer from './AboutContainer';
 
 function AboutProject() {
     return (
-        <Section type ={'about'}>
+        <Section type ={'about-project'}>
             <SectionHeader text={'О проекте'}/>
             <AboutContainer />
         </Section>
