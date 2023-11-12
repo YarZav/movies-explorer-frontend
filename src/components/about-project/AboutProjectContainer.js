@@ -1,13 +1,13 @@
 import React from 'react';
 
-import AboutDescription from './AboutDescription';
-import AboutTimeLine from './AboutTimeLine';
+import AboutProjectDescription from './AboutProjectDescription';
+import AboutProjectTimeLine from './AboutProjectTimeLine';
 
 function AboutProjectContainer() {
     return (
         <div className='about-project__container'>
-            <AboutDescription />
-            <AboutTimeLine />
+            <AboutProjectDescription />
+            <AboutProjectTimeLine />
         </div>
     )
 }

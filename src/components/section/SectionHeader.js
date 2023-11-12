@@ -3,8 +3,8 @@ import React from 'react';
 function SectionHeader(props) {
     return (
         <div className='section__header'>
-            <p className='section__header__text'>{props.text}</p>
-            <div className='section__header__line'></div> 
+            <h2>{props.text}</h2>
+            <div className='section__line'></div> 
         </div>
     )
 }

@@ -1,6 +1,6 @@
 .section__container_about-project {
-    margin: 70px 0 110px 0;
+    margin: 110px 0 110px 0;
     flex-grow: 1;
     flex-flow: column;
-    row-gap: 90px;
+    row-gap: 70px;
 }

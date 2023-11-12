@@ -1,4 +1,4 @@
-.about__description {
+.about-project__description {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 40px;
 }

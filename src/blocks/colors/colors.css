@@ -10,10 +10,18 @@
     color: #fff;
 }
 
+.text-dark-grey {
+    color: #888888;
+}
+
 .bg-green {
     background-color: #3DDC84;
 }
 
 .bg-grey {
     background-color: #303030;
+}
+
+.bg-dark_grey {
+    background-color: #202020;
 }

@@ -1,15 +1,15 @@
 import React from 'react';
 
-import AboutSection from './AboutSection';
+import AboutProjectColumn from './AboutProjectColumn';
 
-function AboutDescription() {
+function AboutProjectDescription() {
     return (
-        <div className='about__description grid'>
-            <AboutSection 
+        <div className='about-project__description grid'>
+            <AboutProjectColumn 
                 title='Дипломный проект включал 5 этапов' 
                 subtitle='Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.' 
             />
-            <AboutSection 
+            <AboutProjectColumn 
                 title='На выполнение диплома ушло 5 недель'
                 subtitle='У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.'
             />
@@ -17,4 +17,4 @@ function AboutDescription() {
     )
 }
 
-export default AboutDescription;
+export default AboutProjectDescription;
