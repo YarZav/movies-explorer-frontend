@@ -1,15 +1,5 @@
 .tag {
-    margin: 0;
-    padding: 0;
     width: 90px;
     height: 60px;
-    color: #fff;
-    font-weight: 400;
-    line-height: 17px;
-    font-size: 14px;
-    background-color: #303030;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
