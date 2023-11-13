@@ -5,7 +5,7 @@ import IntroImage from './IntroImage';
 
 function Promo() {
     return (
-        <Section type ={'intro'}>
+        <Section type ={'promo'}>
                 <div className='intro__info'>
                     <div className='intro__text'>
                         <h1 className='intro__title'>Учебный проект студента<br />факультета<br />Веб-разработки.</h1>
