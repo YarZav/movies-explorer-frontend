@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../../components/header/Header'
-import Intro from '../../components/intro/Intro'
+import Promo from '../promo/Promo'
 import AboutProject from '../about-project/AboutProject';
 import Techs from '../techs/Techs'
 import Portfolio from '../portfolio/Portfolio';
@@ -10,7 +10,7 @@ function Page() {
     return (
         <div className='page'>
             <Header/>
-            <Intro/>
+            <Promo/>
             <AboutProject/>
             <Techs/>
             <Portfolio/>

@@ -3,7 +3,7 @@ import React from 'react';
 import Section from '../section/Section'
 import IntroImage from './IntroImage';
 
-function Intro() {
+function Promo() {
     return (
         <Section type ={'intro'}>
                 <div className='intro__info'>
@@ -18,4 +18,4 @@ function Intro() {
     )
 }
 
-export default Intro;
+export default Promo;
