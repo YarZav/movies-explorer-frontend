@@ -2,15 +2,15 @@ import React from 'react';
 
 import Section from '../section/Section'
 import SectionHeader from '../section/SectionHeader'
-import TechnologyInfo from './TechnologyInfo';
+import TechsContainer from './TechsContainer';
 
-function Technology() {
+function Techs() {
     return (
-        <Section type ={'technology'}>
+        <Section className='bg-green' type ={'technology'}>
             <SectionHeader text={'Технологии'}/>
-            <TechnologyInfo />
+            <TechsContainer />
         </Section>
     )
 }
 
-export default Technology;
+export default Techs;

@@ -1,17 +1,17 @@
 import React from 'react';
 
-import TechnologyDescription from './TechnologyDescription';
+import TechsDescription from './TechsDescription';
 import Tags from '../tags/Tags';
 
-function TechnologyInfo() {
+function TechsContainer() {
     const technologies = ['HTML', 'CSS', 'JS', 'React', 'Git', 'Express.js', 'mongoDB'];
 
     return (
-        <div className='technology__info'>
-            <TechnologyDescription />
+        <div className='techs__container flex column'>
+            <TechsDescription />
             <Tags tags={technologies}/>
         </div>
     )
 }
 
-export default TechnologyInfo;
+export default TechsContainer;
