@@ -19,6 +19,8 @@
 @import url('./blocks/header/__signin/header__signin.css');
 
 /* Common */
+@import url('./blocks/highlight/highlight.css');
+
 @import url('./blocks/section/section.css');
 
 @import url('./blocks/section/_promo/section_promo.css');
