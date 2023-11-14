@@ -5,7 +5,7 @@ import HeaderAuth from './HeaderAuth';
 
 function Header() {
     return (
-        <header className='header'>
+        <header className='header flex bg-dark-blue'>
             <HeaderLogo />
             <HeaderAuth />
         </header>

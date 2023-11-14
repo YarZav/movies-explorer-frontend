@@ -4,7 +4,7 @@ import Header from '../../components/header/Header'
 import Promo from '../promo/Promo'
 import AboutProject from '../about-project/AboutProject';
 import Techs from '../techs/Techs'
-import Portfolio from '../portfolio/Portfolio';
+import AboutMe from '../about-me/AboutMe';
 
 function Page() {
     return (
@@ -13,7 +13,7 @@ function Page() {
             <Promo />
             <AboutProject />
             <Techs />
-            <Portfolio />
+            <AboutMe />
         </div>
     )
 }
