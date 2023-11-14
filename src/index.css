@@ -54,13 +54,12 @@
 @import url('./blocks/tags/tags.css');
 @import url('./blocks/tags/tag.css');
 
-/* Intro */
-@import url('./blocks/promo/__info/intro__info.css');
-@import url('./blocks/promo/__text/intro__text.css');
-@import url('./blocks/promo/__title/intro__title.css');
-@import url('./blocks/promo/__subtitle/intro__subtitle.css');
-@import url('./blocks/promo/__image/intro__image.css');
-@import url('./blocks/promo/__more/intro__more.css');
+/* Promo */
+@import url('./blocks/promo/__container/promo__container.css');
+@import url('./blocks/promo/__description/promo__description.css');
+@import url('./blocks/promo/__subtitle/promo__subtitle.css');
+@import url('./blocks/promo/__image/promo__image.css');
+@import url('./blocks/promo/__more/promo__more.css');
 
 /* About */
 @import url('./blocks/about-project/__container/about-project__container.css');

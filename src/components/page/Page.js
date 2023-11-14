@@ -9,11 +9,11 @@ import Portfolio from '../portfolio/Portfolio';
 function Page() {
     return (
         <div className='page'>
-            <Header/>
-            <Promo/>
-            <AboutProject/>
-            <Techs/>
-            <Portfolio/>
+            <Header />
+            <Promo />
+            <AboutProject />
+            <Techs />
+            <Portfolio />
         </div>
     )
 }

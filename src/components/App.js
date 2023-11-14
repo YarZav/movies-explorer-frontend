@@ -3,7 +3,7 @@ import Body from './body/Body'
 function App() {
   return (
     <div>
-      <Body/>
+      <Body />
     </div>
   );
 }

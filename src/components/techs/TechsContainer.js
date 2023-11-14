@@ -9,7 +9,7 @@ function TechsContainer() {
     return (
         <div className='techs__container flex column'>
             <TechsDescription />
-            <Tags tags={technologies}/>
+            <Tags tags={technologies} />
         </div>
     )
 }
