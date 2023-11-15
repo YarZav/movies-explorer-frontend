@@ -30,6 +30,7 @@
 @import url('./blocks/button/button.css');
 @import url('./blocks/button/_signup/button_signup.css');
 @import url('./blocks/button/_signin/button_signin.css');
+@import url('./blocks/button/_promo/button_promo.css');
 
 /* Tags */
 @import url('./blocks/common/tags/tag.css');
@@ -52,6 +53,7 @@
 
 /* Promo */
 @import url('./blocks/promo/__container/promo__container.css');
+@import url('./blocks/promo/__title/promo__title.css');
 @import url('./blocks/promo/__description/promo__description.css');
 @import url('./blocks/promo/__image/promo__image.css');
 @import url('./blocks/promo/__button/promo__button.css');
