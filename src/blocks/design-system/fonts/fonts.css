@@ -65,6 +65,11 @@ p, .p {
     line-height: 17px;
 }
 
+.xp {
+    font-size: 14px;
+    line-height: 17px;
+}
+
 button, .button {
     padding: 0;
     background: none;

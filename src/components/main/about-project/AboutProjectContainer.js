@@ -5,7 +5,7 @@ import AboutProjectTimeLine from './AboutProjectTimeLine';
 
 function AboutProjectContainer() {
     return (
-        <div className='about-project__container'>
+        <div className='flex column content-space-between full-height'>
             <AboutProjectDescription />
             <AboutProjectTimeLine />
         </div>
