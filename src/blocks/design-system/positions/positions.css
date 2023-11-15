@@ -1,0 +1,20 @@
+.center-v {
+    align-items: center;
+}
+
+.center-hv {
+    justify-content: center;
+    align-items: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.content-space-between {
+    justify-content: space-between;
+}
+
+.full-width {
+    width: 100%;
+}

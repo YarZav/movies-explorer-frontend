@@ -1,0 +1,77 @@
+.font-normal {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-bold {
+    font-weight: 900;
+}
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+.h1, 
+.h2, 
+.h3, 
+.h4,
+.h5,
+.h6,
+.p {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    color: #fff;
+}
+
+h1, .h1 {
+    font-size: 50px;
+    line-height: 58px;
+}
+
+h2, .h2 {
+    font-size: 22px;
+    line-height: 27px;
+}
+
+h3, .h3 {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+h4, .h4 {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+h6, .h6 {
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.sp {
+    font-size: 13px;
+    line-height: 16px;
+}
+
+p, .p {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+button, .button {
+    padding: 0;
+    background: none;
+	color: inherit;
+    border: none;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 3px;
+    color: #fff;
+}

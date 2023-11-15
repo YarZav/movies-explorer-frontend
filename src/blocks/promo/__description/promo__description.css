@@ -1,3 +1,4 @@
 .promo__description {
-    row-gap: 36px;
+    margin-top: 36px;
+    opacity: 50%;
 }
