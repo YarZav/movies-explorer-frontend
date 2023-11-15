@@ -3,7 +3,7 @@ import PromoImage from './PromoImage';
 
 function PromoContainer() {
     return (
-        <div className='flex full-width content-space-between'>
+        <div className='promo__container'>
             <PromoDescription />
             <PromoImage />
         </div>

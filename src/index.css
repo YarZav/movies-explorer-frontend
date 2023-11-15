@@ -6,19 +6,13 @@
 @import url('./vendor/normalize.css');
 @import url('./vendor/fonts/fonts.css');
 
-/* Design system */
-@import url('./blocks/design-system/highlight/highlight.css');
-@import url('./blocks/design-system/colors/colors.css');
-@import url('./blocks/design-system/fonts/fonts.css');
-@import url('./blocks/design-system/displays/displays.css');
-@import url('./blocks/design-system/directions/directions.css');
-@import url('./blocks/design-system/positions/positions.css');
-
 /* App */
 @import url('./blocks/app/app.css');
 
 /* Content  */
 @import url('./blocks/content/content.css');
+@import url('./blocks/content/_header/content_header.css');
+@import url('./blocks/content/_promo/content_promo.css');
 @import url('./blocks/content/__container/content__container.css');
 
 /* Header */
@@ -29,23 +23,35 @@
 
 /* Common */
 
+/* Highlight */
+@import url('./blocks/highlight/highlight.css');
+
+/* Button */
+@import url('./blocks/button/button.css');
+@import url('./blocks/button/_signup/button_signup.css');
+@import url('./blocks/button/_signin/button_signin.css');
+
 /* Tags */
 @import url('./blocks/common/tags/tag.css');
 @import url('./blocks/common/tags/tag.css');
 
 /* Section */
+@import url('./blocks/common/section/section.css');
 @import url('./blocks/common/section/_promo/section_promo.css');
 @import url('./blocks/common/section/_about-project/section_about-project.css');
 @import url('./blocks/common/section/_techs/section_techs.css');
 @import url('./blocks/common/section/_about-me/section_about-me.css');
+@import url('./blocks/common/section/__container/section__container.css');
 @import url('./blocks/common/section/__container/_promo/section__container_promo.css');
 @import url('./blocks/common/section/__container/_about-project/section__container_about-project.css');
 @import url('./blocks/common/section/__container/_techs/section__container_techs.css');
 @import url('./blocks/common/section/__container/_about_me/section__container_about-me.css');
 @import url('./blocks/common/section/__header/section__header.css');
+@import url('./blocks/common/section/__title/section__title.css');
 @import url('./blocks/common/section/__line/section__line.css');
 
 /* Promo */
+@import url('./blocks/promo/__container/promo__container.css');
 @import url('./blocks/promo/__description/promo__description.css');
 @import url('./blocks/promo/__image/promo__image.css');
 @import url('./blocks/promo/__button/promo__button.css');

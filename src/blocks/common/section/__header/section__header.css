@@ -1,3 +1,5 @@
 .section__header {
+    display: flex;
+    flex-direction: column;
     row-gap: 23px;
 }

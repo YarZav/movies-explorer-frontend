@@ -1,6 +1,6 @@
 function Button(props) {
     return (
-        <button className={`highlight ${props.textColor} ${props.bgColor} ${props.type}`}>
+        <button className={`button button_${props.type} highlight`}>
             {props.text}
         </button>
     )

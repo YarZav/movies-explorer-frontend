@@ -4,7 +4,7 @@ import PromoContainer from './PromoContainer';
 
 function Promo() {
     return (
-        <Content backgroundColor='bg-dark-blue'>
+        <Content type='promo'>
             <Section type ={'promo'}>
                 <PromoContainer />
             </Section>

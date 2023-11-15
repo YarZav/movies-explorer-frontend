@@ -6,8 +6,8 @@ import HeaderAuth from './HeaderAuth';
 
 function Header() {
     return (
-        <Content backgroundColor='bg-dark-blue'>
-            <header className='header flex center-v content-space-between'>
+        <Content type='header'>
+            <header className='header'>
                 <HeaderLogo />
                 <HeaderAuth />
             </header>

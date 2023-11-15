@@ -1,4 +1,7 @@
 .promo__description {
     margin-top: 36px;
     opacity: 50%;
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 400;
 }
