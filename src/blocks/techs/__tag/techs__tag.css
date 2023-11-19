@@ -1,0 +1,14 @@
+.techs__tag {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #303030;
+    width: 90px;
+    height: 60px;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}

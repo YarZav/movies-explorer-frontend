@@ -14,6 +14,7 @@
 @import url('./blocks/content/_header/content_header.css');
 @import url('./blocks/content/_promo/content_promo.css');
 @import url('./blocks/content/_about-project/content_about-project.css');
+@import url('./blocks/content/_techs/content_techs.css');
 @import url('./blocks/content/__container/content__container.css');
 
 /* Header */
@@ -32,10 +33,6 @@
 @import url('./blocks/button/_signup/button_signup.css');
 @import url('./blocks/button/_signin/button_signin.css');
 @import url('./blocks/button/_promo/button_promo.css');
-
-/* Tags */
-@import url('./blocks/common/tags/tag.css');
-@import url('./blocks/common/tags/tag.css');
 
 /* Section */
 @import url('./blocks/common/section/section.css');
@@ -72,8 +69,11 @@
 @import url('./blocks/about-project/__timeblock/__title/_frontend/about-project__timeblock__title_frontend.css');
 
 /* Techs */
-@import url('./blocks/techs/__container/techs__container.css');
 @import url('./blocks/techs/__description/techs__description.css');
+@import url('./blocks/techs/__title/techs__title.css');
+@import url('./blocks/techs/__subtitle/techs__subtitle.css');
+@import url('./blocks/techs/__tags/techs__tags.css');
+@import url('./blocks/techs/__tag/techs__tag.css');
 
 /* About me */
 @import url('./blocks/about-me/__container/about-me__container.css');

@@ -1,0 +1,6 @@
+.techs__tags {
+    margin: 100px 0 0 0;
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+}
