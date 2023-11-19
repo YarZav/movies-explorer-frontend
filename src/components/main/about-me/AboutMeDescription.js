@@ -1,12 +1,16 @@
-import React from 'react';
+import Button from "../../common/button/Button";
 
-function AboutMeDescription() {
+function AboutMeDescription(props) {
+    function onGithubClick() {
+        props.onGithubClick();
+    }
+
     return (
-        <div className='about-me__description grid'>
-            <h1>Ярослав</h1>
-            <h3>Фронтенд-разработчик, 30 лет</h3>
-            <h4>Я прошёл путь от стажёра iOS разработчика до комьюнити-лида. Сейчас решил освоить новый язык программирования.</h4>
-            <p className='highlight'>GitHub</p>
+        <div>
+            <h1 className='about-me__title'>Ярослав</h1>
+            <h2 className='about-me__subtitle'>Фронтенд-разработчик, 30 лет</h2>
+            <p className='about-me__description'>Я прошёл путь от стажёра iOS разработчика до комьюнити-лида. Сейчас решил освоить новый язык программирования.</p>
+            <Button type='github' text='GitHub' onClick={onGithubClick}/>
         </div>
     )
 }

@@ -15,6 +15,8 @@
 @import url('./blocks/content/_promo/content_promo.css');
 @import url('./blocks/content/_about-project/content_about-project.css');
 @import url('./blocks/content/_techs/content_techs.css');
+@import url('./blocks/content/_about-me/content_about-me.css');
+@import url('./blocks/content/_portfolio/content_portfolio.css');
 @import url('./blocks/content/__container/content__container.css');
 
 /* Header */
@@ -22,8 +24,6 @@
 @import url('./blocks/header/__logo/header__logo.css');
 @import url('./blocks/header/__auth/header__auth.css');
 @import url('./blocks/header/__button/header__button.css');
-
-/* Common */
 
 /* Highlight */
 @import url('./blocks/highlight/highlight.css');
@@ -33,21 +33,24 @@
 @import url('./blocks/button/_signup/button_signup.css');
 @import url('./blocks/button/_signin/button_signin.css');
 @import url('./blocks/button/_promo/button_promo.css');
+@import url('./blocks/button/_github/button_github.css');
 
 /* Section */
-@import url('./blocks/common/section/section.css');
-@import url('./blocks/common/section/_promo/section_promo.css');
-@import url('./blocks/common/section/_about-project/section_about-project.css');
-@import url('./blocks/common/section/_techs/section_techs.css');
-@import url('./blocks/common/section/_about-me/section_about-me.css');
-@import url('./blocks/common/section/__container/section__container.css');
-@import url('./blocks/common/section/__container/_promo/section__container_promo.css');
-@import url('./blocks/common/section/__container/_about-project/section__container_about-project.css');
-@import url('./blocks/common/section/__container/_techs/section__container_techs.css');
-@import url('./blocks/common/section/__container/_about_me/section__container_about-me.css');
-@import url('./blocks/common/section/__header/section__header.css');
-@import url('./blocks/common/section/__title/section__title.css');
-@import url('./blocks/common/section/__line/section__line.css');
+@import url('./blocks/section/section.css');
+@import url('./blocks/section/_promo/section_promo.css');
+@import url('./blocks/section/_about-project/section_about-project.css');
+@import url('./blocks/section/_techs/section_techs.css');
+@import url('./blocks/section/_about-me/section_about-me.css');
+@import url('./blocks/section/_portfolio/section_portfolio.css');
+@import url('./blocks/section/__container/section__container.css');
+@import url('./blocks/section/__container/_promo/section__container_promo.css');
+@import url('./blocks/section/__container/_about-project/section__container_about-project.css');
+@import url('./blocks/section/__container/_techs/section__container_techs.css');
+@import url('./blocks/section/__container/_about_me/section__container_about-me.css');
+@import url('./blocks/section/__container/_portfolio/section__container_portfolio.css');
+@import url('./blocks/section/__header/section__header.css');
+@import url('./blocks/section/__title/section__title.css');
+@import url('./blocks/section/__line/section__line.css');
 
 /* Promo */
 @import url('./blocks/promo/__container/promo__container.css');
@@ -77,5 +80,14 @@
 
 /* About me */
 @import url('./blocks/about-me/__container/about-me__container.css');
+@import url('./blocks/about-me/__title/about-me__title.css');
+@import url('./blocks/about-me/__subtitle/about-me__subtitle.css');
 @import url('./blocks/about-me/__description/about-me__description.css');
 @import url('./blocks/about-me/__image/about-me__image.css');
+
+/* Portfolio */
+@import url('./blocks/portfolio/__title/portfolio__title.css');
+@import url('./blocks/portfolio/__links/portfolio__links.css');
+@import url('./blocks/portfolio/__link/portfolio__link.css');
+@import url('./blocks/portfolio/__link/__title/portfolio__link__title.css');
+@import url('./blocks/portfolio/__link/__line/portfolio__link__line.css');

@@ -1,0 +1,5 @@
+.portfolio__link {
+    margin: 19px 0 19px 0;
+    display: flex;
+    justify-content: space-between;
+}

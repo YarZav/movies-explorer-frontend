@@ -1,5 +1,3 @@
-import React from 'react';
-
 function TechsDescription() {
     return (
         <div className='techs__description'>

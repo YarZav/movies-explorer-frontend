@@ -1,12 +1,14 @@
-import React from 'react';
-
 import AboutMeDescription from './AboutMeDescription';
 import AboutMeImage from './AboutMeImage';
 
-function AboutMeContainer() {
+function AboutMeContainer(props) {
+    function onGithubClick() {
+        props.onGithubClick();
+    }
+
     return (
-        <div className='about-me__container flex'>
-            <AboutMeDescription />
+        <div className='about-me__container'>
+            <AboutMeDescription onGithubClick={onGithubClick}/>
             <AboutMeImage />
         </div>
     )

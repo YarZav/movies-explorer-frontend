@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AboutProjectColumn from './AboutProjectColumn';
 
 function AboutProjectDescription() {

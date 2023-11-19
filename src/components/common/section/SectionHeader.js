@@ -1,5 +1,3 @@
-import React from 'react';
-
 function SectionHeader(props) {
     return (
         <div className='section__header'>

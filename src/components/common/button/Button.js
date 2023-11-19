@@ -1,6 +1,10 @@
 function Button(props) {
+    function onClick() {
+        props.onClick();
+    }
+
     return (
-        <button className={`button button_${props.type} highlight`}>
+        <button className={`button button_${props.type} highlight`} onClick={onClick}>
             {props.text}
         </button>
     )

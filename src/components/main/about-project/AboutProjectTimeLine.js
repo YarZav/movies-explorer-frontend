@@ -1,5 +1,3 @@
-import React from 'react';
-
 import AboutProjectTimeBlock from './AboutProjectTimeBlock';
 
 function AboutProjectTimeLine(props) {

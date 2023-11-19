@@ -1,10 +1,14 @@
 import PromoDescription from './PromoDescription';
 import PromoImage from './PromoImage';
 
-function PromoContainer() {
+function PromoContainer(props) {
+    function onLearnMoreClick() {
+        props.onLearnMoreClick();
+    }
+
     return (
         <div className='promo__container'>
-            <PromoDescription />
+            <PromoDescription onLearnMoreClick={onLearnMoreClick}/>
             <PromoImage />
         </div>
     )

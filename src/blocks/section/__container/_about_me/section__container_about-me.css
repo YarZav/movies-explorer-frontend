@@ -1,5 +1,5 @@
 .section__container_about-me {
-    margin: 110px 0 125px 0;
+    margin: 110px 0 0 0;
     flex-grow: 1;
     flex-flow: column;
     row-gap: 66px;
