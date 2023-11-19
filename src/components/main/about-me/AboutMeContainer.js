@@ -1,14 +1,10 @@
 import AboutMeDescription from './AboutMeDescription';
 import AboutMeImage from './AboutMeImage';
 
-function AboutMeContainer(props) {
-    function onGithubClick() {
-        props.onGithubClick();
-    }
-
+function AboutMeContainer() {
     return (
         <div className='about-me__container'>
-            <AboutMeDescription onGithubClick={onGithubClick}/>
+            <AboutMeDescription />
             <AboutMeImage />
         </div>
     )

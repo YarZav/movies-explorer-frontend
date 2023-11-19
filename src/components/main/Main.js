@@ -10,17 +10,12 @@ function Main() {
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
-    function onGithubClick() {
-        const URL = 'https://github.com/YarZav';
-        window.open(URL, '_blank');
-    }
-
     return (
         <div>
             <Promo onLearnMoreClick={onLearnMoreClick}/>
             <AboutProject />
             <Techs />
-            <AboutMe onGithubClick={onGithubClick}/>
+            <AboutMe />
             <Portfolio />
         </div>
     )

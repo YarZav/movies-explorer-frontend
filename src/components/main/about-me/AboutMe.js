@@ -3,16 +3,12 @@ import Section from '../../common/section/Section'
 import SectionHeader from '../../common/section/SectionHeader'
 import AboutMeContainer from './AboutMeContainer';
 
-function AboutMe(props) {
-    function onGithubClick() {
-        props.onGithubClick();
-    }
-
+function AboutMe() {
     return (
         <Content type='about-me'>
             <Section type ={'about-me'}>
                 <SectionHeader text={'Студент'} />
-                <AboutMeContainer onGithubClick={onGithubClick}/>
+                <AboutMeContainer />
             </Section>
         </Content>
     )

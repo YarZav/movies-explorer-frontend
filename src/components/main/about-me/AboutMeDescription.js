@@ -1,8 +1,9 @@
 import Button from "../../common/button/Button";
 
-function AboutMeDescription(props) {
+function AboutMeDescription() {
     function onGithubClick() {
-        props.onGithubClick();
+        const URL = 'https://github.com/YarZav';
+        window.open(URL, '_blank');
     }
 
     return (
