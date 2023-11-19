@@ -3,14 +3,16 @@ import React from 'react';
 import Content from '../../common/content/Content';
 import Section from '../../common/section/Section'
 import SectionHeader from '../../common/section/SectionHeader'
-import AboutProjectContainer from './AboutProjectContainer';
+import AboutProjectDescription from './AboutProjectDescription';
+import AboutProjectTimeLine from './AboutProjectTimeLine';
 
 function AboutProject() {
     return (
-        <Content backgroundColor='bg-dark_grey'>
+        <Content type='about-project'>
             <Section type ={'about-project'}>
                 <SectionHeader text={'О проекте'} />
-                <AboutProjectContainer />
+                <AboutProjectDescription />
+                <AboutProjectTimeLine />
             </Section>
         </Content>
     )

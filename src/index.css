@@ -13,6 +13,7 @@
 @import url('./blocks/content/content.css');
 @import url('./blocks/content/_header/content_header.css');
 @import url('./blocks/content/_promo/content_promo.css');
+@import url('./blocks/content/_about-project/content_about-project.css');
 @import url('./blocks/content/__container/content__container.css');
 
 /* Header */
@@ -60,10 +61,15 @@
 
 /* About project */
 @import url('./blocks/about-project/__description/about-project__description.css');
-@import url('./blocks/about-project/__column/about-project__column.css');
+@import url('./blocks/about-project/__title/about-project__title.css');
+@import url('./blocks/about-project/__subtitle/about-project__subtitle.css');
 @import url('./blocks/about-project/__timeline/about-project__timeline.css');
 @import url('./blocks/about-project/__timeblock/about-project__timeblock.css');
-@import url('./blocks/about-project/__timeblock/__container/about-project__timeblock__container.css');
+@import url('./blocks/about-project/__timeblock/_backend/about-project__timeblock_backend.css');
+@import url('./blocks/about-project/__timeblock/_frontend/about-project__timeblock_frontend.css');
+@import url('./blocks/about-project/__timeblock/__title/about-project__timeblock__title.css');
+@import url('./blocks/about-project/__timeblock/__subtitle/about-project__timeblock__subtitle.css');
+@import url('./blocks/about-project/__timeblock/__title/_frontend/about-project__timeblock__title_frontend.css');
 
 /* Techs */
 @import url('./blocks/techs/__container/techs__container.css');

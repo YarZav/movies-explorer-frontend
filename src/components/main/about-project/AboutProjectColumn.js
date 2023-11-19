@@ -2,9 +2,9 @@ import React from 'react';
 
 function AboutProjectColumn(props) {
     return (
-        <div className='about-project__column flex column'>
-            <h3>{props.title}</h3>
-            <h4>{props.subtitle}</h4>
+        <div>
+            <h3 className='about-project__title'>{props.title}</h3>
+            <p className='about-project__subtitle'>{props.subtitle}</p>
         </div>
     )
 }

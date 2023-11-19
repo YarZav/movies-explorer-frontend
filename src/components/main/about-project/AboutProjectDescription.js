@@ -4,7 +4,7 @@ import AboutProjectColumn from './AboutProjectColumn';
 
 function AboutProjectDescription() {
     return (
-        <div className='about-project__description grid'>
+        <div className='about-project__description'>
             <AboutProjectColumn 
                 title='Дипломный проект включал 5 этапов' 
                 subtitle='Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.' 
