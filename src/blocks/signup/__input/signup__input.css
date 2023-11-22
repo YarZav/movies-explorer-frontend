@@ -1,0 +1,14 @@
+.signup__input {
+    margin: 10px 0 0 0;
+    height: 46px;
+    width: 396px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background-color: #2f2f2f;
+}

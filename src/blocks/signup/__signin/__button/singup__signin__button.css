@@ -1,0 +1,9 @@
+.singup__signin__button {
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    color: #4285f4;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}

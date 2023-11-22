@@ -23,6 +23,7 @@
 /* Header */
 @import url('./blocks/header/header.css');
 @import url('./blocks/header/__logo/header__logo.css');
+@import url('./blocks/header/__logo/_auth/header__logo_auth.css');
 @import url('./blocks/header/__auth/header__auth.css');
 @import url('./blocks/header/__button/header__button.css');
 
@@ -100,3 +101,17 @@
 @import url('./blocks/footer/__description/footer__description.css');
 @import url('./blocks/footer/__copyright/footer__copyright.css');
 @import url('./blocks/footer/__links/footer__links.css');
+
+/* Auth */
+@import url('./blocks/auth/auth.css');
+@import url('./blocks/auth/__title/auth__title.css');
+@import url('./blocks/auth/__container/auth__container.css');
+
+/* Signup */
+@import url('./blocks/signup/signup.css');
+@import url('./blocks/signup/__input/signup__input.css');
+@import url('./blocks/signup/__input/__title/signup__input__title.css');
+@import url('./blocks/signup/__button/signup__button.css');
+@import url('./blocks/signup/__signin/signup__signin.css');
+@import url('./blocks/signup/__signin/__container/singup__signin__container.css');
+@import url('./blocks/signup/__signin/__button/singup__signin__button.css');
