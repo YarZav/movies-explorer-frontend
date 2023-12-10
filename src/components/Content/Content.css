@@ -20,8 +20,12 @@
     background-color: #202020;
 }
 
-.content_header {
+.content_header-main {
     background-color: #073042;
+}
+
+.content_header-page {
+    background-color: #202020;
 }
 
 .content_footer {

@@ -34,3 +34,29 @@
     font-size: 14px;
     line-height: 17px;
 }
+
+.button_edit {
+    font-size: 13px;
+}
+
+.button_signout {
+    font-size: 13px;
+    color: #ee3465;
+}
+
+.button_movies {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.button_saved-movies {
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.button_profile {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 12px;
+}

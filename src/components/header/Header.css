@@ -9,3 +9,23 @@
     display: flex;
     column-gap: 30px;
 }
+
+.header__movie-buttons {
+    display: flex;
+    column-gap: 16px;
+}
+
+.header__profile {
+    display: flex;
+    column-gap: 7px;
+}
+
+.hedaer__profile-image-container {
+    background-color: #313131;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

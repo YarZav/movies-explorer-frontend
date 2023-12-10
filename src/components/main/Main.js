@@ -16,7 +16,7 @@ function Main() {
 
     return (
         <div className='main'>
-            <Header />
+            <Header isAuthed={false} />
             <Promo onLearnMoreClick={onLearnMoreClick}/>
             <AboutProject />
             <Techs />
