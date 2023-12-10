@@ -1,10 +1,12 @@
-import Header from './../header/Header'
-import Promo from './promo/Promo'
-import AboutProject from './about-project/AboutProject';
-import Techs from './techs/Techs'
-import AboutMe from './about-me/AboutMe';
-import Portfolio from './portfolio/Portfolio';
-import Footer from './../footer/Footer';
+import './Main.css';
+
+import Header from '../Header/Header';
+import Promo from './Promo/Promo';
+import AboutProject from './AboutProject/AboutProject';
+import Techs from './Techs/Techs';
+import AboutMe from './AboutMe/AboutMe';
+import Portfolio from './Portfolio/Portfolio';
+import Footer from '../Footer/Footer';
 
 function Main() {
     function onLearnMoreClick() {
@@ -13,7 +15,7 @@ function Main() {
     }
 
     return (
-        <div>
+        <div className='main'>
             <Header />
             <Promo onLearnMoreClick={onLearnMoreClick}/>
             <AboutProject />

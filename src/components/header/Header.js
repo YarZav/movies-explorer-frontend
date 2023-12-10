@@ -1,13 +1,18 @@
-import Content from '../common/content/Content';
-import HeaderLogo from './HeaderLogo';
-import HeaderAuth from './HeaderAuth';
+import './Header.css';
+
+import Content from '../Content/Content';
+import Button from '../Button/Button';
+import Logo from '../Logo/Logo';
 
 function Header() {
     return (
         <Content type='header'>
             <header className='header'>
-                <HeaderLogo />
-                <HeaderAuth />
+                <Logo />
+                <div className='header__auth'>
+                    <Button text='Регистрация' />
+                    <Button text='Войти' type='signin' />
+                </div>
             </header>
         </Content>
     )

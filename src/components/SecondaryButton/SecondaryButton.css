@@ -1,0 +1,23 @@
+.secondary-button {
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    color: #4285f4;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.secondary-button__container {
+    margin: 16px auto auto auto;
+    display: flex;
+    row-gap: 6px;
+}
+
+.secondary-button__text {
+    margin: 0;
+    color: #8b8b8b;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}

@@ -1,0 +1,18 @@
+.section__header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 23px;
+}
+
+.section__line {
+    background-color: white;
+    height: 1px;
+}
+
+.section__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    color: #ffffff;
+}

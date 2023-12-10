@@ -1,0 +1,39 @@
+.footer {
+    padding: 79px 0 0 0;
+    height: 93px;
+}
+
+.footer__title {
+    margin: 0;
+    color: #888888;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.footer__line {
+    margin: 20px 0 0 0;
+    height: 1px;
+    background-color: #424242;
+}
+
+.footer__description {
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__links {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+.footer__copyright {
+    margin: 0;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}

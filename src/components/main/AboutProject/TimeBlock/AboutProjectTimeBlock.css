@@ -1,0 +1,35 @@
+.about-project__timeblock {
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-project__timeblock_frontend {
+    background-color: #303030;
+}
+
+.about-project__timeblock_backend {
+    background-color: #3ddc84;
+}
+
+.about-project__timeblock__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.about-project__timeblock__title_frontend {
+    color: #ffffff;
+}
+
+.about-project__timeblock__subtitle {
+    margin: 14px 0 0 0;
+    color: #888888;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+}

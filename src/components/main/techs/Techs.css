@@ -1,0 +1,28 @@
+.techs__description {
+    margin: 90px 0 0 0;
+}
+
+.techs__title {
+    margin: 0;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    text-align: center;
+}
+
+.techs__subtitle {
+    margin: 26px 0 0 0;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.techs__tags {
+    margin: 100px 0 0 0;
+    display: flex;
+    column-gap: 10px;
+    justify-content: center;
+}

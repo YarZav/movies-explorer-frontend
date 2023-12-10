@@ -1,0 +1,11 @@
+.header {
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__auth {
+    display: flex;
+    column-gap: 30px;
+}

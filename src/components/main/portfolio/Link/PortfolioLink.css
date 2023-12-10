@@ -1,0 +1,18 @@
+.portfolio__link {
+    margin: 19px 0 19px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.portfolio__link__title {
+    margin: 0;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 50px;
+}
+
+.portfolio__link__line {
+    height: 1px;
+    background-color: #424242;
+}
