@@ -3,13 +3,25 @@ import './Page.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Profile from './Profile/Profile';
+import Movies from './Movies/Movies';
 
-function Page() {
+function Page(props) {
+    function getContent() {
+        const profile = props.type === 'profile' && <Profile />
+        const isMovies = props.type === 'movies' || props.type === 'saved-movies'
+        const movies = isMovies && <Movies type={props.type}/>
+        return profile || movies
+    }
+
+    function getFooter() {
+        return (props.type === 'movies') && <Footer />
+    }
+
     return(
         <div className='page'>
             <Header isAuthed={true}/>
-            <Profile />
-            <Footer />
+            { getContent() }
+            { getFooter() }
         </div>
     )
 }

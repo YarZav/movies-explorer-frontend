@@ -1,0 +1,31 @@
+.movies-card-list {
+    padding: 70px 0 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 32px;
+    column-gap: 20px;
+}
+
+.movies-card-list__container {
+    margin: 70px 0 30px 0;
+}
+
+.movies-card-list__button-container {
+    height: 166px;
+    display: flex;
+    justify-content: center;
+}
+
+.movies-card-list__load {
+    margin-top: 50px;
+    width: 320px;
+    height: 36px;
+    border-radius: 1px;
+    border: 1px solid;
+    border-color: #424242;
+    background-color: inherit;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}

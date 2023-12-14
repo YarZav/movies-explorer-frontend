@@ -7,9 +7,9 @@ function ProfileInput(props) {
 
     return(
         <div className='profile-input__container'>
-            <p className='profile-input__text'>{props.text}</p>
+            <p className='profile-input__title'>{props.text}</p>
             <input 
-                className='profile-input__input'
+                className='profile-input'
                 type={`${props.type}`}
                 id={`profile-input${props.type}`}
                 name={`profile-input${props.type}`}

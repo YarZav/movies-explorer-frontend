@@ -5,22 +5,22 @@
     justify-content: space-between;
 }
 
-.header__auth {
+.header__auth-buttons {
     display: flex;
     column-gap: 30px;
 }
 
-.header__movie-buttons {
+.header__movies-buttons {
     display: flex;
     column-gap: 16px;
 }
 
-.header__profile {
+.header__profile-button {
     display: flex;
     column-gap: 7px;
 }
 
-.hedaer__profile-image-container {
+.header__avatar {
     background-color: #313131;
     border-radius: 50%;
     width: 26px;
@@ -28,4 +28,57 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.header__signup {
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff
+}
+
+.header__signin {
+    padding: 0;
+    width: 76px;
+    height: 32px;
+    background-color: #3ddc84;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 3px;
+    color: #000000
+}
+
+.header__movies {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #ffffff
+}
+
+.header__saved-movies {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #ffffff
+}
+
+.header__profile {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 12px;
+    color: #ffffff
 }

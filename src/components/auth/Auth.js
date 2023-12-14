@@ -1,8 +1,8 @@
 import './Auth.css';
 
 import Logo from '../Logo/Logo';
-import Signin from '../Signin/Signin';
-import Signup from '../Signup/Signup';
+import Signin from './Signin/Signin';
+import Signup from './Signup/Signup';
 
 function Auth(props) {
     function getTitle(type) {

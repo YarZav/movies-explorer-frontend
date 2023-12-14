@@ -2,12 +2,11 @@ import './Promo.css';
 
 import Content from '../../Content/Content';
 import Section from '../../Section/Section'
-import Button from "../../Button/Button";
 
 import promo from '../../../images/promo.svg';
 
 function Promo(props) {
-    function onLearnMoreClick() {
+    function onLearnMoreHandler() {
         props.onLearnMoreClick();
     }
 
@@ -18,7 +17,7 @@ function Promo(props) {
                     <div>
                         <h1 className='promo__title'>Учебный проект студента факультета еб-разработки.</h1>
                         <p className='promo__description'>Листайте ниже, чтобы узнать больше<br />про этот проект и его создателя.</p>
-                        <Button textColor='text-white' text='Узнать больше' type='promo' onClick={onLearnMoreClick}/>
+                        <button className='promo__button highlight' onClick={onLearnMoreHandler}>Узнать больше</button>
                     </div>
                     <img className='promo__image' src={promo} alt='Intro image' />
                 </div>

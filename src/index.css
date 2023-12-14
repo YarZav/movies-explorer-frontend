@@ -7,4 +7,4 @@
 @import url('./vendor/fonts/fonts.css');
 
 /* Highlight */
-@import url('./blocks/highlight/highlight.css');
+@import url('./vendor/highlight.css');

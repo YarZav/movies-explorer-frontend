@@ -23,3 +23,17 @@
     width: 310px;
     height: 304px;
 }
+
+.promo__button {
+    margin-top: 146px;
+    width: 129px;
+    height: 36px;
+    padding: 0;
+    background: none;
+	color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff;
+}
