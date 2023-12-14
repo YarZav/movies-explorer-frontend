@@ -13,3 +13,11 @@
     font-size: 14px;
     line-height: 20px;
 }
+
+@media screen and (max-width: 1279px) {
+    .about-project__subtitle {
+        margin-top: 22px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}

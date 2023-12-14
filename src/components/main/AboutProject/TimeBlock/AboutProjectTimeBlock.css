@@ -33,3 +33,9 @@
     line-height: 17px;
     text-align: center;
 }
+
+@media screen and (max-width: 1279px) {
+    .about-project__timeblock__subtitle {
+        font-weight: 400;
+    }
+}

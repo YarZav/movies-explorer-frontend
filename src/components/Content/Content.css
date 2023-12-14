@@ -1,11 +1,22 @@
 .content {
     margin: 0 auto 0 auto;
-    min-width: 320px;
     max-width: 1280px;
+}
+
+@media screen and (max-width: 1279px) {
+    .content {
+        max-width: 768px;
+    }
 }
 
 .content__container {
     padding: 0 70px;
+}
+
+@media screen and (max-width: 1279px) {
+    .content__container {
+        padding: 0 30px;
+    }
 }
 
 .content_techs {

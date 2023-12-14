@@ -5,8 +5,20 @@
     column-gap: 40px;
 }
 
+@media screen and (max-width: 1279px) {
+    .about-project__description {
+        column-gap: 30px;
+    }
+}
+
 .about-project__timeline {
     margin-top: 110px;
     display: grid;
     grid-template-columns: 1fr 4fr;
+}
+
+@media screen and (max-width: 1279px) {
+    .about-project__timeline {
+        margin-top: 93px;
+    }
 }

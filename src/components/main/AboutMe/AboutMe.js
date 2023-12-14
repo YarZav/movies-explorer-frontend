@@ -20,8 +20,8 @@ function AboutMe() {
                     <div>
                         <h1 className='about-me__title'>Ярослав</h1>
                         <h2 className='about-me__subtitle'>Фронтенд-разработчик, 30 лет</h2>
-                        <p className='about-me__description'>Я прошёл путь от стажёра iOS разработчика до комьюнити-лида. Сейчас решил освоить новый язык программирования.</p>
-                        <button className='about-me__button highlight' onClick={onGithubHandler}>GitHub</button>
+                        <p className='about-me__description'>Учу WEB разработку.</p>
+                        <button className='about-me__github highlight' onClick={onGithubHandler}>GitHub</button>
                     </div>
                     <img className='about-me__image' src={avatar} alt='Avatar image' />
                 </div>
