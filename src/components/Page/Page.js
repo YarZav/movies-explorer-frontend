@@ -14,7 +14,8 @@ function Page(props) {
     }
 
     function getFooter() {
-        return (props.type === 'movies') && <Footer />
+        const isMovies = props.type === 'movies' || props.type === 'saved-movies'
+        return isMovies && <Footer />
     }
 
     return(

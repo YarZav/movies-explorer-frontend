@@ -11,6 +11,13 @@
     line-height: 17px;
 }
 
+@media screen and (max-width: 767px) {
+    .auth-secondary-button__description {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
 .auth-secondary-button {
     border: none;
     background-color: transparent;
@@ -18,4 +25,11 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+}
+
+@media screen and (max-width: 767px) {
+    .auth-secondary-button {
+        font-size: 12px;
+        line-height: 15px;
+    }
 }

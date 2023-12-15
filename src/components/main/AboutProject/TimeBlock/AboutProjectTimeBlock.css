@@ -21,6 +21,13 @@
     line-height: 17px;
 }
 
+@media screen and (max-width: 1279px) {
+    .about-project__timeblock__title {
+        font-size: 11px;
+        line-height: 13px;
+    }
+}
+
 .about-project__timeblock__title_frontend {
     color: #ffffff;
 }
@@ -37,5 +44,12 @@
 @media screen and (max-width: 1279px) {
     .about-project__timeblock__subtitle {
         font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .about-project__timeblock__subtitle {
+        font-size: 11px;
+        line-height: 13px;
     }
 }

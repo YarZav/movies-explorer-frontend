@@ -6,6 +6,13 @@
     line-height: 24px;
 }
 
+@media screen and (max-width: 767px) {
+    .about-project__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
 .about-project__subtitle {
     margin: 26px 0 0 0;
     color: #ffffff;
@@ -19,5 +26,13 @@
         margin-top: 22px;
         font-size: 12px;
         line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-project__subtitle {
+        margin-top: 16px;
+        font-size: 11px;
+        line-height: 16px;
     }
 }

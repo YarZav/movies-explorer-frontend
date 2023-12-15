@@ -18,6 +18,13 @@
     }
 }
 
+@media screen and (max-width: 767px) {
+    .portfolio__link__title {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
 .portfolio__link__line {
     height: 1px;
     background-color: #424242;

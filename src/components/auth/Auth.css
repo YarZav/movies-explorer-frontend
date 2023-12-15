@@ -16,7 +16,16 @@
 @media screen and (max-width: 1279px) {
     .auth__container {
         width: 396px;
-        margin: 232px auto 232px auto;
+        margin: 232px auto;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .auth__container {
+        width: 260px;
+        flex-direction: column;
+        align-items: center;
+        margin: 56px auto 30px auto;
     }
 }
 
@@ -26,4 +35,10 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
+}
+
+@media screen and (max-width: 767px) {
+    .auth__title {
+        margin-top: 50px;
+    }
 }

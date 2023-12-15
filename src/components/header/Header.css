@@ -5,9 +5,21 @@
     justify-content: space-between;
 }
 
+@media screen and (max-width: 767px) {
+    .header {
+        margin: 0 14px;
+    }
+}
+
 .header__auth-buttons {
     display: flex;
     column-gap: 30px;
+}
+
+@media screen and (max-width: 767px) {
+    .header__auth-buttons {
+        column-gap: 14px;
+    }
 }
 
 .header__movies-buttons {
@@ -52,6 +64,13 @@
     color: #ffffff
 }
 
+@media screen and (max-width: 767px) {
+    .header__signup {
+        font-size: 10px;
+        line-height: 16px;
+    }
+}
+
 .header__signin {
     padding: 0;
     width: 76px;
@@ -63,6 +82,15 @@
     line-height: 16px;
     border-radius: 3px;
     color: #000000
+}
+
+@media screen and (max-width: 767px) {
+    .header__signin {
+        width: 54px;
+        height: 26px;
+        font-size: 10px;
+        line-height: 16px;
+    }
 }
 
 .header__movies {

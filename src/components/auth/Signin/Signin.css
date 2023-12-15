@@ -23,3 +23,9 @@
         margin-top: 69px;
     }
 }
+
+@media screen and (max-width: 767px) {
+    .signup__button-container {
+        margin-top: 80px;
+    }
+}

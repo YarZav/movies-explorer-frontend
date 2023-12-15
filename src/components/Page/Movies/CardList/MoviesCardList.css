@@ -14,8 +14,14 @@
     }
 }
 
-.movies-card-list__container {
-    margin: 70px 0 30px 0;
+@media screen and (max-width: 767px) {
+    .movies-card-list {
+        padding: 40px 0 30px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+    }
 }
 
 .movies-card-list__button-container {
@@ -36,4 +42,11 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
+}
+
+@media screen and (max-width: 767px) {
+    .movies-card-list__load {
+        width: 240px;
+        height: 36px;
+    }
 }

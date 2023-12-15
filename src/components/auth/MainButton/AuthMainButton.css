@@ -9,3 +9,10 @@
     line-height: 17px;
     border-radius: 3px;
 }
+
+@media screen and (max-width: 767px) {
+    .auth-main-button {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

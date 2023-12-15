@@ -4,6 +4,12 @@
     row-gap: 23px;
 }
 
+@media screen and (max-width: 767px) {
+    .section__header {
+        row-gap: 28px;
+    }
+}
+
 .section__line {
     background-color: #dadada;
     height: 1px;
@@ -15,4 +21,11 @@
     font-size: 22px;
     line-height: 27px;
     color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+    .section__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
 }

@@ -5,7 +5,7 @@
 @media screen and (max-width: 1279px) {
     .search-form {
         height: 237px;
-    }    
+    }
 }
 
 .search-form__container {
@@ -15,6 +15,12 @@
 @media screen and (max-width: 1279px) {
     .search-form__container {
         padding-top: 80px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .search-form__container {
+        padding-top: 90px;
     }
 }
 
@@ -33,6 +39,13 @@
     background: transparent;
     border: none;
     outline: none;
+}
+
+@media screen and (max-width: 767px) {
+    .search-form__input {
+        font-size: 18px;
+        line-height: 22px;
+    }
 }
 
 .searh-form__button {
@@ -63,6 +76,12 @@
 @media screen and (max-width: 1279px) {
     .search-form__switch-container {
         flex-direction: row-reverse;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .search-form__switch-container {
+        justify-content: center;
     }
 }
 
@@ -131,4 +150,11 @@
     font-weight: 400;
     font-size: 13px;
     line-height: 18px;
+}
+
+@media screen and (max-width: 1279px) {
+    .search-form__short-films {
+        font-size: 11px;
+        line-height: 18px;
+    }
 }
