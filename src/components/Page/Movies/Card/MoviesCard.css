@@ -1,4 +1,5 @@
 .movies-card {
+    margin: auto;
     width: 270px;
     height: 218px;
     background-color: #222222;
