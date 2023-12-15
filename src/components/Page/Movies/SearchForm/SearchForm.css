@@ -2,8 +2,20 @@
     height: 217px;
 }
 
+@media screen and (max-width: 1279px) {
+    .search-form {
+        height: 237px;
+    }    
+}
+
 .search-form__container {
     padding: 70px 0 0 0;
+}
+
+@media screen and (max-width: 1279px) {
+    .search-form__container {
+        padding-top: 80px;
+    }
 }
 
 .search-form__input-container {
@@ -16,7 +28,7 @@
     height: 50px;
     font-weight: 500;
     font-size: 28px;
-    line-height: 134px;
+    line-height: 34px;
     color: #8b8b8b;
     background: transparent;
     border: none;
@@ -45,6 +57,13 @@
 .search-form__switch-container {
     margin-top: 32px;
     display: flex;
+    column-gap: 14px;
+}
+
+@media screen and (max-width: 1279px) {
+    .search-form__switch-container {
+        flex-direction: row-reverse;
+    }
 }
 
 .search-form__switch {
@@ -107,7 +126,7 @@
 }
 
 .search-form__short-films {
-    margin: 0 0 0 14px;
+    margin: 0;
     color: #ffffff;
     font-weight: 400;
     font-size: 13px;

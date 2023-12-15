@@ -15,9 +15,21 @@
     column-gap: 16px;
 }
 
+@media screen and (max-width: 1279px) {
+    .header__movies-buttons {
+        display: none;
+    }
+}
+
 .header__profile-button {
     display: flex;
     column-gap: 7px;
+}
+
+@media screen and (max-width: 1279px) {
+    .header__profile-button {
+        display: none;
+    }
 }
 
 .header__avatar {

@@ -13,6 +13,13 @@
     flex-direction: column;
 }
 
+@media screen and (max-width: 1279px) {
+    .auth__container {
+        width: 396px;
+        margin: 232px auto 232px auto;
+    }
+}
+
 .auth__title {
     margin: 40px 0;
     color: #ffffff;
