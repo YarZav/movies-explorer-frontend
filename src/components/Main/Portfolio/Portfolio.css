@@ -1,0 +1,24 @@
+.portfolio__title {
+    margin: 0 0 79px 0;
+    color: #888888;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+@media screen and (max-width: 1279px) {
+    .portfolio__title {
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .portfolio__title {
+        margin-bottom: 40px;
+        font-size: 14px;
+    }
+}
+
+.portfolio__links {
+    margin: 31px 0 0 0;
+}

@@ -1,0 +1,20 @@
+.side-menu-tab {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 2px;
+}
+
+.side-menu-tab_selected {
+    text-decoration: underline;
+}
+
+.side-menu-tab_deselected {
+    text-decoration: none;
+}

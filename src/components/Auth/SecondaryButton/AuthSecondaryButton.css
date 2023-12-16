@@ -1,0 +1,35 @@
+.auth-secondary-button__container {
+    display: flex;
+    row-gap: 6px;
+}
+
+.auth-secondary-button__description {
+    margin: 0;
+    color: #8b8b8b;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 767px) {
+    .auth-secondary-button__description {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+.auth-secondary-button {
+    border: none;
+    background-color: transparent;
+    color: #4285f4;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 767px) {
+    .auth-secondary-button {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
