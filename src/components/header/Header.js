@@ -55,10 +55,12 @@ function Header(props) {
     }
 
     function getProfileButton() {
-        return props.isAuthed && !(!!getSideMenButton()) && <HeaderProfile onClick={profileHandler}/>
+        return props.isAuthed && <div className='header__profile-button'>
+            <HeaderProfile onClick={profileHandler}/>
+        </div>
     }
 
-    function getSideMenButton() {
+    function getSideMenuButton() {
         return props.isAuthed && <button className='header__side-menu highlight' onClick={openSideMenuHandler}>
             <img src={menu} alt='Menu' />
         </button>
@@ -81,7 +83,7 @@ function Header(props) {
                     { getAuthButtons() }
                     { getMoviesButtons() }
                     { getProfileButton() }
-                    { getSideMenButton() }
+                    { getSideMenuButton() }
                 </header>
             </Content>
         </div>
