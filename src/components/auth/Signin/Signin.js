@@ -7,7 +7,7 @@ import AuthInput from '../Input/AuthInput';
 import AuthMainButton from '../MainButton/AuthMainButton';
 import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 
-function Signin(props) {
+function Signin() {
     const [mail, setMail] = useState('');
     const [password, setPassowrd] = useState('');
 
@@ -25,7 +25,7 @@ function Signin(props) {
         setPassowrd(value);
     }
 
-    function handleSignUp() {
+    function handleSignup() {
         navigate('/signup');
     }
 
@@ -37,7 +37,7 @@ function Signin(props) {
             </div>
             <div className='signin__button-container'>
                 <AuthMainButton value={'Войти'}/>
-                <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={handleSignUp}/>
+                <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={handleSignup}/>
             </div>
         </form>
     )

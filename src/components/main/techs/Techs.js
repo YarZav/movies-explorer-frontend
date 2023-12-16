@@ -17,7 +17,7 @@ function Techs() {
                     <p className='techs__subtitle'>На курсе веб-разработки мы освоили технологии, которые применили<br />в дипломном проекте.</p>
                 </div>
                 <div className='techs__tags'>
-                    { technologies.map(technology => { return <TechsTag tag={technology} /> }) }
+                    { technologies.map(technology => { return <TechsTag tag={technology} key={technology} /> }) }
                 </div>
             </Section>
         </Content>

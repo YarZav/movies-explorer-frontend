@@ -16,12 +16,6 @@
     column-gap: 30px;
 }
 
-@media screen and (max-width: 767px) {
-    .header__auth-buttons {
-        column-gap: 14px;
-    }
-}
-
 .header__movies-buttons {
     display: flex;
     column-gap: 16px;
@@ -31,27 +25,6 @@
     .header__movies-buttons {
         display: none;
     }
-}
-
-.header__profile-button {
-    display: flex;
-    column-gap: 7px;
-}
-
-@media screen and (max-width: 1279px) {
-    .header__profile-button {
-        display: none;
-    }
-}
-
-.header__avatar {
-    background-color: #313131;
-    border-radius: 50%;
-    width: 26px;
-    height: 26px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .header__signup {
@@ -113,12 +86,16 @@
     color: #ffffff
 }
 
-.header__profile {
-    padding: 0;
+.header__side-menu {
+    display: none;
+    background: none;
     border: none;
-    background-color: inherit;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 12px;
-    color: #ffffff
+    width: 44px;
+    height: 44px;
+}
+
+@media screen and (max-width: 1279px) {
+    .header__side-menu {
+        display: inline;
+    }
 }

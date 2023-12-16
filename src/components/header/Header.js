@@ -1,15 +1,19 @@
 import './Header.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Content from '../Content/Content';
 import Logo from '../Logo/Logo';
+import SideMenu from './SideMenu/SideMenu';
+import HeaderProfile from './Profile/HeaderProfile';
 
-import profile from '../../images/profile.svg';
+import menu from '../../images/menu.svg';
 
 function Header(props) {
     const navigate = useNavigate();
+
+    const [isSideMenuOpened, setIsSideMenuOpened] = useState(false);
 
     function getContentType() {
         return props.isAuthed ? 'header-page' : 'header-main';
@@ -23,7 +27,7 @@ function Header(props) {
         navigate('/signin');
     }
 
-    function moviesHandler() { 
+    function moviesHandler() {
         navigate('/movies');
     }
 
@@ -32,8 +36,9 @@ function Header(props) {
     }
 
     function profileHandler() {
+        closeSideMenuHandler();
         navigate('/profile');
-     }
+    }
 
     function getAuthButtons() {
         return !props.isAuthed && <div className='header__auth-buttons'>
@@ -50,23 +55,36 @@ function Header(props) {
     }
 
     function getProfileButton() {
-        return props.isAuthed && <div className='header__profile-button'>
-            <button className='header__profile highlight' onClick={profileHandler}>Аккаунт</button>
-            <div className='header__avatar'>
-                <img src={profile} alt='Profile' />
-            </div>
-        </div>
+        return props.isAuthed && !(!!getSideMenButton()) && <HeaderProfile onClick={profileHandler}/>
+    }
+
+    function getSideMenButton() {
+        return props.isAuthed && <button className='header__side-menu highlight' onClick={openSideMenuHandler}>
+            <img src={menu} alt='Menu' />
+        </button>
+    }
+
+    function closeSideMenuHandler() {
+        setIsSideMenuOpened(false);
+    }
+
+    function openSideMenuHandler() {
+        setIsSideMenuOpened(true);
     }
 
     return (
-        <Content type={getContentType()}>
-            <header className='header'>
-                <Logo />
-                { getAuthButtons() }
-                { getMoviesButtons() }
-                { getProfileButton() }
-            </header>
-        </Content>
+        <div>
+            { isSideMenuOpened && <SideMenu onClose={closeSideMenuHandler}/> }
+            <Content type={getContentType()}>
+                <header className='header'>
+                    <Logo />
+                    { getAuthButtons() }
+                    { getMoviesButtons() }
+                    { getProfileButton() }
+                    { getSideMenButton() }
+                </header>
+            </Content>
+        </div>
     )
 }
 
