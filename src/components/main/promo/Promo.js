@@ -1,13 +1,14 @@
 import './Promo.css';
 
 import Content from '../../Content/Content';
-import Section from '../../Section/Section'
+import Section from '../Section/MainSection'
 
 import promo from '../../../images/promo.svg';
 
-function Promo(props) {
+function Promo() {
     function onLearnMoreHandler() {
-        props.onLearnMoreClick();
+        let element = document.querySelector('.content_about-project');
+        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 
     return (

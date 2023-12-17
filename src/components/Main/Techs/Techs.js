@@ -1,8 +1,8 @@
 import './Techs.css';
 
 import Content from '../../Content/Content';
-import Section from '../../Section/Section'
-import SectionHeader from '../../Section/SectionHeader'
+import Section from '../Section/MainSection'
+import MainHeader from '../Header/MainHeader';
 import TechsTag from './Tag/TechsTag';
 
 function Techs() {
@@ -11,7 +11,7 @@ function Techs() {
     return (
         <Content type='techs'>
             <Section type ={'techs'}>
-                <SectionHeader text={'Технологии'}/>
+                <MainHeader text={'Технологии'}/>
                 <div className='techs__description'>
                     <h1 className='techs__title'>7 технологий</h1>
                     <p className='techs__subtitle'>На курсе веб-разработки мы освоили технологии, которые применили<br />в дипломном проекте.</p>

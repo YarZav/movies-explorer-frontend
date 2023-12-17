@@ -41,7 +41,7 @@ function SideMenu(props) {
                 <button className='side-menu__cross-button highlight' onClick={closeHandler}>
                     <img className='side-menu__cross-image' src={cross} alt='Cross' />
                 </button>
-                <div className='side-manu__tabs'>
+                <div className='side-menu__tabs'>
                     <SideMenuTab 
                         text='Главная' 
                         selected={location.pathname === '/' ? 'selected' : 'deselected'}
@@ -58,7 +58,7 @@ function SideMenu(props) {
                         onClick={savedMoviesHandler}
                     />
                 </div>
-                <div className='side-manu__profile'>
+                <div className='side-menu__profile'>
                     <HeaderProfile onClick={profileHandler} />
                 </div>
             </div>

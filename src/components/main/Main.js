@@ -9,15 +9,10 @@ import Portfolio from './Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
 function Main() {
-    function onLearnMoreClick() {
-        let element = document.querySelector('.content_about-project');
-        element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-    }
-
     return (
         <div className='main'>
             <Header isAuthed={false} />
-            <Promo onLearnMoreClick={onLearnMoreClick}/>
+            <Promo/>
             <AboutProject />
             <Techs />
             <AboutMe />

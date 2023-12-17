@@ -1,8 +1,8 @@
 import './AboutMe.css';
 
 import Content from '../../Content/Content';
-import Section from '../../Section/Section'
-import SectionHeader from '../../Section/SectionHeader'
+import Section from '../Section/MainSection'
+import MainHeader from '../Header/MainHeader';
 
 import avatar from '../../../images/avatar.jpeg';
 
@@ -15,7 +15,7 @@ function AboutMe() {
     return (
         <Content type='about-me'>
             <Section type ={'about-me'}>
-                <SectionHeader text={'Студент'} />
+                <MainHeader text={'Студент'} />
                 <div className='about-me__container'>
                     <div>
                         <h1 className='about-me__title'>Ярослав</h1>

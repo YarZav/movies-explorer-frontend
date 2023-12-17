@@ -80,9 +80,9 @@ function Header(props) {
             <Content type={getContentType()}>
                 <header className='header'>
                     <Logo />
-                    { getAuthButtons() }
                     { getMoviesButtons() }
                     { getProfileButton() }
+                    { getAuthButtons() }
                     { getSideMenuButton() }
                 </header>
             </Content>

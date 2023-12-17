@@ -1,7 +1,7 @@
 import './Portfolio.css';
 
 import Content from '../../Content/Content';
-import Section from '../../Section/Section'
+import Section from '../Section/MainSection'
 import PortfolioLink from "./Link/PortfolioLink";
 
 function Portfolio() {

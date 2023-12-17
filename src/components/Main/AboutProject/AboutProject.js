@@ -1,8 +1,8 @@
 import './AboutProject.css';
 
 import Content from '../../Content/Content';
-import Section from '../../Section/Section'
-import SectionHeader from '../../Section/SectionHeader'
+import Section from '../Section/MainSection'
+import MainHeader from '../Header/MainHeader';
 import AboutProjectColumn from './Column/AboutProjectColumn';
 import AboutProjectTimeBlock from './TimeBlock/AboutProjectTimeBlock';
 
@@ -10,7 +10,7 @@ function AboutProject() {
     return (
         <Content type='about-project'>
             <Section type ={'about-project'}>
-                <SectionHeader text={'О проекте'} />
+                <MainHeader text={'О проекте'} />
                 <div className='about-project__description'>
                     <AboutProjectColumn 
                         title='Дипломный проект включал 5 этапов' 
