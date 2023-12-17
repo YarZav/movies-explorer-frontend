@@ -14,7 +14,8 @@ function ProfileInput(props) {
                 id={`profile-input${props.type}`}
                 name={`profile-input${props.type}`}
                 value={props.value || ''}
-                onChange={changeHandler} 
+                onChange={changeHandler}
+                required
             />
         </div>
     )

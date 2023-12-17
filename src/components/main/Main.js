@@ -10,15 +10,17 @@ import Footer from '../Footer/Footer';
 
 function Main() {
     return (
-        <div className='main'>
+        <main className='main'>
             <Header isAuthed={false} />
-            <Promo/>
-            <AboutProject />
-            <Techs />
-            <AboutMe />
-            <Portfolio />
+            <main>
+                <Promo/>
+                <AboutProject />
+                <Techs />
+                <AboutMe />
+                <Portfolio />
+            </main>
             <Footer />
-        </div>
+        </main>
     )
 }
 

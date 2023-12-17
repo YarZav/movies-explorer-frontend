@@ -27,7 +27,7 @@
 .search-form__input-container {
     display: grid;
     grid-template-columns: auto 34px;
-    column-gap: 36px;
+    column-gap: 36px; 
 }
 
 .search-form__input {

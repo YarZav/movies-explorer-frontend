@@ -9,7 +9,7 @@
     justify-content: end;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 768px) {
     .side-menu {
         visibility: visible;
     }

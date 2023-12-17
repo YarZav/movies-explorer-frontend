@@ -11,8 +11,12 @@ function SearchForm() {
         setSearchText(event.target.value)
     }
 
+    function handleSubmit(event) {
+        event.preventDefault();
+    }
+
     return(
-        <div className='search-form'>
+        <form className='search-form' name='search-form' onSubmit={handleSubmit} noValidate>
             <div className='search-form__container'>
                 <div className='search-form__input-container'>
                     <input
@@ -22,9 +26,10 @@ function SearchForm() {
                         name='search-form__input'
                         value={searchText || ''}
                         placeholder='Фильм'
-                        onChange={changeHandler} 
+                        onChange={changeHandler}
+                        required
                     />
-                    <button className='searh-form__button highlight'>
+                    <button className='searh-form__button highlight' type='submit'>
                         <img src={rightArrow} alt='Right arrow'/>
                     </button>
                 </div>
@@ -37,7 +42,7 @@ function SearchForm() {
                     <p className='search-form__short-films'>Короткометражки</p>
                 </div>
             </div>
-        </div>
+        </form>
     )
 }
 
