@@ -1,20 +1,26 @@
 import './SearchForm.css';
 
+import React, { useState } from 'react';
+
 import rightArrow from '../../../../images/rightArrow.svg';
 
 function SearchForm() {
-    function changeHandler() { }
+    const [searchText, setSearchText] = useState('');
+
+    function changeHandler(event) { 
+        setSearchText(event.target.value)
+    }
 
     return(
         <div className='search-form'>
             <div className='search-form__container'>
                 <div className='search-form__input-container'>
                     <input
-                        className='search-form__input'
+                        className='search-form__input highlight'
                         type='text'
                         id='search-form__input'
                         name='search-form__input'
-                        value=''
+                        value={searchText || ''}
                         placeholder='Фильм'
                         onChange={changeHandler} 
                     />

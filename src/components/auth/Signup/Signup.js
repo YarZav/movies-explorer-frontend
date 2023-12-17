@@ -8,11 +8,11 @@ import AuthMainButton from '../MainButton/AuthMainButton';
 import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 
 function Signup() {
+    const navigate = useNavigate();
+    
     const [name, setName] = useState('');
     const [mail, setMail] = useState('');
     const [password, setPassowrd] = useState('');
-
-    const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
