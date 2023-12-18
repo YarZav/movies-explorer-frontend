@@ -3,10 +3,10 @@ import './AboutProjectTimeBlock.css';
 function AboutProjectTimeBlock(props) {
     return (
         <div>
-            <div className={`about-project__timeblock about-project__timeblock_${props.type}`}>
-                <p className={`about-project__timeblock__title about-project__timeblock__title_${props.type}`}>{props.time}</p>
+            <div className={`about-project-time-block about-project-time-block__${props.type}`}>
+                <p className={`about-project-time-block__title about-project-time-block__title-${props.type}`}>{props.time}</p>
             </div>
-            <p className='about-project__timeblock__subtitle'>{props.text}</p>
+            <p className='about-project-time-block__subtitle'>{props.text}</p>
         </div>
     )
 }

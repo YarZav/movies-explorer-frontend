@@ -11,10 +11,10 @@
     text-decoration-thickness: 2px;
 }
 
-.side-menu-tab_selected {
+.side-menu-tab__selected {
     text-decoration: underline;
 }
 
-.side-menu-tab_deselected {
+.side-menu-tab__deselected {
     text-decoration: none;
 }

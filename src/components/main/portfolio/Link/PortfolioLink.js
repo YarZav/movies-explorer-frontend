@@ -9,11 +9,11 @@ function PortfolioLink(props) {
 
     return (
         <div className='highlight' onClick={onClick}>
-            <div className='portfolio__link'>
-                <p className='portfolio__link__title'>{props.title}</p>
-                <img className='portfolio__link__image' src={link} alt='link'></img>
+            <div className='portfolio-link'>
+                <p className='portfolio-link__title'>{props.title}</p>
+                <img className='portfolio-link__image' src={link} alt='link'></img>
             </div>
-            {props.isSeparated && <div className='portfolio__link__line'></div>}
+            {props.isSeparated && <div className='portfolio-link__line'></div>}
         </div>
     )
 }

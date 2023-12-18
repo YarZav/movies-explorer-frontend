@@ -6,7 +6,7 @@ function SideMenuTab(props) {
     }
 
     return (
-        <button className={`side-menu-tab side-menu-tab_${props.selected} highlight`} onClick={clickHandler}>
+        <button className={`side-menu-tab side-menu-tab__${props.selected} highlight`} onClick={clickHandler}>
             {props.text}
         </button>
     )

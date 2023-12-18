@@ -32,38 +32,38 @@
     }
 }
 
-.content_techs {
+.content__techs {
     background-color: #272727;
 }
 
-.content_promo {
+.content__promo {
     background-color: #073042;
 }
 
-.content_portfolio {
+.content__portfolio {
     background-color: #202020;
 }
 
-.content_header-main {
+.content__header-main {
     background-color: #073042;
 }
 
-.content_header-page {
+.content__header-page {
     background-color: #202020;
 }
 
-.content_footer {
+.content__footer {
     background-color: #202020;
 }
 
-.content_about-project {
+.content__about-project {
     background-color: #202020;
 }
 
-.content_about-me {
+.content__about-me {
     background-color: #202020;
 }
 
-.content_movies {
+.content__movies {
     background-color: #202020;
 }
