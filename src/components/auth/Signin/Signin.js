@@ -30,7 +30,7 @@ function Signin() {
     }
 
     return(
-        <form className='signin' name='signin' onSubmit={handleSubmit} noValidate>
+        <form className='signin' name='signin' onSubmit={handleSubmit}>
             <div className='signin__input-container'>
                 <AuthInput type='email' title='E-mail' value={mail} onChange={handleChangeMail} />
                 <AuthInput type='password' title='Пароль' value={password} onChange={handleChangePassword} />

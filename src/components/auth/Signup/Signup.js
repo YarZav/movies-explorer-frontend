@@ -35,7 +35,7 @@ function Signup() {
     }
 
     return(
-        <form className='signup' name='signin' onSubmit={handleSubmit} noValidate>
+        <form className='signup' name='signin' onSubmit={handleSubmit}>
             <div className='signup__input-container'>
                 <AuthInput type='text' title='Имя' value={name} onChange={handleChangeName} />
                 <AuthInput type='email' title='E-mail' value={mail} onChange={handleChangeMail} />

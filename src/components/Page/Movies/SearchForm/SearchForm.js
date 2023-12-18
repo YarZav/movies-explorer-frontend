@@ -16,7 +16,7 @@ function SearchForm() {
     }
 
     return(
-        <form className='search-form' name='search-form' onSubmit={handleSubmit} noValidate>
+        <form className='search-form' name='search-form' onSubmit={handleSubmit}>
             <div className='search-form__container'>
                 <div className='search-form__input-container'>
                     <input
