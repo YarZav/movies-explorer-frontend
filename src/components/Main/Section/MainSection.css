@@ -1,0 +1,93 @@
+.main-section {
+    display: flex;
+}
+
+.main-section__promo {
+    padding: 75px 0;
+    flex-grow: 1;
+}
+
+@media screen and (max-width: 1279px) {
+    .main-section__promo {
+        padding: 140px 0 76px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main-section__promo {
+        padding: 70px 0 30px 0;
+    }
+}
+
+.main-section__about-project {
+    padding: 110px 0;
+    flex-grow: 1;
+    flex-flow: column;
+}
+
+@media screen and (max-width: 1279px) {
+    .main-section__about-project {
+        padding: 70px 18px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main-section__about-project {
+        padding: 90px 0;
+    }
+}
+
+.main-section__techs {
+    padding: 100px 0 100px 0;
+    flex-grow: 1;
+    flex-flow: column;
+}
+
+@media screen and (max-width: 1279px) {
+    .main-section_techs {
+        padding: 90px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main-section__techs {
+        padding: 70px 0;
+    }
+}
+
+.main-section__about-me {
+    padding: 110px 0 0 0;
+    flex-grow: 1;
+    flex-flow: column;
+}
+
+@media screen and (max-width: 1279px) {
+    .main-section__about-me {
+        padding: 90px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main-section__about-me {
+        padding: 70px 0;
+    }
+}
+
+.main-section__portfolio {
+    padding: 101px 0 125px 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 1279px) {
+    .main-section__portfolio {
+        padding: 90px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .main-section__portfolio {
+        padding: 0 0 70px 0;
+    }
+}

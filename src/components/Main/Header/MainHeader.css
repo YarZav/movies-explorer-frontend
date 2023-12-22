@@ -1,0 +1,31 @@
+.main-header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 23px;
+}
+
+@media screen and (max-width: 767px) {
+    .main-header {
+        row-gap: 28px;
+    }
+}
+
+.main-header__line {
+    background-color: #dadada;
+    height: 1px;
+}
+
+.main-header__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+    .main-header__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

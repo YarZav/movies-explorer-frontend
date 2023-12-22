@@ -1,0 +1,119 @@
+.footer {
+    height: 172px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .footer {
+        height: 253px;
+    }
+}
+
+.footer__title {
+    margin: 79px 0 0 0;
+    color: #888888;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__title {
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+    }
+}
+
+.footer__line {
+    height: 1px;
+    background-color: #424242;
+}
+
+.footer__description {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__description {
+        margin-top: 10px;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        row-gap: 30px;
+    }
+}
+
+.footer__links {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 20px;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__links {
+        flex-direction: column;
+        row-gap: 12px;
+    }
+}
+
+.footer__copyright {
+    margin: 0;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__copyright {
+        color: #8b8b8b;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .footer__links {
+        flex-direction: column;
+        row-gap: 12px;
+    }
+}
+
+.footer__bootcamp {
+    padding: 0;
+    background: none;
+    border: none;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__bootcamp {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+.footer__button {
+    padding: 0;
+    background: none;
+    border: none;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+}
+
+@media screen and (max-width: 767px) {
+    .footer__button {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}

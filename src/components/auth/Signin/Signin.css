@@ -1,0 +1,38 @@
+.signin {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+    .signin {
+        margin-top: 80px;
+    }
+}
+
+.signin__input-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.signin__button-container {
+    margin: 179px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+@media screen and (max-width: 1279px) {
+    .signin__button-container {
+        margin-top: 69px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .signin__button-container {
+        margin-top: 80px;
+    }
+}

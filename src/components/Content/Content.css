@@ -1,0 +1,69 @@
+.content {
+    margin: 0 auto 0 auto;
+    min-width: 320px;
+    max-width: 1280px;
+}
+
+@media screen and (max-width: 1279px) {
+    .content {
+        max-width: 1279px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .content {
+        max-width: 767px;
+    }
+}
+
+.content__container {
+    padding: 0 70px;
+}
+
+@media screen and (max-width: 1279px) {
+    .content__container {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .content__container {
+        padding: 14px;
+    }
+}
+
+.content__techs {
+    background-color: #272727;
+}
+
+.content__promo {
+    background-color: #073042;
+}
+
+.content__portfolio {
+    background-color: #202020;
+}
+
+.content__header-main {
+    background-color: #073042;
+}
+
+.content__header-page {
+    background-color: #202020;
+}
+
+.content__footer {
+    background-color: #202020;
+}
+
+.content__about-project {
+    background-color: #202020;
+}
+
+.content__about-me {
+    background-color: #202020;
+}
+
+.content__movies {
+    background-color: #202020;
+}

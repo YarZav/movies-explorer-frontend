@@ -1,0 +1,55 @@
+.about-project-time-block {
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-project-time-block__frontend {
+    background-color: #303030;
+}
+
+.about-project-time-block__backend {
+    background-color: #3ddc84;
+}
+
+.about-project-time-block__title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+@media screen and (max-width: 1279px) {
+    .about-project-time-block__title {
+        font-size: 11px;
+        line-height: 13px;
+    }
+}
+
+.about-project-time-block__title-frontend {
+    color: #ffffff;
+}
+
+.about-project-time-block__subtitle {
+    margin: 14px 0 0 0;
+    color: #888888;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1279px) {
+    .about-project-time-block__subtitle {
+        font-weight: 400;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .about-project-time-block__subtitle {
+        font-size: 11px;
+        line-height: 13px;
+    }
+}

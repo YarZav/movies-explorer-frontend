@@ -1,0 +1,27 @@
+.auth-input__container {
+    width: 100%;
+}
+
+.auth-input__title {
+    margin: 0;
+    color: #8b8b8b;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+}
+
+.auth-input {
+    margin: 10px 0 0 0;
+    padding: 0 15px;
+    height: 46px;
+    width: calc(100% - 30px);
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    background-color: #2f2f2f;
+}

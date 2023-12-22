@@ -1,0 +1,111 @@
+.header {
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 767px) {
+    .header {
+        margin: 0 14px;
+    }
+}
+
+.header__auth-buttons {
+    display: flex;
+    column-gap: 30px;
+}
+
+.header__movies-buttons {
+    display: flex;
+    column-gap: 16px;
+}
+
+@media screen and (max-width: 768px) {
+    .header__movies-buttons {
+        display: none;
+    }
+}
+
+.header__profile-button {
+    visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+    .header__profile-button {
+        visibility: hidden;
+    }
+}
+
+.header__signup {
+    padding: 0;
+    background-color: inherit;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff
+}
+
+@media screen and (max-width: 767px) {
+    .header__signup {
+        font-size: 10px;
+        line-height: 16px;
+    }
+}
+
+.header__signin {
+    padding: 0;
+    width: 76px;
+    height: 32px;
+    background-color: #3ddc84;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    border-radius: 3px;
+    color: #000000
+}
+
+@media screen and (max-width: 767px) {
+    .header__signin {
+        width: 54px;
+        height: 26px;
+        font-size: 10px;
+        line-height: 16px;
+    }
+}
+
+.header__movies {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #ffffff
+}
+
+.header__saved-movies {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #ffffff
+}
+
+.header__side-menu {
+    display: none;
+    background: none;
+    border: none;
+    width: 44px;
+    height: 44px;
+}
+
+@media screen and (max-width: 768px) {
+    .header__side-menu {
+        display: inline;
+    }
+}

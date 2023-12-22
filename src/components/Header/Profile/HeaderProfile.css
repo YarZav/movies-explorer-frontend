@@ -1,0 +1,24 @@
+.header-profile {
+    display: flex;
+    column-gap: 7px;
+}
+
+.header-profile__button {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 12px;
+    color: #ffffff
+}
+
+.header-profile__avatar {
+    background-color: #313131;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
