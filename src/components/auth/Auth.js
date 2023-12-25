@@ -11,8 +11,12 @@ function Auth(props) {
         return signin || signup
     }
 
+    function userHandle(value) {
+        props.onUser(value);
+    }
+
     function getComponent(type) {
-        const signin = type === 'signin' && <Signin />
+        const signin = type === 'signin' && <Signin onUser={userHandle} />
         const signup = type === 'signup' && <Signup />
         return signin || signup
     }

@@ -34,7 +34,7 @@ function SearchForm() {
                     </button>
                 </div>
                 <div className='search-form__line'></div>
-                <div className='search-form__switch-container highlight'> 
+                <div className='search-form__switch-container highlight]'> 
                     <label className='search-form__switch'>
                         <input className='search-form__checkbox' type='checkbox' />
                         <span className='search-form__slider round' />

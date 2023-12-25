@@ -1,24 +1,57 @@
 import './Signin.css';
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import AuthInput from '../Input/AuthInput';
 import AuthMainButton from '../MainButton/AuthMainButton';
 import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 
-function Signin() {
-    const [mail, setMail] = useState('');
+import { jwtKey } from '../../../utils/Constants';
+import { unauthorisedApi } from '../../../utils/Api';
+
+function Signin(props) {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    const [email, setEmail] = useState('');
     const [password, setPassowrd] = useState('');
 
-    const navigate = useNavigate();
+    // Use Effects
+
+    React.useEffect(() => {
+        if (location.state && location.state.email) {
+            setEmail(location.state.email || '');
+        }
+    }, []);
+
+    // Signin
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        setIsLoading(true)
+
+        unauthorisedApi.signin(email, password)
+        .then(result => {
+            localStorage.setItem(jwtKey, result.token);
+            props.onUser(result);
+            navigate('/movies');
+        })
+        .catch(error => {
+            console.log(error);
+        })
+        .finally(() => {
+            setIsLoading(false)
+        });
     }
 
+    // States
+
     function handleChangeMail(value) {
-        setMail(value);
+        setEmail(value);
     }
 
     function handleChangePassword(value) {
@@ -32,11 +65,11 @@ function Signin() {
     return(
         <form className='signin' name='signin' onSubmit={handleSubmit}>
             <div className='signin__input-container'>
-                <AuthInput type='email' title='E-mail' value={mail} onChange={handleChangeMail} />
+                <AuthInput type='email' title='E-mail' value={email} onChange={handleChangeMail} />
                 <AuthInput type='password' title='Пароль' value={password} onChange={handleChangePassword} />
             </div>
             <div className='signin__button-container'>
-                <AuthMainButton value={'Войти'}/>
+                <AuthMainButton value={isLoading ? 'Вход...' : 'Войти'}/>
                 <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={handleSignup}/>
             </div>
         </form>
