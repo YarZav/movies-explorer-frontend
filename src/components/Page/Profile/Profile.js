@@ -18,17 +18,15 @@ function Profile() {
 
     const [isLoading, setIsLoading] = React.useState(false);
 
-    const [title, setTitle] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
     // Use Effects
 
     React.useEffect(() => {
-        setTitle(user.name);
         setName(user.name);
         setEmail(user.email);
-    }, [user]);
+    }, [user.email, user.name]);
 
     // Actions
 
@@ -37,9 +35,8 @@ function Profile() {
 
         authorisedApi.patchUsersMe(name, email)
         .then(result => {
-            setTitle(result.body.name);
-            setName(result.body.name);
-            setEmail(result.body.email);
+            user.name = result.data.name;
+            user.email = result.data.email;
         })
         .catch(error => {
             console.log(error);
@@ -66,7 +63,7 @@ function Profile() {
 
     return(
         <div className='profile'>
-            <h1 className='profile__title'>{`Привет, ${title}!`}</h1>
+            <h1 className='profile__title'>{`Привет, ${user.name}!`}</h1>
             <div>
                 <ProfileInput text='Имя' type='text' value={name} onChange={nameChangeHandler} />
                 <div className='profile__line'></div>
