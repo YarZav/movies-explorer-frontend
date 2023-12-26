@@ -29,8 +29,8 @@ class MoviesApi {
     }
 }
 
-const url = 'https://api.nomoreparties.co';
+export const moviesUrl = 'https://api.nomoreparties.co';
 
 export const moviesApi = new MoviesApi({
-    baseUrl: url
+    baseUrl: moviesUrl
 });

@@ -4,6 +4,7 @@
     height: 218px;
     background-color: #222222;
     border-radius: 16px;
+    overflow: hidden
 }
 
 @media screen and (max-width: 1279px) {

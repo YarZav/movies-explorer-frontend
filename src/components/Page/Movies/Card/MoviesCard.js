@@ -1,6 +1,7 @@
 import './MoviesCard.css';
 
-import movie from '../../../../images/movie.png';
+import { moviesUrl } from '../../../../utils/Movies';
+
 import cross from '../../../../images/cross.svg';
 
 function MoviesCard(props) {
@@ -23,7 +24,7 @@ function MoviesCard(props) {
     return(
         <div className='movies-card'>
             <div className='movies-card__image-container'>
-                <img className='movies-card__image' src={props.movie.image.trailerLink} alt='Movie preview'/>
+                <img className='movies-card__image' src={moviesUrl + "/" + props.movie.image.url} alt='Movie preview'/>
             </div>
             <div className='movies-card__info-container'>
                 <p className='movies-card__title'>{props.movie.nameRU}</p>
