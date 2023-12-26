@@ -21,16 +21,32 @@ function MoviesCard(props) {
         return crossButton || selectButton;
     }
 
+    function imageClickHandler() {
+        let url = props.movie.trailerLink;
+        window.open(url, '_blank');
+    }
+
+    function getDuration() {
+        const hours = parseInt(props.movie.duration / 60);
+        const minutes = parseInt(props.movie.duration - hours * 60);
+
+        if (hours > 0) {
+            return `${hours}ч${minutes}м`
+        } else {
+            return `${minutes}м`
+        }
+    }
+
     return(
         <div className='movies-card'>
-            <div className='movies-card__image-container'>
+            <div className='movies-card__image-container highlight' onClick={imageClickHandler} >
                 <img className='movies-card__image' src={moviesUrl + "/" + props.movie.image.url} alt='Movie preview'/>
             </div>
             <div className='movies-card__info-container'>
                 <p className='movies-card__title'>{props.movie.nameRU}</p>
                 { getButton() }
             </div>
-            <p className='movies-card__duration'>{props.movie.duration} мин.</p>
+            <p className='movies-card__duration'>{getDuration()}</p>
         </div>
     )
 }

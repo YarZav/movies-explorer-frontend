@@ -4,13 +4,13 @@ import Content from "../Content/Content";
 
 function Footer() {
     function onBootcampHandler() {
-        const URL = 'https://practicum.yandex.ru/';
-        window.open(URL, '_blank');
+        const url = 'https://practicum.yandex.ru/';
+        window.open(url, '_blank');
     }
 
     function onGitHubHandler() {
-        const URL = 'https://github.com';
-        window.open(URL, '_blank');
+        const url = 'https://github.com';
+        window.open(url, '_blank');
     }
 
     return (

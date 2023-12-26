@@ -8,8 +8,8 @@ import avatar from '../../../images/avatar.jpeg';
 
 function AboutMe() {
     function onGithubHandler() {
-        const URL = 'https://github.com/YarZav';
-        window.open(URL, '_blank');
+        const url = 'https://github.com/YarZav';
+        window.open(url, '_blank');
     }
 
     return (
