@@ -1,10 +1,11 @@
 import React from 'react';
 import { Navigate } from "react-router-dom";
-import { jwtKey } from '../../utils/Constants';
+
+import { mainLocalStorage } from '../../utils/MainLocalStorage';
 
 const ProtectedRoute = ({ element: Component, ...props  }) => {
     function isLoggedIn() {
-        return localStorage.getItem(jwtKey);
+        return mainLocalStorage.getJwt();
     }
 
     return (

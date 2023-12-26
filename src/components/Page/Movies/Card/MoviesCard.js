@@ -22,12 +22,14 @@ function MoviesCard(props) {
 
     return(
         <div className='movies-card'>
-            <img className='movies-card__image' src={movie} alt='Movie preview'/>
+            <div className='movies-card__image-container'>
+                <img className='movies-card__image' src={props.movie.image.trailerLink} alt='Movie preview'/>
+            </div>
             <div className='movies-card__info-container'>
-                <p className='movies-card__title'>33 слова о дизайне</p>
+                <p className='movies-card__title'>{props.movie.nameRU}</p>
                 { getButton() }
             </div>
-            <p className='movies-card__duration'>1ч42м</p>
+            <p className='movies-card__duration'>{props.movie.duration} мин.</p>
         </div>
     )
 }

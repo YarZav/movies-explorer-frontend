@@ -7,9 +7,8 @@ import ProfileInput from './Input/ProfileInput';
 
 import UserContext from '../../../context/UserContext';
 
-import { authorisedApi } from '../../../utils/Api';
-
-import { jwtKey } from '../../../utils/Constants';
+import { authorisedApi } from '../../../utils/MainApi';
+import { mainLocalStorage } from '../../../utils/MainLocalStorage';
 
 function Profile() {
     const navigate = useNavigate();
@@ -47,7 +46,7 @@ function Profile() {
      }
 
     function signoutHandler() {
-        localStorage.removeItem(jwtKey);
+        mainLocalStorage.removeJwt();
         navigate('/signin');
     }
 

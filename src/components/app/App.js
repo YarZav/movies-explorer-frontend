@@ -11,9 +11,8 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import UserContext from '../../context/UserContext';
 
-import { jwtKey } from '../../utils/Constants';
-
-import { authorisedApi } from '../../utils/Api';
+import { authorisedApi } from '../../utils/MainApi';
+import { mainLocalStorage } from '../../utils/MainLocalStorage';
 
 function App() {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -27,13 +26,13 @@ function App() {
   // Fetch init data
 
   function getInitData() {
-    if (!localStorage.getItem(jwtKey)) {
+    if (!mainLocalStorage.getJwt()) {
       return;
     }
 
     setIsLoading(true);
 
-    Promise.all([authorisedApi.getUsersMe()]) 
+    authorisedApi.getUsersMe()
     .then(([usersMe]) => {
       setUser(usersMe.data);
     }) 

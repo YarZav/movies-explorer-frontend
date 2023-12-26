@@ -1,11 +1,32 @@
 import './SearchForm.css';
 
 import React, { useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import rightArrow from '../../../../images/rightArrow.svg';
 
-function SearchForm() {
+function SearchForm(props) {
+    const ref = useRef(null);
+
     const [searchText, setSearchText] = useState('');
+
+    // Life circle
+
+    useEffect(() => {
+        const handleEnter = event => {
+            props.onSearch(searchText);
+        };
+
+        const element = ref.current;
+
+        element.addEventListener('keypress', handleEnter);
+    
+        return () => {
+            element.removeEventListener('click', handleEnter);
+        };
+    }, []);
+
+    // Action
 
     function changeHandler(event) { 
         setSearchText(event.target.value)
@@ -13,10 +34,12 @@ function SearchForm() {
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        props.onSearch(searchText);
     }
 
     return(
-        <form className='search-form' name='search-form' onSubmit={handleSubmit}>
+        <form className='search-form' name='search-form' onSubmit={handleSubmit} noValidate>
             <div className='search-form__container'>
                 <div className='search-form__input-container'>
                     <input
@@ -29,7 +52,7 @@ function SearchForm() {
                         onChange={changeHandler}
                         required
                     />
-                    <button className='searh-form__button highlight' type='submit'>
+                    <button ref={ref} className='searh-form__button highlight' type='submit'>
                         <img src={rightArrow} alt='Right arrow'/>
                     </button>
                 </div>

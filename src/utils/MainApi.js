@@ -1,7 +1,6 @@
-import { jwtKey } from "./Constants";
-import { url } from "./Constants";
+import { mainLocalStorage } from "./MainLocalStorage";
 
-class Api {
+class MainApi {
     constructor(options) {
         this._baseUrl = options.baseUrl;
         this._authorised = options.authorised;
@@ -10,7 +9,7 @@ class Api {
     _makeHeaders() {
         if (this._authorised) {
             return {
-                'Authorization' : `Bearer ${localStorage.getItem(jwtKey)}`,
+                'Authorization' : `Bearer ${mainLocalStorage.getJwt()}`,
                 'Content-Type': 'application/json'
             }
         } else {
@@ -99,13 +98,15 @@ class Api {
     }
 }
 
-export const authorisedApi = new Api({
+const url = 'http://localhost:3000';
+
+export const authorisedApi = new MainApi({
     baseUrl: url,
     authorised: true
 });
 
 
-export const unauthorisedApi = new Api({
+export const unauthorisedApi = new MainApi({
     baseUrl: url,
     authorised: false
 });

@@ -7,8 +7,8 @@ import AuthInput from '../Input/AuthInput';
 import AuthMainButton from '../MainButton/AuthMainButton';
 import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 
-import { jwtKey } from '../../../utils/Constants';
-import { unauthorisedApi } from '../../../utils/Api';
+import { unauthorisedApi } from '../../../utils/MainApi';
+import { mainLocalStorage } from '../../../utils/MainLocalStorage';
 
 function Signin(props) {
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ function Signin(props) {
 
         unauthorisedApi.signin(email, password)
         .then(result => {
-            localStorage.setItem(jwtKey, result.token);
+            mainLocalStorage.setJwt(result.token);
             props.onUser(result);
             navigate('/movies');
         })

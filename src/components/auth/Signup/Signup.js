@@ -7,7 +7,7 @@ import AuthInput from '../Input/AuthInput';
 import AuthMainButton from '../MainButton/AuthMainButton';
 import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 
-import { unauthorisedApi } from '../../../utils/Api';
+import { unauthorisedApi } from '../../../utils/MainApi';
 
 function Signup() {
     const navigate = useNavigate();
