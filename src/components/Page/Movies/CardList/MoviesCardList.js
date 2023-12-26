@@ -66,7 +66,6 @@ function MoviesCardList(props) {
 
     function resizeHandle() {
         moviesPaging.startDebounce(() => {
-            console.log(1234);
             moviesPaging.resetMoviesOffset();
             initSearchedMovies();
         });

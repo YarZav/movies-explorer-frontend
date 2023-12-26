@@ -3,7 +3,7 @@ import { debounce } from "./MoviesDebounse";
 class MoviesPaging {
     constructor() {
         this.moviesOffset = 0;
-        this._moviesDebounse = debounce(() => this._func);
+        this._moviesDebounse = debounce(() => this._func());
     }
     
     _isLargeWindowWidth() {
