@@ -1,24 +1,25 @@
 import './Movies.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Content from '../../Content/Content';
 import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './CardList/MoviesCardList';
 
+import { moviesLocalStorage } from '../../../utils/MoviesLocalStorage';
+
 function Movies(props) {
-    const [searchText, setSearchText] = useState('');
-
-    // Actions
-
-    function searchHandle(value) {
-        setSearchText(value);
-    }
+    const [onSearch, setOnSearch] = useState('');
 
     return(
         <Content type='movies'>
-            <SearchForm onSearch={searchHandle} />
-            <MoviesCardList type={props.type} searchText={searchText}/>
+            <SearchForm 
+                onSearch={onSearch => setOnSearch(onSearch)}
+            />
+            <MoviesCardList 
+                type={props.type}
+                onSearch={onSearch}
+            />
         </Content>
     )
 }

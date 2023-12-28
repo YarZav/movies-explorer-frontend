@@ -9,6 +9,7 @@ import UserContext from '../../../context/UserContext';
 
 import { authorisedApi } from '../../../utils/MainApi';
 import { mainLocalStorage } from '../../../utils/MainLocalStorage';
+import { moviesLocalStorage } from '../../../utils/MoviesLocalStorage';
 
 function Profile() {
     const navigate = useNavigate();
@@ -47,6 +48,8 @@ function Profile() {
 
     function signoutHandler() {
         mainLocalStorage.removeJwt();
+        moviesLocalStorage.removeSearchText();
+        moviesLocalStorage.removeMovies();
         navigate('/signin');
     }
 

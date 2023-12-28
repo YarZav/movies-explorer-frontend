@@ -3,7 +3,7 @@ class MainLocalStorage {
         this._jwtKey = options.jwtKey;
     }
 
-    // Auth
+    // JWT token
 
     getJwt() {
         return localStorage.getItem(this._jwtKey);

@@ -7,6 +7,7 @@ import Preloader from '../../../Preloader/Preloader';
 
 import { moviesApi } from '../../../../utils/Movies';
 import { moviesPaging } from './MoviesPaging';
+import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
 function MoviesCardList(props) {
     const [isLoading, setIsLoading] = React.useState(false);
@@ -31,24 +32,55 @@ function MoviesCardList(props) {
 
     React.useEffect(() => {
         moviesPaging.resetMoviesOffset();
+        initMovies();
+    }, [props.type]);
+
+    React.useEffect(() => {
+        moviesPaging.resetMoviesOffset();
         initSearchedMovies();
-    }, [props.searchText]);
+    }, [props.onSearch]);
+
+    React.useEffect(() => {
+        initSearchedMovies();
+    }, [movies]);
 
     React.useEffect(() => {
         initDisplayedMovies();
     }, [searchedMovies]);
 
-
     // Init movies
 
     function initMovies() {
-        setIsLoading(true);
+        if (props.type === 'movies') {
+            initRemoteMovies();
+            return;
+        }
+        if (props.type === 'saved-movies') {
+            initSavedMovies();
+            return;
+        }
+    }
+
+    function initSavedMovies() {
+        setMovies([]);
+    }
+
+    function initRemoteMovies() {
+        const movies = moviesLocalStorage.getMovies();
+        if (movies !== null) {
+            setMovies(movies);
+            return;
+        }
     
+        setIsLoading(true);
+
         moviesApi.getMovies()
         .then((result) => {
+            moviesLocalStorage.setMovies(result);
             setMovies(result);
         }) 
         .catch((error) => {
+            console.log(error);
             showError();
         })
         .finally(() => {
@@ -67,21 +99,24 @@ function MoviesCardList(props) {
     function resizeHandle() {
         moviesPaging.startDebounce(() => {
             moviesPaging.resetMoviesOffset();
-            initSearchedMovies();
+            initMovies();
         });
     }
 
     // Draw movies
 
+    function getSearchText() {
+        return (moviesLocalStorage.getSearchText() ?? '').trim();
+    }
+
     function initSearchedMovies() {
-        const searchText = getSearchText();
+        const searchText = getSearchText().toLowerCase();
 
         const filteredMovies = movies
         .filter(movie => {
             let nameRU = movie.nameRU.trim().toLowerCase();
             let nameEN = movie.nameEN.trim().toLowerCase();
-            let wrappedSearchText = searchText.toLowerCase()
-            return nameRU.includes(wrappedSearchText) || nameEN.includes(wrappedSearchText);
+            return nameRU.includes(searchText) || nameEN.includes(searchText);
         });
         setSearchedMovies(filteredMovies);
     }
@@ -119,9 +154,7 @@ function MoviesCardList(props) {
     }
 
     function getMoviesContent() {
-        const searchText = getSearchText();
-
-        if (searchText.length === 0) {
+        if (getSearchText().length === 0) {
             return <h1 className='movies__info'>Нужно ввести ключевое слово</h1>
         }
 
@@ -133,12 +166,6 @@ function MoviesCardList(props) {
             { getMoviesCardlist() }
             { getLoadMoreButton() }
         </div>
-    }
-
-     // Other
-
-    function getSearchText() {
-        return props.searchText.trim()
     }
 
     return(

@@ -1,40 +1,47 @@
 import './SearchForm.css';
 
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useEffect, useRef } from 'react';
+
+import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
 import rightArrow from '../../../../images/rightArrow.svg';
 
 function SearchForm(props) {
     const ref = useRef(null);
 
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearcText] = useState(moviesLocalStorage.getSearchText() ?? '');
 
     // Life circle
 
     useEffect(() => {
         const handleEnter = event => {
-            props.onSearch(searchText);
+            if (event.keyCode === 13) {
+                const searchText = document.querySelector('.search-form__input').value;
+                props.onSearch(searchText);        
+            }
         };
-
         const element = ref.current;
 
-        element.addEventListener('keypress', handleEnter);
+        element.addEventListener('keyup', handleEnter);
     
         return () => {
-            element.removeEventListener('click', handleEnter);
+            element.removeEventListener('keyup', handleEnter);
         };
     }, []);
 
     // Action
 
-    function changeHandler(event) { 
-        setSearchText(event.target.value)
+    function changeHandler(event) {
+        const value = event.target.value;
+        setSearcText(value);
+        moviesLocalStorage.setSearchText(value);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
 
+        const searchText = event.target.querySelector('.search-form__input').value;
         props.onSearch(searchText);
     }
 
