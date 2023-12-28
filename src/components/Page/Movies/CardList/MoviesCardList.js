@@ -23,10 +23,10 @@ function MoviesCardList(props) {
     React.useEffect(() => {
         initMovies();
 
-        window.addEventListener("resize", resizeHandle);
+        window.addEventListener("resize", resizeHandler);
     
         return () => {
-            window.removeEventListener('resize', resizeHandle);
+            window.removeEventListener('resize', resizeHandler);
         };
     }, []);
 
@@ -96,7 +96,7 @@ function MoviesCardList(props) {
 
     // Reset movies
 
-    function resizeHandle() {
+    function resizeHandler() {
         moviesPaging.startDebounce(() => {
             moviesPaging.resetMoviesOffset();
             initMovies();
@@ -128,7 +128,7 @@ function MoviesCardList(props) {
 
     // Actions
     
-    function moreHandle() {
+    function moreHandler() {
         moviesPaging.increaseMoviesOffset();
         initDisplayedMovies();
     }
@@ -149,7 +149,7 @@ function MoviesCardList(props) {
     function getLoadMoreButton() {
         const isAllMoviesDisplayed = searchedMovies.length === displayedMovies.length
         return !isAllMoviesDisplayed && <div className='movies-card-list__button-container'>
-            <button className='movies-card-list__load highlight' onClick={moreHandle}>Ещё</button>
+            <button className='movies-card-list__load highlight' onClick={moreHandler}>Ещё</button>
         </div> 
     }
 

@@ -3,12 +3,12 @@ import './Footer.css';
 import Content from "../Content/Content";
 
 function Footer() {
-    function onBootcampHandler() {
+    function bootcampHandler() {
         const url = 'https://practicum.yandex.ru/';
         window.open(url, '_blank');
     }
 
-    function onGitHubHandler() {
+    function gitHubHandler() {
         const url = 'https://github.com';
         window.open(url, '_blank');
     }
@@ -21,8 +21,8 @@ function Footer() {
                 <div className='footer__description'>
                     <p className='footer__copyright'>&copy; 2023</p>
                     <div className='footer__links'>
-                        <button className='footer__button highlight' onClick={onBootcampHandler}>Яндекс.Практикум</button>
-                        <button className='footer__button highlight' onClick={onGitHubHandler}>Github</button>
+                        <button className='footer__button highlight' onClick={bootcampHandler}>Яндекс.Практикум</button>
+                        <button className='footer__button highlight' onClick={gitHubHandler}>Github</button>
                     </div>
                 </div>
             </footer>

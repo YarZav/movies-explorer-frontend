@@ -5,6 +5,22 @@ import { moviesUrl } from '../../../../utils/Movies';
 import cross from '../../../../images/cross.svg';
 
 function MoviesCard(props) {
+    // Actions
+    function imageHandler() {
+        let url = props.movie.trailerLink;
+        window.open(url, '_blank');
+    }
+
+    function saveMovieHandler() {
+
+    }
+
+    function removeMovieHandler() {
+
+    }
+
+    // Components
+
     function getCrossButton() {
         return <button className='movies-card__remove highlight'>
             <img src={cross} alt='Cross' />
@@ -21,11 +37,6 @@ function MoviesCard(props) {
         return crossButton || selectButton;
     }
 
-    function imageClickHandler() {
-        let url = props.movie.trailerLink;
-        window.open(url, '_blank');
-    }
-
     function getDuration() {
         const hours = parseInt(props.movie.duration / 60);
         const minutes = parseInt(props.movie.duration - hours * 60);
@@ -39,7 +50,7 @@ function MoviesCard(props) {
 
     return(
         <div className='movies-card'>
-            <div className='movies-card__image-container highlight' onClick={imageClickHandler} >
+            <div className='movies-card__image-container highlight' onClick={imageHandler} >
                 <img className='movies-card__image' src={moviesUrl + "/" + props.movie.image.url} alt='Movie preview'/>
             </div>
             <div className='movies-card__info-container'>

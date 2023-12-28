@@ -20,7 +20,7 @@ function Signup() {
 
     // Signup
 
-    function handleSubmit(event) {
+    function submitHandler(event) {
         event.preventDefault();
 
         setIsLoading(true);
@@ -39,32 +39,32 @@ function Signup() {
 
     // States
 
-    function handleChangeName(value) {
+    function changeNameHandler(value) {
         setName(value);
     }
 
-    function handleChangeMail(value) {
+    function changeMailHandler(value) {
         setEmail(value);
     }
 
-    function handleChangePassword(value) {
+    function changePasswordHandler(value) {
         setPassowrd(value);
     }
 
-    function handleSignin() {
+    function signinHandler() {
         navigate('/signin');
     }
 
     return(
-        <form className='signup' name='signin' onSubmit={handleSubmit}>
+        <form className='signup' name='signin' onSubmit={submitHandler}>
             <div className='signup__input-container'>
-                <AuthInput type='text' title='Имя' value={name} onChange={handleChangeName} />
-                <AuthInput type='email' title='E-mail' value={email} onChange={handleChangeMail} />
-                <AuthInput type='password' title='Пароль' value={password} onChange={handleChangePassword} />
+                <AuthInput type='text' title='Имя' value={name} onChange={changeNameHandler} />
+                <AuthInput type='email' title='E-mail' value={email} onChange={changeMailHandler} />
+                <AuthInput type='password' title='Пароль' value={password} onChange={changePasswordHandler} />
             </div>
             <div className='signup__button-container'>
                 <AuthMainButton value={isLoading ? 'Регистрация...' : 'Зарегистрироваться'}/>
-                <SecondaryButton description='Уже зарегистрированы?' value='Войти' onClick={handleSignin}/>
+                <SecondaryButton description='Уже зарегистрированы?' value='Войти' onClick={signinHandler}/>
             </div>
         </form>
     )

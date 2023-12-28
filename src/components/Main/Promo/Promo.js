@@ -6,7 +6,7 @@ import Section from '../Section/MainSection'
 import promo from '../../../images/promo.svg';
 
 function Promo() {
-    function onLearnMoreHandler() {
+    function learnMoreHandler() {
         let element = document.querySelector('.content_about-project');
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
@@ -19,7 +19,7 @@ function Promo() {
                     <div className='promo__info'>
                         <h1 className='promo__title'>Учебный проект студента факультета Веб-разработки.</h1>
                         <p className='promo__description'>Листайте ниже, чтобы узнать больше<br />про этот проект и его создателя.</p>
-                        <button className='promo__button highlight' onClick={onLearnMoreHandler}>Узнать больше</button>
+                        <button className='promo__button highlight' onClick={learnMoreHandler}>Узнать больше</button>
                     </div>
                 </div>
             </Section>

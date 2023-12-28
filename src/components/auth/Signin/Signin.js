@@ -29,7 +29,7 @@ function Signin(props) {
 
     // Signin
 
-    function handleSubmit(event) {
+    function submitHandler(event) {
         event.preventDefault();
 
         setIsLoading(true)
@@ -50,27 +50,27 @@ function Signin(props) {
 
     // States
 
-    function handleChangeMail(value) {
+    function changeMailHandler(value) {
         setEmail(value);
     }
 
-    function handleChangePassword(value) {
+    function changePasswordHandler(value) {
         setPassowrd(value);
     }
 
-    function handleSignup() {
+    function signupHandler() {
         navigate('/signup');
     }
 
     return(
-        <form className='signin' name='signin' onSubmit={handleSubmit}>
+        <form className='signin' name='signin' onSubmit={submitHandler}>
             <div className='signin__input-container'>
-                <AuthInput type='email' title='E-mail' value={email} onChange={handleChangeMail} />
-                <AuthInput type='password' title='Пароль' value={password} onChange={handleChangePassword} />
+                <AuthInput type='email' title='E-mail' value={email} onChange={changeMailHandler} />
+                <AuthInput type='password' title='Пароль' value={password} onChange={changePasswordHandler} />
             </div>
             <div className='signin__button-container'>
                 <AuthMainButton value={isLoading ? 'Вход...' : 'Войти'}/>
-                <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={handleSignup}/>
+                <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={signupHandler}/>
             </div>
         </form>
     )

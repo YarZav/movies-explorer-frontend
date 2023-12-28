@@ -1,7 +1,7 @@
 import './AuthInput.css';
 
 function AuthInput(props) {
-    function handleChange(event) {
+    function changeHandler(event) {
         props.onChange(event.target.value)
     }
 
@@ -13,7 +13,7 @@ function AuthInput(props) {
                 type={props.type}
                 name={props.type}
                 value={props.value || ''}
-                onChange={handleChange}
+                onChange={changeHandler}
                 required
             />
         </div>

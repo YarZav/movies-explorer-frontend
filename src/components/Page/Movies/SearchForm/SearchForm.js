@@ -15,7 +15,7 @@ function SearchForm(props) {
     // Life circle
 
     useEffect(() => {
-        const handleEnter = event => {
+        const enterPressHandler = event => {
             if (event.keyCode === 13) {
                 const searchText = document.querySelector('.search-form__input').value;
                 props.onSearch(searchText);        
@@ -23,10 +23,10 @@ function SearchForm(props) {
         };
         const element = ref.current;
 
-        element.addEventListener('keyup', handleEnter);
+        element.addEventListener('keyup', enterPressHandler);
     
         return () => {
-            element.removeEventListener('keyup', handleEnter);
+            element.removeEventListener('keyup', enterPressHandler);
         };
     }, []);
 
@@ -38,7 +38,7 @@ function SearchForm(props) {
         moviesLocalStorage.setSearchText(value);
     }
 
-    function handleSubmit(event) {
+    function submitHandler(event) {
         event.preventDefault();
 
         const searchText = event.target.querySelector('.search-form__input').value;
@@ -46,7 +46,7 @@ function SearchForm(props) {
     }
 
     return(
-        <form className='search-form' name='search-form' onSubmit={handleSubmit} noValidate>
+        <form className='search-form' name='search-form' onSubmit={submitHandler} noValidate>
             <div className='search-form__container'>
                 <div className='search-form__input-container'>
                     <input
