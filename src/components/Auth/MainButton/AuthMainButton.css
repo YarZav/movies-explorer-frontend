@@ -10,6 +10,10 @@
     border-radius: 3px;
 }
 
+.auth-main-button_disabled {
+    background-color: #888888;
+}
+
 @media screen and (max-width: 767px) {
     .auth-main-button {
         font-size: 12px;

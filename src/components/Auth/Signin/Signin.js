@@ -19,6 +19,14 @@ function Signin(props) {
     const [email, setEmail] = useState('');
     const [password, setPassowrd] = useState('');
 
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+
+    const [isSigninEnabled, setIsSigninEnabled] = useState(false);
+
+    const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+
     // Use Effects
 
     React.useEffect(() => {
@@ -32,6 +40,12 @@ function Signin(props) {
     function submitHandler(event) {
         event.preventDefault();
 
+        if (isDataValid()) {
+            signin();
+        }
+    }
+
+    function signin() {
         setIsLoading(true)
 
         unauthorisedApi.signin(email, password)
@@ -42,19 +56,44 @@ function Signin(props) {
         })
         .catch(error => {
             console.log(error);
+            showError(error);
         })
         .finally(() => {
             setIsLoading(false)
         });
     }
 
+    function showError(error) {
+        if (window.confirm(error)) {
+            signin();
+        }
+    }
+
+    function isDataValid() {
+        return emailRegex.test(email) && passwordRegex.test(password)
+    }
+
     // States
 
-    function changeMailHandler(value) {
+    function changeEmailHandler(value) {
+        if (!emailRegex.test(email)) {
+            setEmailError('Некорректная почта');
+        } else {
+            setEmailError('');
+        }
+
+        setIsSigninEnabled(isDataValid());
         setEmail(value);
     }
 
     function changePasswordHandler(value) {
+        if (!passwordRegex.test(password)) {
+            setPasswordError('Некорректный пароль');
+        } else {
+            setPasswordError('');
+        }
+
+        setIsSigninEnabled(isDataValid());
         setPassowrd(value);
     }
 
@@ -65,11 +104,26 @@ function Signin(props) {
     return(
         <form className='signin' name='signin' onSubmit={submitHandler}>
             <div className='signin__input-container'>
-                <AuthInput type='email' title='E-mail' value={email} onChange={changeMailHandler} />
-                <AuthInput type='password' title='Пароль' value={password} onChange={changePasswordHandler} />
+                <AuthInput 
+                    type='email' 
+                    title='E-mail'
+                    value={email} 
+                    error={emailError}
+                    onChange={changeEmailHandler} 
+                />
+                <AuthInput 
+                    type='password' 
+                    title='Пароль' 
+                    value={password} 
+                    error={passwordError} 
+                    onChange={changePasswordHandler} 
+                />
             </div>
             <div className='signin__button-container'>
-                <AuthMainButton value={isLoading ? 'Вход...' : 'Войти'}/>
+                <AuthMainButton 
+                    value={isLoading ? 'Вход...' : 'Войти'}
+                    disabled={!isSigninEnabled}
+                />
                 <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={signupHandler}/>
             </div>
         </form>
