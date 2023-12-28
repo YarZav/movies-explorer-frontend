@@ -6,8 +6,6 @@ import Content from '../../Content/Content';
 import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './CardList/MoviesCardList';
 
-import { moviesLocalStorage } from '../../../utils/MoviesLocalStorage';
-
 function Movies(props) {
     const [onSearch, setOnSearch] = useState('');
 

@@ -5,7 +5,7 @@ import React from 'react';
 import MoviesCard from '../Card/MoviesCard';
 import Preloader from '../../../Preloader/Preloader';
 
-import { moviesApi } from '../../../../utils/Movies';
+import { moviesApi } from '../../../../utils/MoviesApi';
 import { moviesPaging } from './MoviesPaging';
 import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
@@ -66,6 +66,8 @@ function MoviesCardList(props) {
     }
 
     function initRemoteMovies() {
+        // moviesLocalStorage.removeMovies();
+
         const movies = moviesLocalStorage.getMovies();
         if (movies !== null) {
             setMovies(movies);
@@ -76,6 +78,7 @@ function MoviesCardList(props) {
 
         moviesApi.getMovies()
         .then((result) => {
+            result.forEach(element => element.isLiked = false)
             moviesLocalStorage.setMovies(result);
             setMovies(result);
         }) 

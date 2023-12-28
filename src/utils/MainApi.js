@@ -63,7 +63,7 @@ class MainApi {
         return this._makeRequest('POST', 'signin', { email: email, password: password });
     }
 
-    // Mesto
+    // Movies
 
     getUsersMe() {
         return this._makeRequest('GET', 'users/me');
@@ -77,20 +77,8 @@ class MainApi {
         return this._makeRequest('GET', 'movies');
     }
 
-    postMovies(description, image, thumbnail, trailerLink, movieId, nameRU, nameEN) {
-        return this._makeRequest(
-            'POST', 
-            'movies', 
-            { 
-                description: description, 
-                image: image,
-                thumbnail: thumbnail,
-                trailerLink: trailerLink,
-                movieId: movieId,
-                nameRU: nameRU,
-                nameEN: nameEN
-            }
-        );
+    postMovies(movie) {
+        return this._makeRequest('POST', 'movies', { ...movie });
     }
 
     deleteMovies(id) {
