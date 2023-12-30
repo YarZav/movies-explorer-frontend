@@ -11,7 +11,9 @@ function MoviesCard(props) {
     const [isLiked, setIsLiked] = React.useState(false);
 
     React.useEffect(() => {
+        console.log(props.movie);
         setIsLiked(props.movie.isLiked || false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // Actions

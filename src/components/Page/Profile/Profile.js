@@ -24,7 +24,7 @@ function Profile() {
     const [isProfileUpdateEnabled, setIsProfileUpdateEnabled] = useState(false);
 
     const nameRegex = /^([a-zA-Zа-яА-ЯёЁ-\s])+$/;
-    const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const emailRegex = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
     const editButton = document.getElementsByClassName('.profile__edit');
 
@@ -36,16 +36,21 @@ function Profile() {
     }, [user.email, user.name]);
 
     React.useEffect(() => {
-        setIsProfileUpdateEnabled(isDataValid());
-        editButton.disabled = true;
+        updateEditButton();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
 
     React.useEffect(() => {
-        setIsProfileUpdateEnabled(isDataValid());
-        editButton.disabled = true;
+        updateEditButton();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [email]);
 
     // Actions
+
+    function updateEditButton() {
+        setIsProfileUpdateEnabled(isDataValid());
+        editButton.disabled = isDataValid();
+    }
 
     function editHandler() {
         if (!isDataValid()) {
@@ -90,6 +95,7 @@ function Profile() {
 
     function nameChangeHandler(value) {
         setName(value);
+        updateEditButton();
      }
 
     function mailChangeHandler(value) { 

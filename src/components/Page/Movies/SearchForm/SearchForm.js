@@ -1,6 +1,6 @@
 import './SearchForm.css';
 
-import React, { useState} from 'react';
+import React from 'react';
 import { useEffect, useRef } from 'react';
 
 import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
@@ -10,17 +10,11 @@ import rightArrow from '../../../../images/rightArrow.svg';
 function SearchForm(props) {
     const ref = useRef(null);
 
-    const [searchText, setSearcText] = useState(moviesLocalStorage.getSearchText() ?? '');
-
-    // Life circle
-
     useEffect(() => {
-        document.querySelector('.search-form__checkbox').checked = moviesLocalStorage.getIsShort();
-
         const enterPressHandler = event => {
             if (event.keyCode === 13) {
-                const searchText = document.querySelector('.search-form__input').value;
-                props.onSearch(searchText);
+                const input = document.querySelector('.search-form__input');
+                props.onSearch(input.value);
             }
         };
         const element = ref.current;
@@ -30,27 +24,21 @@ function SearchForm(props) {
         return () => {
             element.removeEventListener('keyup', enterPressHandler);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    // Action
 
     function changeHandler(event) {
         const value = event.target.value;
-        setSearcText(value);
         moviesLocalStorage.setSearchText(value);
     }
 
     function submitHandler(event) {
         event.preventDefault();
-
-        const searchText = event.target.querySelector('.search-form__input').value;
-        props.onSearch(searchText);
     }
 
-    function checkboxHandler() {
-        const isShort = document.querySelector('.search-form__checkbox').checked
-        moviesLocalStorage.setIsShort(isShort);
-        props.onIsShort(isShort);
+    function checkboxHandler(event) {
+        const checked = event.target.checked;
+        moviesLocalStorage.setIsShort(checked);
     }
 
     return(
@@ -62,7 +50,7 @@ function SearchForm(props) {
                         type='text'
                         id='search-form__input'
                         name='search-form__input'
-                        value={searchText || ''}
+                        defaultValue={moviesLocalStorage.getSearchText()}
                         placeholder='Фильм'
                         onChange={changeHandler}
                         required
@@ -74,7 +62,12 @@ function SearchForm(props) {
                 <div className='search-form__line'></div>
                 <div className='search-form__switch-container highlight]'> 
                     <label className='search-form__switch'>
-                        <input className='search-form__checkbox' type='checkbox' onClick={checkboxHandler} />
+                        <input 
+                            className='search-form__checkbox' 
+                            type='checkbox'
+                            defaultChecked={moviesLocalStorage.getIsShort()}
+                            onClick={checkboxHandler} 
+                        />
                         <span className='search-form__slider round' />
                     </label>
                     <p className='search-form__short-films'>Короткометражки</p>

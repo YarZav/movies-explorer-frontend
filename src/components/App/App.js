@@ -8,6 +8,7 @@ import Auth from '../Auth/Auth';
 import Page from '../Page/Page';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Preloader from '../Preloader/Preloader';
 
 import UserContext from '../../context/UserContext';
 
@@ -51,7 +52,8 @@ function App() {
   return (
     <UserContext.Provider value={user}>
       <div className='app'>
-        <BrowserRouter>
+        { isLoading && <Preloader /> }
+        { !isLoading && <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/signup" element={<Auth type='signup' />} />
@@ -61,7 +63,7 @@ function App() {
             <Route path="/saved-movies" element={<ProtectedRoute element={Page} type='saved-movies'/>} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </BrowserRouter>
+        </BrowserRouter> }
       </div>
     </UserContext.Provider>
   );

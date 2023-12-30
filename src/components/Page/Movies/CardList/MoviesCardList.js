@@ -5,12 +5,15 @@ import React from 'react';
 import MoviesCard from '../Card/MoviesCard';
 import Preloader from '../../../Preloader/Preloader';
 
+import { authorisedApi } from '../../../../utils/MainApi';
 import { moviesApi } from '../../../../utils/MoviesApi';
 import { moviesPaging } from './MoviesPaging';
 import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
 function MoviesCardList(props) {
     const [isLoading, setIsLoading] = React.useState(false);
+    // Сохраненные фильмы
+    const [savedMovies, setSavedMovies] = React.useState([]);
     // Всего фильмов
     const [movies, setMovies] = React.useState([]);
     // Фильмы отфильтрованные по поисковой строке
@@ -28,29 +31,41 @@ function MoviesCardList(props) {
         return () => {
             window.removeEventListener('resize', resizeHandler);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     React.useEffect(() => {
         moviesPaging.resetMoviesOffset();
         initMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.type]);
 
     React.useEffect(() => {
         moviesPaging.resetMoviesOffset();
         initSearchedMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.onSearch]);
 
     React.useEffect(() => {
         moviesPaging.resetMoviesOffset();
         initSearchedMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.onIsShort]);
 
     React.useEffect(() => {
+        movies.forEach(movie => movie.isLiked = true)
+        console.log(movies);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [savedMovies]);
+
+    React.useEffect(() => {
         initSearchedMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movies]);
 
     React.useEffect(() => {
         initDisplayedMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchedMovies]);
 
     // Init movies
@@ -66,14 +81,11 @@ function MoviesCardList(props) {
         }
     }
 
-    function initSavedMovies() {
-        setMovies([]);
-    }
-
     function initRemoteMovies() {
         const movies = moviesLocalStorage.getMovies();
         if (movies !== null) {
             setMovies(movies);
+            initSavedMovies();
             return;
         }
     
@@ -81,9 +93,26 @@ function MoviesCardList(props) {
 
         moviesApi.getMovies()
         .then((result) => {
-            result.forEach(element => element.isLiked = false)
             moviesLocalStorage.setMovies(result);
             setMovies(result);
+
+            initSavedMovies();
+        }) 
+        .catch((error) => {
+            console.log(error);
+            showError();
+        })
+        .finally(() => {
+            setIsLoading(false);
+        });
+    }
+
+    function initSavedMovies() {
+        setIsLoading(true);
+
+        authorisedApi.getMovies()
+        .then((result) => {
+            setSavedMovies(result);
         }) 
         .catch((error) => {
             console.log(error);

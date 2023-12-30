@@ -23,7 +23,7 @@ function AboutMe() {
                         <p className='about-me__description'>Учу WEB разработку.</p>
                         <button className='about-me__github highlight' onClick={githubHandler}>GitHub</button>
                     </div>
-                    <img className='about-me__image' src={avatar} alt='Avatar image' />
+                    <img className='about-me__image' src={avatar} alt='Avatar' />
                 </div>
             </Section>
         </Content>

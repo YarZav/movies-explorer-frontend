@@ -25,7 +25,7 @@ function Signup() {
     const [isSignupEnabled, setIsSignupEnabled] = useState(false);
 
     const nameRegex = /^([a-zA-Zа-яА-ЯёЁ-\s])+$/;
-    const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const emailRegex = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
 
     // Life circle
@@ -43,6 +43,7 @@ function Signup() {
             nameRegex.test(name) ? setNameError('') : setNameError('Некорректное имя');
         }
         setIsSignupEnabled(isDataValid());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [name]);
 
     React.useEffect(() => {
@@ -52,6 +53,7 @@ function Signup() {
             emailRegex.test(email) ? setEmailError('') : setEmailError('Некорректная почта');
         }
         setIsSignupEnabled(isDataValid());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [email]);
 
     React.useEffect(() => {
@@ -61,6 +63,7 @@ function Signup() {
             passwordRegex.test(password) ? setPasswordError('') : setPasswordError('Некорректный пароль');
         }
         setIsSignupEnabled(isDataValid());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [password]);
 
     // Signup

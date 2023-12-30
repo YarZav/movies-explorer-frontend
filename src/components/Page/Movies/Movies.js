@@ -1,6 +1,6 @@
 import './Movies.css';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import Content from '../../Content/Content';
 import SearchForm from './SearchForm/SearchForm';

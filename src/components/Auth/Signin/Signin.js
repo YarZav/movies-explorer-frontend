@@ -10,13 +10,9 @@ import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 import { unauthorisedApi } from '../../../utils/MainApi';
 import { mainLocalStorage } from '../../../utils/MainLocalStorage';
 
-import UserContext from '../../../context/UserContext';
-
 function Signin(props) {
     const navigate = useNavigate();
     const location = useLocation();
-
-    const user = React.useContext(UserContext);
 
     const [isLoading, setIsLoading] = React.useState(false);
 
@@ -28,7 +24,7 @@ function Signin(props) {
 
     const [isSigninEnabled, setIsSigninEnabled] = useState(false);
 
-    const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const emailRegex = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
 
     // Use Effects
@@ -40,6 +36,7 @@ function Signin(props) {
         if (location.state && location.state.email) {
             setEmail(location.state.email || '');
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     React.useEffect(() => {
@@ -49,6 +46,7 @@ function Signin(props) {
             emailRegex.test(email) ? setEmailError('') : setEmailError('Некорректная почта');
         }
         setIsSigninEnabled(isDataValid());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [email]);
 
     React.useEffect(() => {
@@ -58,6 +56,7 @@ function Signin(props) {
             passwordRegex.test(password) ? setPasswordError('') : setPasswordError('Некорректный пароль');
         }
         setIsSigninEnabled(isDataValid());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [password]);
 
     // Signin
