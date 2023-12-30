@@ -15,12 +15,12 @@ function SearchForm(props) {
     // Life circle
 
     useEffect(() => {
-        document.querySelector('.search-form__checkbox').checked = moviesLocalStorage.getIsShort() === 'true';
+        document.querySelector('.search-form__checkbox').checked = moviesLocalStorage.getIsShort();
 
         const enterPressHandler = event => {
             if (event.keyCode === 13) {
                 const searchText = document.querySelector('.search-form__input').value;
-                props.onSearch(searchText);        
+                props.onSearch(searchText);
             }
         };
         const element = ref.current;
@@ -48,9 +48,9 @@ function SearchForm(props) {
     }
 
     function checkboxHandler() {
-        moviesLocalStorage.setIsShort(document.querySelector('.search-form__checkbox').checked);
-        // console.log(moviesLocalStorage.getIsShort());
-        // moviesLocalStorage.getIsShort();
+        const isShort = document.querySelector('.search-form__checkbox').checked
+        moviesLocalStorage.setIsShort(isShort);
+        props.onIsShort(isShort);
     }
 
     return(

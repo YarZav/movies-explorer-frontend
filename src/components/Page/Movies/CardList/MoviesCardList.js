@@ -41,6 +41,11 @@ function MoviesCardList(props) {
     }, [props.onSearch]);
 
     React.useEffect(() => {
+        moviesPaging.resetMoviesOffset();
+        initSearchedMovies();
+    }, [props.onIsShort]);
+
+    React.useEffect(() => {
         initSearchedMovies();
     }, [movies]);
 
@@ -112,14 +117,26 @@ function MoviesCardList(props) {
         return (moviesLocalStorage.getSearchText() ?? '').trim();
     }
 
+    function getIsShort() {
+        return moviesLocalStorage.getIsShort()
+    }
+
     function initSearchedMovies() {
         const searchText = getSearchText().toLowerCase();
+        const isShort = getIsShort();
 
         const filteredMovies = movies
         .filter(movie => {
             let nameRU = movie.nameRU.trim().toLowerCase();
             let nameEN = movie.nameEN.trim().toLowerCase();
             return nameRU.includes(searchText) || nameEN.includes(searchText);
+        })
+        .filter(movie => {
+            if (isShort) {
+                return movie.duration <= 40;
+            } else {
+                return true;
+            }
         });
         setSearchedMovies(filteredMovies);
     }

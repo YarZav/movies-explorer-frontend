@@ -22,7 +22,7 @@ class MoviesLocalStorage {
     // Is short movies
 
     getIsShort() {
-        return localStorage.getItem(this._isShort);
+        return localStorage.getItem(this._isShort) === 'true';
     }
 
     setIsShort(isShort) {
