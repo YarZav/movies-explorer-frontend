@@ -15,6 +15,8 @@ function SearchForm(props) {
     // Life circle
 
     useEffect(() => {
+        document.querySelector('.search-form__checkbox').checked = moviesLocalStorage.getIsShort() === 'true';
+
         const enterPressHandler = event => {
             if (event.keyCode === 13) {
                 const searchText = document.querySelector('.search-form__input').value;
@@ -45,6 +47,12 @@ function SearchForm(props) {
         props.onSearch(searchText);
     }
 
+    function checkboxHandler() {
+        moviesLocalStorage.setIsShort(document.querySelector('.search-form__checkbox').checked);
+        // console.log(moviesLocalStorage.getIsShort());
+        // moviesLocalStorage.getIsShort();
+    }
+
     return(
         <form className='search-form' name='search-form' onSubmit={submitHandler} noValidate>
             <div className='search-form__container'>
@@ -66,7 +74,7 @@ function SearchForm(props) {
                 <div className='search-form__line'></div>
                 <div className='search-form__switch-container highlight]'> 
                     <label className='search-form__switch'>
-                        <input className='search-form__checkbox' type='checkbox' />
+                        <input className='search-form__checkbox' type='checkbox' onClick={checkboxHandler} />
                         <span className='search-form__slider round' />
                     </label>
                     <p className='search-form__short-films'>Короткометражки</p>

@@ -2,6 +2,7 @@ class MoviesLocalStorage {
     constructor(options) {
         this._searchTextKey = options.searchTextKey;
         this._moviesKey = options.moviesKey;
+        this._isShort = options.isShort;
     }
 
     // SearchText
@@ -16,6 +17,20 @@ class MoviesLocalStorage {
 
     removeSearchText() {
         localStorage.removeItem(this._searchTextKey);
+    }
+
+    // Is short movies
+
+    getIsShort() {
+        return localStorage.getItem(this._isShort);
+    }
+
+    setIsShort(isShort) {
+        localStorage.setItem(this._isShort, isShort);
+    }
+
+    removeIsShort() {
+        localStorage.removeItem(this._isShort);
     }
 
     // Movies
@@ -35,8 +50,10 @@ class MoviesLocalStorage {
 
 const searchTextKey = 'search-text';
 const moviesKey = 'movies';
+const isShortKey = 'isShort';
 
 export const moviesLocalStorage = new MoviesLocalStorage({
     searchTextKey: searchTextKey,
-    moviesKey: moviesKey
+    moviesKey: moviesKey,
+    isShortKey: isShortKey
 });

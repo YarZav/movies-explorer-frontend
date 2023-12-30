@@ -81,6 +81,7 @@ function Profile() {
     function signoutHandler() {
         mainLocalStorage.removeJwt();
         moviesLocalStorage.removeSearchText();
+        moviesLocalStorage.removeIsShort();
         moviesLocalStorage.removeMovies();
         navigate('/signin');
     }
