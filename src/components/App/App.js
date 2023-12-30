@@ -33,7 +33,7 @@ function App() {
     setIsLoading(true);
 
     authorisedApi.getUsersMe()
-    .then(([usersMe]) => {
+    .then((usersMe) => {
       setUser(usersMe.data);
     }) 
     .catch((error) => {

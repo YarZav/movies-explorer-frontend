@@ -45,6 +45,10 @@
     color: #ffffff;
 }
 
+.profile__edit_disabled {
+    color: #888888;
+}
+
 .profile__signout {
     padding: 0;
     background: none;

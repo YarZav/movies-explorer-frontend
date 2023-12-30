@@ -28,6 +28,41 @@ function Signup() {
     const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
 
+    // Life circle
+
+    React.useEffect(() => {
+        setNameError('');
+        setEmailError('');
+        setPasswordError('');
+    }, []);
+
+    React.useEffect(() => {
+        if (name.length === 0) {
+            setNameError('');
+        } else {
+            nameRegex.test(name) ? setNameError('') : setNameError('Некорректное имя');
+        }
+        setIsSignupEnabled(isDataValid());
+    }, [name]);
+
+    React.useEffect(() => {
+        if (email.length === 0) {
+            setEmailError('');
+        } else {
+            emailRegex.test(email) ? setEmailError('') : setEmailError('Некорректная почта');
+        }
+        setIsSignupEnabled(isDataValid());
+    }, [email]);
+
+    React.useEffect(() => {
+        if (password.length === 0) {
+            setPasswordError('')
+        } else {
+            passwordRegex.test(password) ? setPasswordError('') : setPasswordError('Некорректный пароль');
+        }
+        setIsSignupEnabled(isDataValid());
+    }, [password]);
+
     // Signup
 
     function submitHandler(event) {
@@ -66,35 +101,14 @@ function Signup() {
     // Actions
 
     function changeNameHandler(value) {
-        if (!nameRegex.test(name)) {
-            setNameError('Некорректное имя');
-        } else {
-            setNameError('');
-        }
-
-        setIsSignupEnabled(isDataValid());
         setName(value);
     }
 
     function changeEmailHandler(value) {
-        if (!emailRegex.test(email)) {
-            setEmailError('Некорректная почта');
-        } else {
-            setEmailError('');
-        }
-
-        setIsSignupEnabled(isDataValid());
         setEmail(value);
     }
 
     function changePasswordHandler(value) {
-        if (!passwordRegex.test(password)) {
-            setPasswordError('Некорректный пароль');
-        } else {
-            setPasswordError('');
-        }
-
-        setIsSignupEnabled(isDataValid());
         setPassowrd(value);
     }
 

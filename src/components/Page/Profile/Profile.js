@@ -21,6 +21,13 @@ function Profile() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
+    const [isProfileUpdateEnabled, setIsProfileUpdateEnabled] = useState(false);
+
+    const nameRegex = /^([a-zA-Zа-яА-ЯёЁ-\s])+$/;
+    const emailRegex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+    const editButton = document.getElementsByClassName('.profile__edit');
+
     // Use Effects
 
     React.useEffect(() => {
@@ -28,9 +35,23 @@ function Profile() {
         setEmail(user.email);
     }, [user.email, user.name]);
 
+    React.useEffect(() => {
+        setIsProfileUpdateEnabled(isDataValid());
+        editButton.disabled = true;
+    }, [name]);
+
+    React.useEffect(() => {
+        setIsProfileUpdateEnabled(isDataValid());
+        editButton.disabled = true;
+    }, [email]);
+
     // Actions
 
     function editHandler() {
+        if (!isDataValid()) {
+            return;
+        }
+        
         setIsLoading(true);
 
         authorisedApi.patchUsersMe(name, email)
@@ -40,11 +61,22 @@ function Profile() {
         })
         .catch(error => {
             console.log(error);
+            showError(error);
         })
         .finally(() => {
             setIsLoading(false)
         });
-     }
+    }
+
+    function showError(error) {
+        if (window.confirm(error)) {
+            editHandler();
+        }
+    }
+
+    function isDataValid() {
+        return nameRegex.test(name) && emailRegex.test(email);
+    }
 
     function signoutHandler() {
         mainLocalStorage.removeJwt();
@@ -72,7 +104,10 @@ function Profile() {
                 <ProfileInput text='E-mail' type='email' value={email} onChange={mailChangeHandler} />
             </div>
             <div className='profile__buttons'>
-                <button className='profile__edit highlight' onClick={editHandler}>{ isLoading ? 'Редактирование...' : 'Редактировать' }</button>
+                <button 
+                    className={`profile__edit highlight ${isProfileUpdateEnabled ? '' : 'profile__edit_disabled'}`} 
+                    onClick={editHandler}>{ isLoading ? 'Редактирование...' : 'Редактировать' }
+                </button>
                 <button className='profile__signout highlight' onClick={signoutHandler}>Выйти из аккаунта</button>
             </div>
         </div>

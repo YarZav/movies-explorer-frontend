@@ -10,9 +10,13 @@ import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 import { unauthorisedApi } from '../../../utils/MainApi';
 import { mainLocalStorage } from '../../../utils/MainLocalStorage';
 
+import UserContext from '../../../context/UserContext';
+
 function Signin(props) {
     const navigate = useNavigate();
     const location = useLocation();
+
+    const user = React.useContext(UserContext);
 
     const [isLoading, setIsLoading] = React.useState(false);
 
@@ -30,10 +34,31 @@ function Signin(props) {
     // Use Effects
 
     React.useEffect(() => {
+        setEmailError('');
+        setPasswordError('');
+
         if (location.state && location.state.email) {
             setEmail(location.state.email || '');
         }
     }, []);
+
+    React.useEffect(() => {
+        if (email.length === 0) {
+            setEmailError('');
+        } else {
+            emailRegex.test(email) ? setEmailError('') : setEmailError('Некорректная почта');
+        }
+        setIsSigninEnabled(isDataValid());
+    }, [email]);
+
+    React.useEffect(() => {
+        if (password.length === 0) {
+            setPasswordError('');
+        } else {
+            passwordRegex.test(password) ? setPasswordError('') : setPasswordError('Некорректный пароль');
+        }
+        setIsSigninEnabled(isDataValid());
+    }, [password]);
 
     // Signin
 
@@ -76,24 +101,10 @@ function Signin(props) {
     // States
 
     function changeEmailHandler(value) {
-        if (!emailRegex.test(email)) {
-            setEmailError('Некорректная почта');
-        } else {
-            setEmailError('');
-        }
-
-        setIsSigninEnabled(isDataValid());
         setEmail(value);
     }
 
     function changePasswordHandler(value) {
-        if (!passwordRegex.test(password)) {
-            setPasswordError('Некорректный пароль');
-        } else {
-            setPasswordError('');
-        }
-
-        setIsSigninEnabled(isDataValid());
         setPassowrd(value);
     }
 
