@@ -71,8 +71,6 @@ function MoviesCardList(props) {
     }
 
     function initRemoteMovies() {
-        // moviesLocalStorage.removeMovies();
-
         const movies = moviesLocalStorage.getMovies();
         if (movies !== null) {
             setMovies(movies);
