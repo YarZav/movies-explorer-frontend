@@ -12,10 +12,8 @@ import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
 function MoviesCardList(props) {
     const [isLoading, setIsLoading] = React.useState(false);
-    // Сохраненные фильмы
-    const [savedMovies, setSavedMovies] = React.useState([]);
     // Всего фильмов
-    const [movies, setMovies] = React.useState([]);
+    const [remoteMovies, setRemoteMovies] = React.useState([]);
     // Фильмы отфильтрованные по поисковой строке
     const [searchedMovies, setSearchedMovies] = React.useState([]);
     // Фильмы для отображения
@@ -35,7 +33,6 @@ function MoviesCardList(props) {
     }, []);
 
     React.useEffect(() => {
-        moviesPaging.resetMoviesOffset();
         initMovies();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.type]);
@@ -44,7 +41,7 @@ function MoviesCardList(props) {
         moviesPaging.resetMoviesOffset();
         initSearchedMovies();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.onSearch]);
+    }, [props.onSearchText]);
 
     React.useEffect(() => {
         moviesPaging.resetMoviesOffset();
@@ -53,15 +50,10 @@ function MoviesCardList(props) {
     }, [props.onIsShort]);
 
     React.useEffect(() => {
-        movies.forEach(movie => movie.isLiked = true)
-        console.log(movies);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [savedMovies]);
-
-    React.useEffect(() => {
+        moviesPaging.resetMoviesOffset();
         initSearchedMovies();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [movies]);
+    }, [remoteMovies]);
 
     React.useEffect(() => {
         initDisplayedMovies();
@@ -82,21 +74,23 @@ function MoviesCardList(props) {
     }
 
     function initRemoteMovies() {
-        const movies = moviesLocalStorage.getMovies();
-        if (movies !== null) {
-            setMovies(movies);
-            initSavedMovies();
-            return;
-        }
+        const remoteMovies = moviesLocalStorage.getMovies();
+        // if (movies !== null) {
+        //     setRemoteMovies(movies);
+        //     initSavedMovies();
+        //     return;
+        // }
     
         setIsLoading(true);
 
-        moviesApi.getMovies()
-        .then((result) => {
-            moviesLocalStorage.setMovies(result);
-            setMovies(result);
-
-            initSavedMovies();
+        Promise.all([
+            moviesApi.getMovies(), 
+            authorisedApi.getMovies()
+        ])
+        .then(([remoteMovies, savedMovies]) => {
+            mapRemoteAndSavedMovies(remoteMovies, savedMovies.data);
+            moviesLocalStorage.setMovies(remoteMovies);
+            setRemoteMovies(remoteMovies);
         }) 
         .catch((error) => {
             console.log(error);
@@ -108,11 +102,14 @@ function MoviesCardList(props) {
     }
 
     function initSavedMovies() {
+        const remoteMovies = moviesLocalStorage.getMovies();
+
         setIsLoading(true);
 
         authorisedApi.getMovies()
-        .then((result) => {
-            setSavedMovies(result);
+        .then((savedMovies) => {
+            mapRemoteAndSavedMovies(remoteMovies, savedMovies.data);
+            setRemoteMovies(remoteMovies);
         }) 
         .catch((error) => {
             console.log(error);
@@ -120,6 +117,19 @@ function MoviesCardList(props) {
         })
         .finally(() => {
             setIsLoading(false);
+        });
+    }
+
+    function mapRemoteAndSavedMovies(remoteMovies, savedMovies) {
+        remoteMovies.forEach(remoteMovie => {
+            const savedMovie = savedMovies.find(savedMovie => savedMovie.movieId === remoteMovie.id);
+            if (savedMovie) {
+                remoteMovie.isLiked = true;
+                remoteMovie.movieId = savedMovie._id;
+            } else {
+                remoteMovie.isLiked = false;
+                remoteMovie.movieId = '';
+            }
         });
     }
 
@@ -152,19 +162,29 @@ function MoviesCardList(props) {
         const searchText = getSearchText().toLowerCase();
         const isShort = getIsShort();
 
-        const filteredMovies = movies
-        .filter(movie => {
-            let nameRU = movie.nameRU.trim().toLowerCase();
-            let nameEN = movie.nameEN.trim().toLowerCase();
-            return nameRU.includes(searchText) || nameEN.includes(searchText);
-        })
-        .filter(movie => {
-            if (isShort) {
-                return movie.duration <= 40;
-            } else {
-                return true;
-            }
-        });
+        const filteredMovies = remoteMovies
+            .filter(movie => {
+                if (props.type === 'movies') {
+                    return true;
+                } else if (props.type === 'saved-movies' && movie.isLiked) {
+                    return true;
+                } else {
+                    return false;
+                }
+            })
+            .filter(movie => {
+                let nameRU = movie.nameRU.trim().toLowerCase();
+                let nameEN = movie.nameEN.trim().toLowerCase();
+                return nameRU.includes(searchText) || nameEN.includes(searchText);
+            })
+            .filter(movie => {
+                if (isShort) {
+                    return movie.duration <= 40;
+                } else {
+                    return true;
+                }
+            });
+
         setSearchedMovies(filteredMovies);
     }
 

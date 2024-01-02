@@ -1,7 +1,7 @@
 import './SearchForm.css';
 
 import React from 'react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
@@ -10,35 +10,41 @@ import rightArrow from '../../../../images/rightArrow.svg';
 function SearchForm(props) {
     const ref = useRef(null);
 
-    useEffect(() => {
-        const enterPressHandler = event => {
-            if (event.keyCode === 13) {
-                const input = document.querySelector('.search-form__input');
-                props.onSearch(input.value);
+    React.useEffect(() => {
+        const keyDownHandler = event => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+
+                const element = document.querySelector('.search-form__input');
+                props.onSearchText(element.value);
             }
         };
-        const element = ref.current;
-
-        element.addEventListener('keyup', enterPressHandler);
+    
+        document.addEventListener('keydown', keyDownHandler);
     
         return () => {
-            element.removeEventListener('keyup', enterPressHandler);
+            document.removeEventListener('keydown', keyDownHandler);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    function changeHandler(event) {
+    function searchTextHandler(event) {
         const value = event.target.value;
         moviesLocalStorage.setSearchText(value);
     }
 
     function submitHandler(event) {
         event.preventDefault();
+
+        const element = document.querySelector('.search-form__input');
+        props.onSearchText(element.value);
     }
 
     function checkboxHandler(event) {
         const checked = event.target.checked;
         moviesLocalStorage.setIsShort(checked);
+
+        props.onIsShort(checked);
     }
 
     return(
@@ -52,7 +58,7 @@ function SearchForm(props) {
                         name='search-form__input'
                         defaultValue={moviesLocalStorage.getSearchText()}
                         placeholder='Фильм'
-                        onChange={changeHandler}
+                        onChange={searchTextHandler}
                         required
                     />
                     <button ref={ref} className='searh-form__button highlight' type='submit'>

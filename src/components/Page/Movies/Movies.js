@@ -7,18 +7,18 @@ import SearchForm from './SearchForm/SearchForm';
 import MoviesCardList from './CardList/MoviesCardList';
 
 function Movies(props) {
-    const [onSearch, setOnSearch] = useState('');
-    const [onIsShort, setOnIsShort] = useState('');
+    const [onSearchText, setOnSearchText] = useState('');
+    const [onIsShort, setOnIsShort] = useState(false);
 
     return(
         <Content type='movies'>
             <SearchForm 
-                onSearch={onSearch => setOnSearch(onSearch)}
+                onSearchText={onSearchText => setOnSearchText(onSearchText)}
                 onIsShort={onIsShort => setOnIsShort(onIsShort)}
             />
             <MoviesCardList 
                 type={props.type}
-                onSearch={onSearch}
+                onSearchText={onSearchText}
                 onIsShort={onIsShort}
             />
         </Content>
