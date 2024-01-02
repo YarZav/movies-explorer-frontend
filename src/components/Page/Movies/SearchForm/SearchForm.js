@@ -10,6 +10,10 @@ import rightArrow from '../../../../images/rightArrow.svg';
 function SearchForm(props) {
     const [error, setError] = useState('');
 
+    React.useEffect(() => {
+        setError('');
+    }, [props.type]);
+
     function searchTextHandler(event) {
         const value = event.target.value;
         moviesLocalStorage.setSearchText(value);

@@ -29,7 +29,7 @@ function MoviesCardList(props) {
 
     React.useEffect(() => {
         return () => {
-            initMovies();
+            setMoviesToDisplay();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.onSearchText, props.onIsShort]);
@@ -37,8 +37,6 @@ function MoviesCardList(props) {
     // Init movies
 
     function initMovies() {
-        console.log('Init movies');
-
         moviesPaging.resetMoviesOffset();
         moviesPaging.remoteMovies = [];
         moviesPaging.searchedMovies = [];
@@ -51,11 +49,9 @@ function MoviesCardList(props) {
     function fetchMovies() {
         let remoteMovies = moviesLocalStorage.getMovies();
         if (remoteMovies !== null) {
-            console.log('Fetch only saved movies');
             initSavedMovies(remoteMovies);
             return;
         }
-        console.log('Fetch remote and saved movies');
     
         setIsLoading(true);
 
@@ -73,7 +69,7 @@ function MoviesCardList(props) {
         }) 
         .catch((error) => {
             console.log(error);
-            // showError();
+            showError();
         })
         .finally(() => {
             setIsLoading(false);
@@ -92,7 +88,7 @@ function MoviesCardList(props) {
         }) 
         .catch((error) => {
             console.log(error);
-            // showError();
+            showError();
         })
         .finally(() => {
             setIsLoading(false);
@@ -125,11 +121,6 @@ function MoviesCardList(props) {
     }
 
     function setMoviesToDisplay() {
-        console.log('Remote movies are');
-        console.log(moviesPaging.remoteMovies);
-        console.log('Saved movies are');
-        console.log(moviesPaging.savedMovies);
-
         const searchText = getSearchText().toLowerCase();
         const isShort = getIsShort();
 
@@ -147,8 +138,6 @@ function MoviesCardList(props) {
 
             return apiMovie;
         });
-        console.log('Mapped movies:');
-        console.log(moviesPaging.remoteMovies);
 
         // Все фильмы для выбранной вкладки "Фильмы" или "Сохраненные фильмы"
         moviesPaging.remoteMovies = moviesPaging.remoteMovies
@@ -161,8 +150,6 @@ function MoviesCardList(props) {
                     return false;
                 }
             });
-        console.log('Type movies:');
-        console.log(moviesPaging.remoteMovies);
         
         // // Все фильмы удовлетворяющие поисковой строке или чекбоксу короткометражка
         moviesPaging.searchedMovies = moviesPaging.remoteMovies
@@ -178,15 +165,10 @@ function MoviesCardList(props) {
                     return true;
                 }
             });
-        console.log('Searched movies:');
-        console.log(moviesPaging.searchedMovies);
 
         // Текущие фильмы для отображения        
         const endIndex = moviesPaging.moviesOffset;
         let slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
-        
-        console.log('Sliced movies:');
-        console.log(slicedMovies);
 
         setDisplayedMovies(slicedMovies);
     }
@@ -197,17 +179,7 @@ function MoviesCardList(props) {
         moviesPaging.increaseMoviesOffset();
 
         const endIndex = moviesPaging.moviesOffset;
-        console.log('End index:');
-        console.log(endIndex);
-
-        console.log('Searched movies:');
-        console.log(moviesPaging.searchedMovies);
-
         let slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
-
-        console.log('Sliced movies:');
-        console.log(slicedMovies);
-
         setDisplayedMovies(slicedMovies);
     }
 
@@ -241,14 +213,7 @@ function MoviesCardList(props) {
     }
 
     function getLoadMoreButton() {
-        console.log('Search movies length');
-        console.log(moviesPaging.searchedMovies.length);
-        console.log('offset');
-        console.log(moviesPaging.moviesOffset);
-
         const isAllMoviesDisplayed = moviesPaging.moviesOffset >= moviesPaging.searchedMovies.length;
-        console.log('Are all movies disaplyed');
-        console.log(isAllMoviesDisplayed);
 
         return !isAllMoviesDisplayed && <div className='movies-card-list__button-container'>
             <button className='movies-card-list__load highlight' onClick={moreHandler}>Ещё</button>

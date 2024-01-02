@@ -13,6 +13,7 @@ function Movies(props) {
     return(
         <Content type='movies'>
             <SearchForm 
+                type={props.type}
                 onSearchText={onSearchText => setOnSearchText(onSearchText)}
                 onIsShort={onIsShort => setOnIsShort(onIsShort)}
             />
