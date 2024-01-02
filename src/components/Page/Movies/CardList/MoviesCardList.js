@@ -83,8 +83,7 @@ function MoviesCardList(props) {
 
         authorisedApi.getMovies()
         .then((savedMovies) => {
-            console.log(savedMovies);
-            setMoviesToDisplay(remoteMovies, savedMovies.data);
+            // setMoviesToDisplay(remoteMovies, savedMovies.data);
         }) 
         .catch((error) => {
             console.log(error);
@@ -166,25 +165,20 @@ function MoviesCardList(props) {
                 }
             });
 
-        // Текущие фильмы для отображения
-        const startIndex = moviesPaging.moviesOffset;
-        moviesPaging.increaseMoviesOffset();
+        // Текущие фильмы для отображения        
         const endIndex = moviesPaging.moviesOffset;
-
-        let slicedMovies = searchedMovies.slice(startIndex, endIndex);
-        setDisplayedMovies(movies => [...movies, ...slicedMovies]);
+        let slicedMovies = searchedMovies.slice(0, endIndex);
+        setDisplayedMovies(slicedMovies);
     }
 
     // Actions
     
     function moreHandler() {
-        // Текущие фильмы для отображения
-        const startIndex = moviesPaging.moviesOffset;
         moviesPaging.increaseMoviesOffset();
-        const endIndex = moviesPaging.moviesOffset;
 
-        let slicedMovies = searchedMovies.slice(startIndex, endIndex);
-        setDisplayedMovies(movies => [...movies, ...slicedMovies]);
+        const endIndex = moviesPaging.moviesOffset;
+        let slicedMovies = searchedMovies.slice(0, endIndex);
+        setDisplayedMovies(slicedMovies);
     }
 
     function updateMovieHandler(newMovie) {
