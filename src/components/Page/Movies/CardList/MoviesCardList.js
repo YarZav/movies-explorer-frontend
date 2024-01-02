@@ -110,7 +110,7 @@ function MoviesCardList(props) {
     function resizeHandler() {
         moviesPaging.startDebounce(() => {
             moviesPaging.resetMoviesOffset();
-            initMovies();
+            setMoviesToDisplay();
         });
     }
 
