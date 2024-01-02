@@ -48,10 +48,10 @@ function MoviesCardList(props) {
         searchedMovies = [];
         setDisplayedMovies([]);
 
-        initMovies();
+        fetchMovies();
     }
 
-    function initMovies() {
+    function fetchMovies() {
         let remoteMovies = moviesLocalStorage.getMovies();
         if (remoteMovies !== null) {
             initSavedMovies(remoteMovies);
