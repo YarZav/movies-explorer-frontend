@@ -1,43 +1,31 @@
 import './SearchForm.css';
 
 import React from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 
 import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
 import rightArrow from '../../../../images/rightArrow.svg';
 
 function SearchForm(props) {
-    const ref = useRef(null);
-
-    React.useEffect(() => {
-        const keyDownHandler = event => {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-
-                const element = document.querySelector('.search-form__input');
-                props.onSearchText(element.value);
-            }
-        };
-    
-        document.addEventListener('keydown', keyDownHandler);
-    
-        return () => {
-            document.removeEventListener('keydown', keyDownHandler);
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    const [error, setError] = useState('');
 
     function searchTextHandler(event) {
         const value = event.target.value;
         moviesLocalStorage.setSearchText(value);
+
+        setError(value.length > 0 ? '' : 'Нужно ввести ключевое слово');
     }
 
     function submitHandler(event) {
         event.preventDefault();
 
         const element = document.querySelector('.search-form__input');
-        props.onSearchText(element.value);
+        const value = element.value;
+
+        if (value.length > 0) {
+            props.onSearchText(value);
+        }
     }
 
     function checkboxHandler(event) {
@@ -61,11 +49,12 @@ function SearchForm(props) {
                         onChange={searchTextHandler}
                         required
                     />
-                    <button ref={ref} className='searh-form__button highlight' type='submit'>
+                    <button className='searh-form__button highlight' type='submit'>
                         <img src={rightArrow} alt='Right arrow'/>
                     </button>
                 </div>
                 <div className='search-form__line'></div>
+                <p className='search-form__error'>{error}</p>
                 <div className='search-form__switch-container highlight]'> 
                     <label className='search-form__switch'>
                         <input 
