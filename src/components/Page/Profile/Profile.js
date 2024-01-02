@@ -80,7 +80,9 @@ function Profile() {
     }
 
     function isDataValid() {
-        return nameRegex.test(name) && emailRegex.test(email);
+        const isCorrect = nameRegex.test(name) && emailRegex.test(email);
+        const isDifferent = name !== user.name || email !== user.email;
+        return isCorrect && isDifferent
     }
 
     function signoutHandler() {

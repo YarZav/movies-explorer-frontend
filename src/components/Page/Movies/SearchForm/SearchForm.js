@@ -23,9 +23,7 @@ function SearchForm(props) {
         const element = document.querySelector('.search-form__input');
         const value = element.value;
 
-        if (value.length > 0) {
-            props.onSearchText(value);
-        }
+        props.onSearchText(value);
     }
 
     function checkboxHandler(event) {
