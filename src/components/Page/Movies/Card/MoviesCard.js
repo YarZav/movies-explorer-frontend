@@ -37,16 +37,18 @@ function MoviesCard(props) {
             nameRU: props.movie.nameRU,
             nameEN: props.movie.nameEN
         })
-        .then((result) => {
-            // props.movie._id = result.data._id;
-            // likeHandler(true);
+        .then((movie) => {
+            props.movie.isLiked = true;
+            props.movie.movieId = movie.data._id;
+            props.onUpdate(props.movie);
         });
     }
 
     function removeMovie() {
         authorisedApi.deleteMovies(props.movie.movieId)
             .then((result) => {
-                // likeHandler(false);
+                props.movie.isLiked = false;
+                props.onUpdate(props.movie);
             });
     }
 
@@ -60,7 +62,7 @@ function MoviesCard(props) {
 
     function getSelectButton() {
         return <button 
-            className={`movies-card__select ${props.movie.isLiked && 'movies-card_selected'} highlight`}
+            className={`movies-card__select ${props.movie.isLiked ? 'movies-card_selected' : ''} highlight`}
             onClick={moviesHandler} 
         />
     }

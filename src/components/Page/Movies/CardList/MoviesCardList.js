@@ -13,9 +13,9 @@ import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 function MoviesCardList(props) {
     const [isLoading, setIsLoading] = React.useState(false);
     // Всего фильмов
-    const [remoteMovies, setRemoteMovies] = React.useState([]);
-    // Фильмы отфильтрованные по поисковой строке
-    const [searchedMovies, setSearchedMovies] = React.useState([]);
+    let remoteMovies = [];
+    // Фильмы найденные по поисковой строке И/ИЛИ по короткометражкам
+    let searchedMovies = [];
     // Фильмы для отображения
     const [displayedMovies, setDisplayedMovies] = React.useState([]);
 
@@ -30,56 +30,33 @@ function MoviesCardList(props) {
             window.removeEventListener('resize', resizeHandler);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    React.useEffect(() => {
-        initMovies();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.type]);
 
     React.useEffect(() => {
-        moviesPaging.resetMoviesOffset();
-        initSearchedMovies();
+        return () => {
+            initMovies();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.onSearchText]);
-
-    React.useEffect(() => {
-        moviesPaging.resetMoviesOffset();
-        initSearchedMovies();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.onIsShort]);
-
-    React.useEffect(() => {
-        moviesPaging.resetMoviesOffset();
-        initSearchedMovies();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [remoteMovies]);
-
-    React.useEffect(() => {
-        initDisplayedMovies();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchedMovies]);
+    }, [props.onSearchText, props.onIsShort]);
 
     // Init movies
 
     function initMovies() {
-        if (props.type === 'movies') {
-            initRemoteMovies();
-            return;
-        }
-        if (props.type === 'saved-movies') {
-            initSavedMovies();
-            return;
-        }
+        moviesPaging.resetMoviesOffset();
+
+        remoteMovies = [];
+        searchedMovies = [];
+        setDisplayedMovies([]);
+
+        initMovies();
     }
 
-    function initRemoteMovies() {
-        const remoteMovies = moviesLocalStorage.getMovies();
-        // if (movies !== null) {
-        //     setRemoteMovies(movies);
-        //     initSavedMovies();
-        //     return;
-        // }
+    function initMovies() {
+        let remoteMovies = moviesLocalStorage.getMovies();
+        if (remoteMovies !== null) {
+            initSavedMovies(remoteMovies);
+            return;
+        }
     
         setIsLoading(true);
 
@@ -88,51 +65,36 @@ function MoviesCardList(props) {
             authorisedApi.getMovies()
         ])
         .then(([remoteMovies, savedMovies]) => {
-            mapRemoteAndSavedMovies(remoteMovies, savedMovies.data);
             moviesLocalStorage.setMovies(remoteMovies);
-            setRemoteMovies(remoteMovies);
+
+            setMoviesToDisplay(remoteMovies, savedMovies.data);
         }) 
         .catch((error) => {
             console.log(error);
-            showError();
+            // showError();
         })
         .finally(() => {
             setIsLoading(false);
         });
     }
 
-    function initSavedMovies() {
-        const remoteMovies = moviesLocalStorage.getMovies();
-
+    function initSavedMovies(remoteMovies) {
         setIsLoading(true);
 
         authorisedApi.getMovies()
         .then((savedMovies) => {
-            mapRemoteAndSavedMovies(remoteMovies, savedMovies.data);
-            setRemoteMovies(remoteMovies);
+            console.log(savedMovies);
+            setMoviesToDisplay(remoteMovies, savedMovies.data);
         }) 
         .catch((error) => {
             console.log(error);
-            showError();
+            // showError();
         })
         .finally(() => {
             setIsLoading(false);
         });
     }
-
-    function mapRemoteAndSavedMovies(remoteMovies, savedMovies) {
-        remoteMovies.forEach(remoteMovie => {
-            const savedMovie = savedMovies.find(savedMovie => savedMovie.movieId === remoteMovie.id);
-            if (savedMovie) {
-                remoteMovie.isLiked = true;
-                remoteMovie.movieId = savedMovie._id;
-            } else {
-                remoteMovie.isLiked = false;
-                remoteMovie.movieId = '';
-            }
-        });
-    }
-
+    
     function showError() {
         if (window.confirm('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')) {
             initMovies();
@@ -158,11 +120,27 @@ function MoviesCardList(props) {
         return moviesLocalStorage.getIsShort()
     }
 
-    function initSearchedMovies() {
+    function setMoviesToDisplay(apiMovies, savedMovies) {
         const searchText = getSearchText().toLowerCase();
         const isShort = getIsShort();
 
-        const filteredMovies = remoteMovies
+        // Маппив фильм с сервиса фильмов и то, что лежит в серверной БД
+        // Для проставления лайка и корректного айдишника из сервеной БД
+        remoteMovies = apiMovies.map(apiMovie => {
+            const savedMovie = savedMovies.find(savedMovie => savedMovie.movieId === apiMovie.id);
+            if (savedMovie) {
+                apiMovie.isLiked = true;
+                apiMovie.movieId = savedMovie._id;
+            } else {
+                apiMovie.isLiked = false;
+                apiMovie.movieId = '';
+            }
+
+            return apiMovie;
+        });
+
+        // Все фильмы для выбранной вкладки "Фильмы" или "Сохраненные фильмы"
+        remoteMovies = remoteMovies
             .filter(movie => {
                 if (props.type === 'movies') {
                     return true;
@@ -171,7 +149,10 @@ function MoviesCardList(props) {
                 } else {
                     return false;
                 }
-            })
+            });
+        
+        // Все фильмы удовлетворяющие поисковой строке или чекбоксу короткометражка
+        searchedMovies = remoteMovies
             .filter(movie => {
                 let nameRU = movie.nameRU.trim().toLowerCase();
                 let nameEN = movie.nameEN.trim().toLowerCase();
@@ -185,19 +166,31 @@ function MoviesCardList(props) {
                 }
             });
 
-        setSearchedMovies(filteredMovies);
-    }
+        // Текущие фильмы для отображения
+        const startIndex = moviesPaging.moviesOffset;
+        moviesPaging.increaseMoviesOffset();
+        const endIndex = moviesPaging.moviesOffset;
 
-    function initDisplayedMovies() {
-        let slicedMovies = searchedMovies.slice(0, moviesPaging.moviesOffset)
-        setDisplayedMovies(slicedMovies);
+        let slicedMovies = searchedMovies.slice(startIndex, endIndex);
+        setDisplayedMovies(movies => [...movies, ...slicedMovies]);
     }
 
     // Actions
     
     function moreHandler() {
+        // Текущие фильмы для отображения
+        const startIndex = moviesPaging.moviesOffset;
         moviesPaging.increaseMoviesOffset();
-        initDisplayedMovies();
+        const endIndex = moviesPaging.moviesOffset;
+
+        let slicedMovies = searchedMovies.slice(startIndex, endIndex);
+        setDisplayedMovies(movies => [...movies, ...slicedMovies]);
+    }
+
+    function updateMovieHandler(newMovie) {
+        setDisplayedMovies((state) => state.map((oldMovie) => 
+            oldMovie.movieId === newMovie.movieId ? newMovie : oldMovie
+        ));
     }
 
     // Prepare content
@@ -207,14 +200,19 @@ function MoviesCardList(props) {
             {
                 displayedMovies
                 .map((movie, index) => (
-                    <MoviesCard movie={movie} type={props.type} key={movie.id}/>
+                    <MoviesCard 
+                        movie={movie} 
+                        type={props.type} 
+                        key={movie.id}
+                        onUpdate={updateMovieHandler}
+                    />
                 ))
             }
         </div>
     }
 
     function getLoadMoreButton() {
-        const isAllMoviesDisplayed = searchedMovies.length === displayedMovies.length
+        const isAllMoviesDisplayed = searchedMovies.length > displayedMovies.length
         return !isAllMoviesDisplayed && <div className='movies-card-list__button-container'>
             <button className='movies-card-list__load highlight' onClick={moreHandler}>Ещё</button>
         </div> 
