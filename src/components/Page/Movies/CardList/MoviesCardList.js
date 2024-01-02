@@ -29,7 +29,7 @@ function MoviesCardList(props) {
 
     React.useEffect(() => {
         return () => {
-            // initMovies();
+            initMovies();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.onSearchText, props.onIsShort]);
@@ -212,9 +212,14 @@ function MoviesCardList(props) {
     }
 
     function updateMovieHandler(newMovie) {
-        setDisplayedMovies((state) => state.map((oldMovie) => 
-            oldMovie.movieId === newMovie.movieId ? newMovie : oldMovie
-        ));
+        if (props.type === 'movies') {
+            setDisplayedMovies((state) => state.map((oldMovie) => 
+                oldMovie.movieId === newMovie.movieId ? newMovie : oldMovie
+            ));
+        }
+        if (props.type === 'saved-movies') {
+            setDisplayedMovies((oldMovies) => oldMovies.filter((movie, _) => movie.movieId !== newMovie.movieId));
+        }
     }
 
     // Prepare content
@@ -241,7 +246,7 @@ function MoviesCardList(props) {
         console.log('offset');
         console.log(moviesPaging.moviesOffset);
 
-        const isAllMoviesDisplayed = moviesPaging.searchedMovies.length === moviesPaging.moviesOffset;
+        const isAllMoviesDisplayed = moviesPaging.moviesOffset >= moviesPaging.searchedMovies.length;
         console.log('Are all movies disaplyed');
         console.log(isAllMoviesDisplayed);
 
