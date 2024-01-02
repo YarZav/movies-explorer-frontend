@@ -16,7 +16,7 @@ import { authorisedApi } from '../../utils/MainApi';
 import { mainLocalStorage } from '../../utils/MainLocalStorage';
 
 function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const [user, setUser] = React.useState({});
 

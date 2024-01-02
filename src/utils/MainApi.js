@@ -86,7 +86,7 @@ class MainApi {
     }
 }
 
-const url = 'http://localhost:3000';
+const url = 'https://api.ylincoln.nomoredomainsmonster.ru';
 
 export const authorisedApi = new MainApi({
     baseUrl: url,
