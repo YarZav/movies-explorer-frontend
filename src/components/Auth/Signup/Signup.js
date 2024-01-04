@@ -26,7 +26,7 @@ function Signup() {
 
     const nameRegex = /^([a-zA-Zа-яА-ЯёЁ-\s])+$/;
     const emailRegex = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+    const passwordRegex = /^(?=.*\d).{8,}$/
 
     // Life circle
 
