@@ -91,7 +91,7 @@ function Profile() {
     function signoutHandler() {
         mainLocalStorage.removeJwt();
         moviesLocalStorage.removeData();
-        navigate('/signin');
+        navigate('/');
     }
 
     // Use states
