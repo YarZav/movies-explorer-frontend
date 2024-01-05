@@ -63,6 +63,7 @@ function Profile() {
         .then(result => {
             user.name = result.data.name;
             user.email = result.data.email;
+            showSuccess();
         })
         .catch(error => {
             console.log(error);
@@ -77,6 +78,10 @@ function Profile() {
         if (window.confirm(error)) {
             editHandler();
         }
+    }
+
+    function showSuccess() {
+        window.alert('Данные успешно сохранились');
     }
 
     function isDataValid() {
