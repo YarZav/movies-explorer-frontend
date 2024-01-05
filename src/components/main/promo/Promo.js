@@ -7,7 +7,7 @@ import promo from '../../../images/promo.svg';
 
 function Promo() {
     function learnMoreHandler() {
-        let element = document.querySelector('.content_about-project');
+        let element = document.querySelector('.content__about-project');
         element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
     }
 

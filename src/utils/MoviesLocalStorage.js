@@ -1,36 +1,60 @@
 class MoviesLocalStorage {
     constructor(options) {
-        this._searchTextKey = options.searchTextKey;
+        this._moviesSearchTextKey = options.moviesSearchTextKey;
         this._moviesKey = options.moviesKey;
-        this._isShort = options.isShort;
+        this._moviesIsShortKey = options.moviesIsShortKey;
+        this._savedMoviesSearchTextKey = options.savedMoviesSearchTextKey;
+        this._savedMoviesIsShortKey = options.savedMoviesIsShortKey;
     }
 
-    // SearchText
+    // Movies SearchText
 
-    getSearchText() {
-        return localStorage.getItem(this._searchTextKey);
+    getSearchText(type) {
+        if (type === 'movies') {
+            return localStorage.getItem(this._moviesSearchTextKey);
+        }
+        if (type === 'saved-movies') {
+            return localStorage.getItem(this._savedMoviesSearchTextKey);
+        }
     }
 
-    setSearchText(searchText) {
-        localStorage.setItem(this._searchTextKey, searchText);
+    setSearchText(searchText, type) {
+        if (type === 'movies') {
+            localStorage.setItem(this._moviesSearchTextKey, searchText);
+        }
+        if (type === 'saved-movies') {
+            localStorage.setItem(this._savedMoviesSearchTextKey, searchText);
+        }
     }
 
     removeSearchText() {
-        localStorage.removeItem(this._searchTextKey);
+        localStorage.removeItem(this._moviesSearchTextKey);
+        localStorage.removeItem(this._savedMoviesSearchTextKey);
     }
 
     // Is short movies
 
-    getIsShort() {
-        return localStorage.getItem(this._isShort) === 'true';
+    getIsShort(type) {
+        if (type === 'movies') {
+            return localStorage.getItem(this._moviesIsShortKey) === 'true';
+        }
+        if (type === 'saved-movies') {
+            return localStorage.getItem(this._savedMoviesIsShortKey) === 'true';
+        }
     }
 
-    setIsShort(isShort) {
-        localStorage.setItem(this._isShort, isShort);
+    setIsShort(isShort, type) {
+        if (type === 'movies') {
+            localStorage.setItem(this._moviesIsShortKey, isShort);
+        }
+        if (type === 'saved-movies') {
+            localStorage.setItem(this._savedMoviesIsShortKey, isShort);
+        }
     }
 
     removeIsShort() {
-        localStorage.removeItem(this._isShort);
+        localStorage.removeItem(this._moviesIsShortKey);
+        localStorage.removeItem(this._savedMoviesIsShortKey);
     }
 
     // Movies
@@ -48,12 +72,16 @@ class MoviesLocalStorage {
     }
 }
 
-const searchTextKey = 'search-text';
 const moviesKey = 'movies';
-const isShortKey = 'isShort';
+const moviesSearchTextKey = 'movies-search-text';
+const moviesIsShortKey = 'movies-is-short';
+const savedMoviesSearchTextKey = 'saved-movies-search-text';
+const savedMoviesIsShortKey = 'saved-movies-is-short';
 
 export const moviesLocalStorage = new MoviesLocalStorage({
-    searchTextKey: searchTextKey,
     moviesKey: moviesKey,
-    isShortKey: isShortKey
+    moviesSearchTextKey: moviesSearchTextKey,
+    moviesIsShortKey: moviesIsShortKey,
+    savedMoviesSearchTextKey: savedMoviesSearchTextKey,
+    savedMoviesIsShortKey: savedMoviesIsShortKey
 });

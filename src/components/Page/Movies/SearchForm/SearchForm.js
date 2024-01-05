@@ -12,11 +12,17 @@ function SearchForm(props) {
 
     React.useEffect(() => {
         setError('');
+
+        const input = document.querySelector('.search-form__input');
+        input.defaultValue = moviesLocalStorage.getSearchText(props.type) || '';
+
+        const checkbox = document.querySelector('.search-form__checkbox');
+        checkbox.defaultChecked = moviesLocalStorage.getIsShort(props.type) || false;
     }, [props.type]);
 
     function searchTextHandler(event) {
         const value = event.target.value;
-        moviesLocalStorage.setSearchText(value);
+        moviesLocalStorage.setSearchText(value, props.type);
 
         setError(value.length > 0 ? '' : 'Нужно ввести ключевое слово');
     }
@@ -32,7 +38,7 @@ function SearchForm(props) {
 
     function checkboxHandler(event) {
         const checked = event.target.checked;
-        moviesLocalStorage.setIsShort(checked);
+        moviesLocalStorage.setIsShort(checked, props.type);
 
         props.onIsShort(checked);
     }
@@ -46,7 +52,6 @@ function SearchForm(props) {
                         type='text'
                         id='search-form__input'
                         name='search-form__input'
-                        defaultValue={moviesLocalStorage.getSearchText()}
                         placeholder='Фильм'
                         onChange={searchTextHandler}
                         required
@@ -62,7 +67,6 @@ function SearchForm(props) {
                         <input 
                             className='search-form__checkbox' 
                             type='checkbox'
-                            defaultChecked={moviesLocalStorage.getIsShort()}
                             onClick={checkboxHandler} 
                         />
                         <span className='search-form__slider round' />
