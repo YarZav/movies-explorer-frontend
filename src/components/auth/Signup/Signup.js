@@ -111,9 +111,7 @@ function Signup(props) {
     }
 
     function showError(error) {
-        if (window.confirm(error)) {
-            signup();
-        }
+        window.alert(error);
     }
 
     function isDataValid() {

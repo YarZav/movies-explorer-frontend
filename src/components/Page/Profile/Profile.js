@@ -75,9 +75,7 @@ function Profile() {
     }
 
     function showError(error) {
-        if (window.confirm(error)) {
-            editHandler();
-        }
+        window.alert(error);
     }
 
     function showSuccess() {

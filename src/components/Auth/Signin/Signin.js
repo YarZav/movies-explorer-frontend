@@ -88,9 +88,7 @@ function Signin(props) {
     }
 
     function showError(error) {
-        if (window.confirm(error)) {
-            signin();
-        }
+        window.alert(error);
     }
 
     function isDataValid() {
