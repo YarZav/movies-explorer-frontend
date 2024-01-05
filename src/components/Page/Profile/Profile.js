@@ -53,7 +53,7 @@ function Profile() {
     }
 
     function editHandler() {
-        if (!isDataValid()) {
+        if (isLoading || !isDataValid()) {
             return;
         }
         
