@@ -17,7 +17,7 @@ function Auth(props) {
 
     function getComponent(type) {
         const signin = type === 'signin' && <Signin onUser={userHandler} />
-        const signup = type === 'signup' && <Signup />
+        const signup = type === 'signup' && <Signup onUser={userHandler} />
         return signin || signup
     }
 

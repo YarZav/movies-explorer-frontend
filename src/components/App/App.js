@@ -56,7 +56,7 @@ function App() {
         { !isLoading && <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/signup" element={<Auth type='signup' />} />
+            <Route path="/signup" element={<Auth type='signup' onUser={userHandler} />} />
             <Route path="/signin" element={<Auth type='signin' onUser={userHandler} />} />
             <Route path="/profile" element={<ProtectedRoute element={Page} type='profile'/>} />
             <Route path="/movies" element={<ProtectedRoute element={Page} type='movies'/>} />

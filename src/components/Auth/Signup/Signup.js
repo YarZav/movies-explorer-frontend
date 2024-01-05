@@ -8,8 +8,9 @@ import AuthMainButton from '../MainButton/AuthMainButton';
 import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 
 import { unauthorisedApi } from '../../../utils/MainApi';
+import { mainLocalStorage } from '../../../utils/MainLocalStorage';
 
-function Signup() {
+function Signup(props) {
     const navigate = useNavigate();
 
     const [isLoading, setIsLoading] = useState(false);
@@ -80,7 +81,26 @@ function Signup() {
         setIsLoading(true);
         unauthorisedApi.signup(name, email, password)
         .then(result => {
-            navigate('/signin', { state: { email: result.email }});
+            console.log(result);
+            signin();
+        })
+        .catch(error => {
+            console.log(error);
+            showError(error);
+        })
+        .finally(() => {
+            setIsLoading(false)
+        });
+    }
+
+    function signin() {
+        setIsLoading(true)
+
+        unauthorisedApi.signin(email, password)
+        .then(result => {
+            mainLocalStorage.setJwt(result.token);
+            props.onUser(result);
+            navigate('/movies');
         })
         .catch(error => {
             console.log(error);
