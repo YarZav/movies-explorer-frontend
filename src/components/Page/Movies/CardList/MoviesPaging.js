@@ -6,16 +6,20 @@ class MoviesPaging {
         this._moviesDebounse = debounce(() => this._func());
     }
     
-    _isLargeWindowWidth() {
-        return window.innerWidth >= 768;
-    }
-
     increaseMoviesOffset() {
-        this.moviesOffset = this.moviesOffset + (this._isLargeWindowWidth() ? 4 : 2);
+        const isLargeWindowWidth = window.innerWidth >= 768;
+        this.moviesOffset = this.moviesOffset + (isLargeWindowWidth ? 4 : 2);
     }
 
     resetMoviesOffset() {
-        this.moviesOffset = this._isLargeWindowWidth() ? 4 : 5;
+        if (window.innerWidth >= 1280) {
+            this.moviesOffset = 16;
+        } else if (window.innerWidth >= 768) {
+            this.moviesOffset = 8;
+        } else {
+            this.moviesOffset = 5;
+        }
+        
     }
 
     startDebounce(func) {
