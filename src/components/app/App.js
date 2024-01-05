@@ -20,8 +20,8 @@ function App() {
 
   const [user, setUser] = React.useState({});
 
-  function userHandler(value) {
-    setUser(value);
+  function userHandler() {
+    getInitData();
   }
 
   // Fetch init data
@@ -58,8 +58,8 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/signup" element={<Auth type='signup' onUser={userHandler} />} />
             <Route path="/signin" element={<Auth type='signin' onUser={userHandler} />} />
-            <Route path="/profile" element={<ProtectedRoute element={Page} type='profile'/>} />
-            <Route path="/movies" element={<ProtectedRoute element={Page} type='movies'/>} />
+            <Route path="/profile" element={<ProtectedRoute element={Page} type='profile' />} />
+            <Route path="/movies" element={<ProtectedRoute element={Page} type='movies' />} />
             <Route path="/saved-movies" element={<ProtectedRoute element={Page} type='saved-movies'/>} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

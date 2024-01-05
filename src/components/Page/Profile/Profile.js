@@ -33,7 +33,7 @@ function Profile() {
     React.useEffect(() => {
         setName(user.name);
         setEmail(user.email);
-    }, [user.email, user.name]);
+    }, [user]);
 
     React.useEffect(() => {
         updateEditButton();

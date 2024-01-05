@@ -75,7 +75,7 @@ function Signin(props) {
         unauthorisedApi.signin(email, password)
         .then(result => {
             mainLocalStorage.setJwt(result.token);
-            props.onUser(result);
+            props.onUser();
             navigate('/movies');
         })
         .catch(error => {

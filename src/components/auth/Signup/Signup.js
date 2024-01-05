@@ -81,7 +81,6 @@ function Signup(props) {
         setIsLoading(true);
         unauthorisedApi.signup(name, email, password)
         .then(result => {
-            console.log(result);
             signin();
         })
         .catch(error => {
@@ -99,7 +98,7 @@ function Signup(props) {
         unauthorisedApi.signin(email, password)
         .then(result => {
             mainLocalStorage.setJwt(result.token);
-            props.onUser(result);
+            props.onUser();
             navigate('/movies');
         })
         .catch(error => {
