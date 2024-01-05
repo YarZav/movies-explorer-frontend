@@ -27,11 +27,6 @@ class MoviesLocalStorage {
         }
     }
 
-    removeSearchText() {
-        localStorage.removeItem(this._moviesSearchTextKey);
-        localStorage.removeItem(this._savedMoviesSearchTextKey);
-    }
-
     // Is short movies
 
     getIsShort(type) {
@@ -52,11 +47,6 @@ class MoviesLocalStorage {
         }
     }
 
-    removeIsShort() {
-        localStorage.removeItem(this._moviesIsShortKey);
-        localStorage.removeItem(this._savedMoviesIsShortKey);
-    }
-
     // Movies
 
     getMovies() {
@@ -67,7 +57,15 @@ class MoviesLocalStorage {
         localStorage.setItem(this._moviesKey, JSON.stringify(movies));
     }
 
-    removeMovies() {
+    // Remove data
+
+    removeData() {
+        localStorage.removeItem(this._moviesSearchTextKey);
+        localStorage.removeItem(this._savedMoviesSearchTextKey);
+
+        localStorage.removeItem(this._moviesIsShortKey);
+        localStorage.removeItem(this._savedMoviesIsShortKey);
+
         localStorage.removeItem(this._moviesKey);
     }
 }
