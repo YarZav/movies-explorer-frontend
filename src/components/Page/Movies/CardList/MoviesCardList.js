@@ -28,9 +28,7 @@ function MoviesCardList(props) {
     }, [props.type]);
 
     React.useEffect(() => {
-        return () => {
-            setMoviesToDisplay();
-        }
+        setMoviesToDisplay();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.onSearchText, props.onIsShort]);
 

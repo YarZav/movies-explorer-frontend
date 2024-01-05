@@ -14,10 +14,10 @@ function SearchForm(props) {
         setError('');
 
         const input = document.querySelector('.search-form__input');
-        input.defaultValue = moviesLocalStorage.getSearchText(props.type) || '';
+        input.value = moviesLocalStorage.getSearchText(props.type) || '';
 
         const checkbox = document.querySelector('.search-form__checkbox');
-        checkbox.defaultChecked = moviesLocalStorage.getIsShort(props.type) || false;
+        checkbox.value = moviesLocalStorage.getIsShort(props.type) || false;
     }, [props.type]);
 
     function searchTextHandler(event) {
