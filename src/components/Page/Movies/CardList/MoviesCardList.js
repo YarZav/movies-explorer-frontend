@@ -45,7 +45,7 @@ function MoviesCardList(props) {
     }
 
     function fetchMovies() {
-        let remoteMovies = moviesLocalStorage.getMovies();
+        const remoteMovies = moviesLocalStorage.getMovies();
         if (remoteMovies !== null) {
             initSavedMovies(remoteMovies);
             return;
@@ -150,8 +150,8 @@ function MoviesCardList(props) {
         // // Все фильмы удовлетворяющие поисковой строке или чекбоксу короткометражка
         moviesPaging.searchedMovies = moviesPaging.remoteMovies
             .filter(movie => {
-                let nameRU = movie.nameRU.trim().toLowerCase();
-                let nameEN = movie.nameEN.trim().toLowerCase();
+                const nameRU = movie.nameRU.trim().toLowerCase();
+                const nameEN = movie.nameEN.trim().toLowerCase();
                 return nameRU.includes(searchText) || nameEN.includes(searchText);
             })
             .filter(movie => {
@@ -164,7 +164,7 @@ function MoviesCardList(props) {
 
         // Текущие фильмы для отображения        
         const endIndex = moviesPaging.moviesOffset;
-        let slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
+        const slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
 
         setDisplayedMovies(slicedMovies);
     }
@@ -175,7 +175,7 @@ function MoviesCardList(props) {
         moviesPaging.increaseMoviesOffset();
 
         const endIndex = moviesPaging.moviesOffset;
-        let slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
+        const slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
         setDisplayedMovies(slicedMovies);
     }
 

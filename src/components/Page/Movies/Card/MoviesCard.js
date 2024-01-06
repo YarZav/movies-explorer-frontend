@@ -11,8 +11,7 @@ function MoviesCard(props) {
     const [isLoading, setIsLoading] = React.useState(false);
 
     function imageHandler() {
-        let url = props.movie.trailerLink;
-        window.open(url, '_blank');
+        window.open(props.movie.trailerLink, '_blank');
     }
 
     function moviesHandler() {
@@ -42,6 +41,7 @@ function MoviesCard(props) {
             nameEN: props.movie.nameEN
         })
         .then((movie) => {
+            // TODO: - Здесь идет изменение пропса
             props.movie.isLiked = true;
             props.movie.movieId = movie.data._id;
             props.onUpdate(props.movie);
@@ -64,6 +64,7 @@ function MoviesCard(props) {
 
         authorisedApi.deleteMovies(props.movie.movieId)
         .then((result) => {
+            // TODO: - Здесь идет изменение пропса
             props.movie.isLiked = false;
             props.onUpdate(props.movie);
         })
