@@ -8,6 +8,8 @@ import { authorisedApi } from '../../../../utils/MainApi';
 import cross from '../../../../images/cross.svg';
 
 function MoviesCard(props) {
+    const [isLoading, setIsLoading] = React.useState(false);
+
     function imageHandler() {
         let url = props.movie.trailerLink;
         window.open(url, '_blank');
@@ -22,6 +24,8 @@ function MoviesCard(props) {
     }
 
     function saveMovie() {
+        setIsLoading(true);
+
         const image = moviesUrl + '/' + props.movie.image.url;
         const thumbnail = moviesUrl + '/' + props.movie.image.formats.thumbnail.url;
         authorisedApi.postMovies({
@@ -41,15 +45,35 @@ function MoviesCard(props) {
             props.movie.isLiked = true;
             props.movie.movieId = movie.data._id;
             props.onUpdate(props.movie);
+        })
+        .catch((error) => {
+            console.log(error);
+            showError();
+        })
+        .finally(() => {
+            setIsLoading(false);
         });
     }
 
+    function showError(error) {
+        window.alert(error);
+    }
+
     function removeMovie() {
+        setIsLoading(true);
+
         authorisedApi.deleteMovies(props.movie.movieId)
-            .then((result) => {
-                props.movie.isLiked = false;
-                props.onUpdate(props.movie);
-            });
+        .then((result) => {
+            props.movie.isLiked = false;
+            props.onUpdate(props.movie);
+        })
+        .catch((error) => {
+            console.log(error);
+            showError();
+        })
+        .finally(() => {
+            setIsLoading(false);
+        });
     }
 
     // Components
@@ -67,10 +91,18 @@ function MoviesCard(props) {
         />
     }
 
+    function getLoader() {
+        return <div className='movies-card__loader'></div>
+    }
+
     function getButton() {
-        const crossButton = props.type === 'saved-movies' && getCrossButton();
-        const selectButton = props.type === 'movies' && getSelectButton();
-        return crossButton || selectButton;
+        if (isLoading) {
+            return getLoader();
+        } else {
+            const crossButton = props.type === 'saved-movies' && getCrossButton();
+            const selectButton = props.type === 'movies' && getSelectButton();
+            return crossButton || selectButton;
+        }
     }
 
     function getDuration() {

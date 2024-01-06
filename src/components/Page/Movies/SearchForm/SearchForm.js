@@ -17,7 +17,7 @@ function SearchForm(props) {
         input.value = moviesLocalStorage.getSearchText(props.type) || '';
 
         const checkbox = document.querySelector('.search-form__checkbox');
-        checkbox.value = moviesLocalStorage.getIsShort(props.type) || false;
+        checkbox.checked = moviesLocalStorage.getIsShort(props.type) || false;
     }, [props.type]);
 
     function searchTextHandler(event) {

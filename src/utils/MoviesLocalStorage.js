@@ -3,8 +3,6 @@ class MoviesLocalStorage {
         this._moviesSearchTextKey = options.moviesSearchTextKey;
         this._moviesKey = options.moviesKey;
         this._moviesIsShortKey = options.moviesIsShortKey;
-        this._savedMoviesSearchTextKey = options.savedMoviesSearchTextKey;
-        this._savedMoviesIsShortKey = options.savedMoviesIsShortKey;
     }
 
     // Movies SearchText
@@ -14,16 +12,13 @@ class MoviesLocalStorage {
             return localStorage.getItem(this._moviesSearchTextKey);
         }
         if (type === 'saved-movies') {
-            return localStorage.getItem(this._savedMoviesSearchTextKey);
+            return '';
         }
     }
 
     setSearchText(searchText, type) {
         if (type === 'movies') {
             localStorage.setItem(this._moviesSearchTextKey, searchText);
-        }
-        if (type === 'saved-movies') {
-            localStorage.setItem(this._savedMoviesSearchTextKey, searchText);
         }
     }
 
@@ -34,16 +29,13 @@ class MoviesLocalStorage {
             return localStorage.getItem(this._moviesIsShortKey) === 'true';
         }
         if (type === 'saved-movies') {
-            return localStorage.getItem(this._savedMoviesIsShortKey) === 'true';
+            return false;
         }
     }
 
     setIsShort(isShort, type) {
         if (type === 'movies') {
             localStorage.setItem(this._moviesIsShortKey, isShort);
-        }
-        if (type === 'saved-movies') {
-            localStorage.setItem(this._savedMoviesIsShortKey, isShort);
         }
     }
 
@@ -61,10 +53,7 @@ class MoviesLocalStorage {
 
     removeData() {
         localStorage.removeItem(this._moviesSearchTextKey);
-        localStorage.removeItem(this._savedMoviesSearchTextKey);
-
         localStorage.removeItem(this._moviesIsShortKey);
-        localStorage.removeItem(this._savedMoviesIsShortKey);
 
         localStorage.removeItem(this._moviesKey);
     }
@@ -73,13 +62,9 @@ class MoviesLocalStorage {
 const moviesKey = 'movies';
 const moviesSearchTextKey = 'movies-search-text';
 const moviesIsShortKey = 'movies-is-short';
-const savedMoviesSearchTextKey = 'saved-movies-search-text';
-const savedMoviesIsShortKey = 'saved-movies-is-short';
 
 export const moviesLocalStorage = new MoviesLocalStorage({
     moviesKey: moviesKey,
     moviesSearchTextKey: moviesSearchTextKey,
-    moviesIsShortKey: moviesIsShortKey,
-    savedMoviesSearchTextKey: savedMoviesSearchTextKey,
-    savedMoviesIsShortKey: savedMoviesIsShortKey
+    moviesIsShortKey: moviesIsShortKey
 });

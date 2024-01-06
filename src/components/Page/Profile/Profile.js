@@ -22,6 +22,7 @@ function Profile() {
     const [email, setEmail] = useState('');
 
     const [isProfileUpdateEnabled, setIsProfileUpdateEnabled] = useState(false);
+    const [isShowSuccess, setIsShowSuccess] = useState(false);
 
     const nameRegex = /^([a-zA-Zа-яА-ЯёЁ-\s])+$/;
     const emailRegex = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -63,7 +64,9 @@ function Profile() {
         .then(result => {
             user.name = result.data.name;
             user.email = result.data.email;
-            showSuccess();
+
+            setIsShowSuccess(true);
+            setTimeout(() => setIsShowSuccess(false), 1000);
         })
         .catch(error => {
             console.log(error);
@@ -76,10 +79,6 @@ function Profile() {
 
     function showError(error) {
         window.alert(error);
-    }
-
-    function showSuccess() {
-        window.alert('Данные успешно сохранились');
     }
 
     function isDataValid() {
@@ -107,6 +106,9 @@ function Profile() {
 
     return(
         <div className='profile'>
+            <div className={`profile__success-container ${isShowSuccess ? 'profile__success-container_visible' : ''} `}>
+                Данные успешно сохранились
+            </div>
             <h1 className='profile__title'>{`Привет, ${user.name}!`}</h1>
             <div>
                 <ProfileInput text='Имя' type='text' value={name} onChange={nameChangeHandler} />
