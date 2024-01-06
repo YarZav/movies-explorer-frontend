@@ -1,9 +1,7 @@
-import { debounce } from "./MoviesDebounse";
-
 class MoviesPaging {
     constructor() {
         this.moviesOffset = 0;
-        this._moviesDebounse = debounce(() => this._func());
+        this.mavies = [];
     }
     
     increaseMoviesOffset() {
@@ -19,12 +17,6 @@ class MoviesPaging {
         } else {
             this.moviesOffset = 5;
         }
-        
-    }
-
-    startDebounce(func) {
-        this._func = func;
-        this._moviesDebounse();
     }
 }
 

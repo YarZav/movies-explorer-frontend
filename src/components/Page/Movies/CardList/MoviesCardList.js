@@ -3,170 +3,74 @@ import './MoviesCardList.css';
 import React from 'react';
 
 import MoviesCard from '../Card/MoviesCard';
-import Preloader from '../../../Preloader/Preloader';
 
-import { authorisedApi } from '../../../../utils/MainApi';
-import { moviesApi } from '../../../../utils/MoviesApi';
 import { moviesPaging } from './MoviesPaging';
-import { moviesLocalStorage } from '../../../../utils/MoviesLocalStorage';
 
 function MoviesCardList(props) {
-    const [isLoading, setIsLoading] = React.useState(false);
     const [displayedMovies, setDisplayedMovies] = React.useState([]);
+    const [isLoadMoreButtonVisible, setIsLoadMoreButtonVisible] = React.useState(false);
 
     // Life circle
 
     React.useEffect(() => {
-        initMovies();
-
-        window.addEventListener("resize", resizeHandler);
-    
-        return () => {
-            window.removeEventListener('resize', resizeHandler);
-        };
+        moviesPaging.resetMoviesOffset();
+        displayMovies('', false);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.type]);
 
     React.useEffect(() => {
-        setMoviesToDisplay();
+        const searchText = props.onSearchText.trim().toLowerCase();
+        const isShort =  props.onIsShort;
+        displayMovies(searchText, isShort);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.onSearchText, props.onIsShort]);
 
-    // Init movies
+    // Display movies
 
-    function initMovies() {
-        moviesPaging.resetMoviesOffset();
-        moviesPaging.remoteMovies = [];
-        moviesPaging.searchedMovies = [];
+    function displayMovies(searchText, isShort) {
+        const movies = moviesPaging.movies || [];
+        const moviesByType = getMoviesByType(movies, props.type);
+        const searchedMovies = getMoviesBySearchTextandIsShort(moviesByType, searchText, isShort);
+        const displayableMovies = getDisplayableMovies(searchedMovies);
 
-        setDisplayedMovies([]);
-
-        fetchMovies();
+        setDisplayedMovies(displayableMovies);
+        setIsLoadMoreButtonVisible(searchedMovies.length !== displayableMovies.length);
     }
 
-    function fetchMovies() {
-        const remoteMovies = moviesLocalStorage.getMovies();
-        if (remoteMovies !== null) {
-            initSavedMovies(remoteMovies);
-            return;
-        }
-    
-        setIsLoading(true);
-
-        Promise.all([
-            moviesApi.getMovies(), 
-            authorisedApi.getMovies()
-        ])
-        .then(([apiMovies, localMovies]) => {
-            moviesLocalStorage.setMovies(apiMovies);
-            
-            moviesPaging.remoteMovies = apiMovies;
-            moviesPaging.savedMovies = localMovies.data;
-
-            setMoviesToDisplay();
-        }) 
-        .catch((error) => {
-            console.log(error);
-            showError();
-        })
-        .finally(() => {
-            setIsLoading(false);
-        });
-    }
-
-    function initSavedMovies(apiMovies) {
-        setIsLoading(true);
-
-        authorisedApi.getMovies()
-        .then((localMovies) => {
-            moviesPaging.savedMovies = localMovies.data;
-            moviesPaging.remoteMovies = apiMovies;
-
-            setMoviesToDisplay();
-        }) 
-        .catch((error) => {
-            console.log(error);
-            showError();
-        })
-        .finally(() => {
-            setIsLoading(false);
-        });
-    }
-    
-    function showError() {
-        window.alert('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-    }
-
-    // Reset movies
-
-    function resizeHandler() {
-        moviesPaging.startDebounce(() => {
-            moviesPaging.resetMoviesOffset();
-            setMoviesToDisplay();
-        });
-    }
-
-    // Draw movies
-
-    function getSearchText() {
-        return (moviesLocalStorage.getSearchText() ?? '').trim();
-    }
-
-    function getIsShort() {
-        return moviesLocalStorage.getIsShort()
-    }
-
-    function setMoviesToDisplay() {
-        const searchText = getSearchText().toLowerCase();
-        const isShort = getIsShort();
-
-        // Маппив фильм с сервиса фильмов и то, что лежит в серверной БД
-        // Для проставления лайка и корректного айдишника из сервеной БД
-        moviesPaging.remoteMovies = moviesPaging.remoteMovies.map(apiMovie => {
-            const savedMovie = moviesPaging.savedMovies.find(savedMovie => savedMovie.movieId === apiMovie.id);
-            if (savedMovie) {
-                apiMovie.isLiked = true;
-                apiMovie.movieId = savedMovie._id;
-            } else {
-                apiMovie.isLiked = false;
-                apiMovie.movieId = '';
-            }
-
-            return apiMovie;
-        });
-
+    function getMoviesByType(movies, type) {
         // Все фильмы для выбранной вкладки "Фильмы" или "Сохраненные фильмы"
-        moviesPaging.remoteMovies = moviesPaging.remoteMovies
-            .filter(movie => {
-                if (props.type === 'movies') {
-                    return true;
-                } else if (props.type === 'saved-movies' && movie.isLiked) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-        
-        // // Все фильмы удовлетворяющие поисковой строке или чекбоксу короткометражка
-        moviesPaging.searchedMovies = moviesPaging.remoteMovies
-            .filter(movie => {
-                const nameRU = movie.nameRU.trim().toLowerCase();
-                const nameEN = movie.nameEN.trim().toLowerCase();
-                return nameRU.includes(searchText) || nameEN.includes(searchText);
-            })
-            .filter(movie => {
-                if (isShort) {
-                    return movie.duration <= 40;
-                } else {
-                    return true;
-                }
-            });
+        return movies
+        .filter(movie => {
+            if (type === 'movies') {
+                return true;
+            } else if (type === 'saved-movies' && movie.isLiked) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
 
-        // Текущие фильмы для отображения        
-        const endIndex = moviesPaging.moviesOffset;
-        const slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
+    function getMoviesBySearchTextandIsShort(movies, searchText, isShort) {
+        // Все фильмы удовлетворяющие поисковой строке или чекбоксу короткометражка        
+        return movies
+        .filter(movie => {
+            const nameRU = movie.nameRU.trim().toLowerCase();
+            const nameEN = movie.nameEN.trim().toLowerCase();
+            return nameRU.includes(searchText) || nameEN.includes(searchText);
+        })
+        .filter(movie => {
+            if (isShort) {
+                return movie.duration <= 40;
+            } else {
+                return true;
+            }
+        });
+    }
 
-        setDisplayedMovies(slicedMovies);
+    function getDisplayableMovies(movies) {
+        // Текущие фильмы для отображения
+        return movies.slice(0, moviesPaging.moviesOffset);
     }
 
     // Actions
@@ -174,9 +78,9 @@ function MoviesCardList(props) {
     function moreHandler() {
         moviesPaging.increaseMoviesOffset();
 
-        const endIndex = moviesPaging.moviesOffset;
-        const slicedMovies = moviesPaging.searchedMovies.slice(0, endIndex);
-        setDisplayedMovies(slicedMovies);
+        const searchText = props.onSearchText.trim().toLowerCase();
+        const isShort =  props.onIsShort;
+        displayMovies(searchText, isShort);
     }
 
     function updateMovieHandler(newMovie) {
@@ -209,9 +113,7 @@ function MoviesCardList(props) {
     }
 
     function getLoadMoreButton() {
-        const isAllMoviesDisplayed = moviesPaging.moviesOffset >= moviesPaging.searchedMovies.length;
-
-        return !isAllMoviesDisplayed && <div className='movies-card-list__button-container'>
+        return isLoadMoreButtonVisible && <div className='movies-card-list__button-container'>
             <button className='movies-card-list__load highlight' onClick={moreHandler}>Ещё</button>
         </div> 
     }
@@ -229,8 +131,7 @@ function MoviesCardList(props) {
 
     return(
         <div>
-            { isLoading && <Preloader /> }
-            { !isLoading && getMoviesContent() }
+            { getMoviesContent() }
         </div>
     )
 }

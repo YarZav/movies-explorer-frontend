@@ -21,18 +21,18 @@ function SearchForm(props) {
     }
 
     function setDefaultValue() {
-        console.log(props.type);
         const input = document.querySelector('.search-form__input');
         const checkbox = document.querySelector('.search-form__checkbox');
         if (isMoviesType()) {
-            console.log('movies');
             input.value = moviesLocalStorage.getSearchText() || '';
             checkbox.checked = moviesLocalStorage.getIsShort() || false;
         } else {
-            console.log('saved-movies');
             input.value = '';
             checkbox.checked = false;
         }
+
+        props.onSearchText(input.value);
+        props.onIsShort(checkbox.checked);
     }
 
     function searchTextHandler(event) {
