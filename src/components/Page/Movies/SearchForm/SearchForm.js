@@ -14,15 +14,15 @@ function SearchForm(props) {
         setError('');
 
         const input = document.querySelector('.search-form__input');
-        input.value = moviesLocalStorage.getSearchText(props.type) || '';
+        input.value = moviesLocalStorage.getSearchText() || '';
 
         const checkbox = document.querySelector('.search-form__checkbox');
-        checkbox.checked = moviesLocalStorage.getIsShort(props.type) || false;
+        checkbox.checked = moviesLocalStorage.getIsShort() || false;
     }, [props.type]);
 
     function searchTextHandler(event) {
         const value = event.target.value;
-        moviesLocalStorage.setSearchText(value, props.type);
+        moviesLocalStorage.setSearchText(value);
 
         setError(value.length > 0 ? '' : 'Нужно ввести ключевое слово');
     }
@@ -38,7 +38,7 @@ function SearchForm(props) {
 
     function checkboxHandler(event) {
         const checked = event.target.checked;
-        moviesLocalStorage.setIsShort(checked, props.type);
+        moviesLocalStorage.setIsShort(checked);
 
         props.onIsShort(checked);
     }

@@ -7,36 +7,22 @@ class MoviesLocalStorage {
 
     // Movies SearchText
 
-    getSearchText(type) {
-        if (type === 'movies') {
-            return localStorage.getItem(this._moviesSearchTextKey);
-        }
-        if (type === 'saved-movies') {
-            return '';
-        }
+    getSearchText() {
+        return localStorage.getItem(this._moviesSearchTextKey);
     }
 
-    setSearchText(searchText, type) {
-        if (type === 'movies') {
-            localStorage.setItem(this._moviesSearchTextKey, searchText);
-        }
+    setSearchText(searchText) {
+        localStorage.setItem(this._moviesSearchTextKey, searchText);
     }
 
     // Is short movies
 
-    getIsShort(type) {
-        if (type === 'movies') {
-            return localStorage.getItem(this._moviesIsShortKey) === 'true';
-        }
-        if (type === 'saved-movies') {
-            return false;
-        }
+    getIsShort() {
+        return localStorage.getItem(this._moviesIsShortKey) === 'true';
     }
 
-    setIsShort(isShort, type) {
-        if (type === 'movies') {
-            localStorage.setItem(this._moviesIsShortKey, isShort);
-        }
+    setIsShort(isShort) {
+        localStorage.setItem(this._moviesIsShortKey, isShort);
     }
 
     // Movies

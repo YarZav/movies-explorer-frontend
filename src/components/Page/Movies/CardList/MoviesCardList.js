@@ -109,11 +109,11 @@ function MoviesCardList(props) {
     // Draw movies
 
     function getSearchText() {
-        return (moviesLocalStorage.getSearchText(props.type) ?? '').trim();
+        return (moviesLocalStorage.getSearchText() ?? '').trim();
     }
 
     function getIsShort() {
-        return moviesLocalStorage.getIsShort(props.type)
+        return moviesLocalStorage.getIsShort()
     }
 
     function setMoviesToDisplay() {
