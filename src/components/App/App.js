@@ -25,7 +25,7 @@ function App() {
     getInitData();
   }
 
-  // Fetch init data
+  // Fetch user data
 
   function getInitData() {
     if (!mainLocalStorage.getJwt()) {

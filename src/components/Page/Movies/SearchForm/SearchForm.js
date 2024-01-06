@@ -12,17 +12,34 @@ function SearchForm(props) {
 
     React.useEffect(() => {
         setError('');
-
-        const input = document.querySelector('.search-form__input');
-        input.value = moviesLocalStorage.getSearchText() || '';
-
-        const checkbox = document.querySelector('.search-form__checkbox');
-        checkbox.checked = moviesLocalStorage.getIsShort() || false;
+        setDefaultValue();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.type]);
+
+    function isMoviesType() {
+        return props.type === 'movies';
+    }
+
+    function setDefaultValue() {
+        console.log(props.type);
+        const input = document.querySelector('.search-form__input');
+        const checkbox = document.querySelector('.search-form__checkbox');
+        if (isMoviesType()) {
+            console.log('movies');
+            input.value = moviesLocalStorage.getSearchText() || '';
+            checkbox.checked = moviesLocalStorage.getIsShort() || false;
+        } else {
+            console.log('saved-movies');
+            input.value = '';
+            checkbox.checked = false;
+        }
+    }
 
     function searchTextHandler(event) {
         const value = event.target.value;
-        moviesLocalStorage.setSearchText(value);
+        if (isMoviesType()) {
+            moviesLocalStorage.setSearchText(value);
+        }
 
         setError(value.length > 0 ? '' : 'Нужно ввести ключевое слово');
     }
@@ -38,7 +55,9 @@ function SearchForm(props) {
 
     function checkboxHandler(event) {
         const checked = event.target.checked;
-        moviesLocalStorage.setIsShort(checked);
+        if (isMoviesType()) {
+            moviesLocalStorage.setIsShort(checked);
+        }
 
         props.onIsShort(checked);
     }
