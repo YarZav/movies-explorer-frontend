@@ -65,6 +65,8 @@ function Profile() {
             user.name = result.data.name;
             user.email = result.data.email;
 
+            updateEditButton();
+
             setIsShowSuccess(true);
             setTimeout(() => setIsShowSuccess(false), 1000);
         })
