@@ -16,7 +16,9 @@ function Header(props) {
     const [isSideMenuOpened, setIsSideMenuOpened] = useState(false);
 
     function getContentType() {
-        return props.isAuthed ? 'header-page' : 'header-main';
+        const page = props.type === 'page' && 'header-page';
+        const main = props.type === 'main' && 'header-main';
+        return page || main;
     }
 
     function signupHandler() {

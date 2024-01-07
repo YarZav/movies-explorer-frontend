@@ -8,10 +8,16 @@ import AboutMe from './AboutMe/AboutMe';
 import Portfolio from './Portfolio/Portfolio';
 import Footer from '../Footer/Footer';
 
+import { mainLocalStorage } from '../../utils/MainLocalStorage';
+
 function Main() {
+    function isAuthed() {
+        return mainLocalStorage.getJwt()
+    }
+
     return (
         <main className='main'>
-            <Header isAuthed={false} />
+            <Header type='main' isAuthed={isAuthed()} />
             <main>
                 <Promo/>
                 <AboutProject />

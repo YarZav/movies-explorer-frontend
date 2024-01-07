@@ -1,43 +1,138 @@
 import './Signin.css';
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import AuthInput from '../Input/AuthInput';
 import AuthMainButton from '../MainButton/AuthMainButton';
 import SecondaryButton from '../SecondaryButton/AuthSecondaryButton';
 
-function Signin() {
-    const [mail, setMail] = useState('');
+import { unauthorisedApi } from '../../../utils/MainApi';
+import { mainLocalStorage } from '../../../utils/MainLocalStorage';
+
+function Signin(props) {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const [isLoading, setIsLoading] = React.useState(false);
+
+    const [email, setEmail] = useState('');
     const [password, setPassowrd] = useState('');
 
-    const navigate = useNavigate();
+    const [emailError, setEmailError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
-    function handleSubmit(event) {
+    const [isSigninEnabled, setIsSigninEnabled] = useState(false);
+
+    const emailRegex = /^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const passwordRegex = /^(?=.*\d).{8,}$/
+
+    // Use Effects
+
+    React.useEffect(() => {
+        setEmailError('');
+        setPasswordError('');
+
+        if (location.state && location.state.email) {
+            setEmail(location.state.email || '');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+    React.useEffect(() => {
+        if (email.length === 0) {
+            setEmailError('');
+        } else {
+            emailRegex.test(email) ? setEmailError('') : setEmailError('Некорректная почта');
+        }
+        setIsSigninEnabled(isDataValid());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [email]);
+
+    React.useEffect(() => {
+        if (password.length === 0) {
+            setPasswordError('');
+        } else {
+            passwordRegex.test(password) ? setPasswordError('') : setPasswordError('Некорректный пароль');
+        }
+        setIsSigninEnabled(isDataValid());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [password]);
+
+    // Signin
+
+    function submitHandler(event) {
         event.preventDefault();
+
+        if (isDataValid()) {
+            signin();
+        }
     }
 
-    function handleChangeMail(value) {
-        setMail(value);
+    function signin() {
+        setIsLoading(true)
+
+        unauthorisedApi.signin(email, password)
+        .then(result => {
+            mainLocalStorage.setJwt(result.token);
+            props.onUser();
+            navigate('/movies');
+        })
+        .catch(error => {
+            console.log(error);
+            showError(error);
+        })
+        .finally(() => {
+            setIsLoading(false)
+        });
     }
 
-    function handleChangePassword(value) {
+    function showError(error) {
+        window.alert(error);
+    }
+
+    function isDataValid() {
+        return emailRegex.test(email) && passwordRegex.test(password)
+    }
+
+    // States
+
+    function changeEmailHandler(value) {
+        setEmail(value);
+    }
+
+    function changePasswordHandler(value) {
         setPassowrd(value);
     }
 
-    function handleSignup() {
+    function signupHandler() {
         navigate('/signup');
     }
 
     return(
-        <form className='signin' name='signin' onSubmit={handleSubmit}>
+        <form className='signin' name='signin' onSubmit={submitHandler}>
             <div className='signin__input-container'>
-                <AuthInput type='email' title='E-mail' value={mail} onChange={handleChangeMail} />
-                <AuthInput type='password' title='Пароль' value={password} onChange={handleChangePassword} />
+                <AuthInput 
+                    type='email' 
+                    title='E-mail'
+                    value={email} 
+                    error={emailError}
+                    onChange={changeEmailHandler} 
+                />
+                <AuthInput 
+                    type='password' 
+                    title='Пароль' 
+                    value={password} 
+                    error={passwordError} 
+                    onChange={changePasswordHandler} 
+                />
             </div>
             <div className='signin__button-container'>
-                <AuthMainButton value={'Войти'}/>
-                <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={handleSignup}/>
+                <AuthMainButton 
+                    value={isLoading ? 'Вход...' : 'Войти'}
+                    disabled={!isSigninEnabled}
+                />
+                <SecondaryButton description='Ещё не зарегистрированы?' value='Регистрация' onClick={signupHandler}/>
             </div>
         </form>
     )

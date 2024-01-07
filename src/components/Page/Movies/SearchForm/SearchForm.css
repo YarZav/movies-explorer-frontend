@@ -49,6 +49,15 @@
     }
 }
 
+.search-form__error {
+    margin: 0;
+    height: 16px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #ee3465;
+}
+
 .searh-form__button {
     width: 34px;
     height: 34px;
@@ -69,7 +78,7 @@
 }
 
 .search-form__switch-container {
-    margin-top: 32px;
+    margin-top: 16px;
     display: flex;
     column-gap: 14px;
 }

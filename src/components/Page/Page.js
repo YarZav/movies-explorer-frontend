@@ -1,5 +1,7 @@
 import './Page.css';
 
+import React from 'react';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Profile from './Profile/Profile';
@@ -20,7 +22,7 @@ function Page(props) {
 
     return(
         <div className='page'>
-            <Header isAuthed={true}/>
+            <Header type='page' isAuthed={true}/>
             { getContent() }
             { getFooter() }
         </div>

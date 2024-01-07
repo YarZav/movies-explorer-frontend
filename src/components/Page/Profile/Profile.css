@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
+    position: relative;
 }
 
 @media screen and (max-width: 767px) {
@@ -45,6 +46,10 @@
     color: #ffffff;
 }
 
+.profile__edit_disabled {
+    color: #888888;
+}
+
 .profile__signout {
     padding: 0;
     background: none;
@@ -54,4 +59,53 @@
     font-size: 13px;
     line-height: 16px;
     color: #ee3465;
+}
+
+.profile__success {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0; 
+    right: 0; 
+    margin: auto;
+    width: 100%;
+    height: 100px;
+    background-color: rebeccapurple;
+    -moz-box-shadow: 0 0 30px #ccc;
+    -webkit-box-shadow: 0 0 30px #ccc;
+    box-shadow: 0 0 30px #ccc;
+    text-align: center;
+}
+
+.profile__success-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0; 
+    right: 0; 
+    margin: auto;
+    width: 100%;
+    height: 100px;
+    background-color: rebeccapurple;
+    -moz-box-shadow: 0 0 30px #202020;
+    -webkit-box-shadow: 0 0 30px #202020;
+    box-shadow: 0 0 30px #202020;
+    text-align: center;
+    line-height: 100px;
+    font-weight: 500;
+    font-size: 24px;
+    color: #ffffff;
+    background-color: #202020;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: visibility 0s, opacity .3s linear;
+    -moz-transition: visibility 0s, opacity .3s linear;
+    -ms-transition: visibility 0s, opacity .3s linear;
+    -o-transition: visibility 0s, opacity .3s linear;
+    transition: visibility 0s, opacity .3s linear;
+}
+
+.profile__success-container_visible {
+    visibility: visible;
+    opacity: 1;
 }

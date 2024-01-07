@@ -1,7 +1,7 @@
 import './AuthSecondaryButton.css';
 
 function AuthSecondaryButton(props) {
-    function handleClick(event) {
+    function clickHandler(event) {
         event.preventDefault();
 
         props.onClick();
@@ -10,7 +10,7 @@ function AuthSecondaryButton(props) {
     return(
         <div className='auth-secondary-button__container'>
              <p className='auth-secondary-button__description'>{props.description}</p>
-            <input className='auth-secondary-button highlight' type='button' value={props.value} onClick={handleClick} />
+            <input className='auth-secondary-button highlight' type='button' value={props.value} onClick={clickHandler} />
         </div>
     )
 }
